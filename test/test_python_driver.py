@@ -3,12 +3,14 @@ import sys
 import json
 import msgpack
 import unittest
-from pprint import pprint
-from ast import literal_eval
 from os.path import dirname, join
 
 sys.path.append('../bin')
-import pyparser # noqa: E402
+from python_driver import __version__, get_processor_instance
+from python_driver.requestprocessor import (
+        RequestProcessorMSGPack, RequestProcessorJSON, RequestCheckException
+)
+
 
 def convert_bytes(data, to_bytes=False):
     """
@@ -22,12 +24,12 @@ def convert_bytes(data, to_bytes=False):
             newlist.append(convert_bytes(item, to_bytes))
         return newlist
     elif isinstance(data, dict):
+        newdict = {}
         for key, value in data.items():
             newvalue = convert_bytes(value, to_bytes)
             newkey = convert_bytes(key, to_bytes)
-            del data[key]
-            data[newkey] = newvalue
-        return data
+            newdict[newkey] = newvalue
+        return newdict
     elif isinstance(data, bytes) and not to_bytes:
         return data.decode()
     elif isinstance(data, str) and to_bytes:
@@ -35,7 +37,7 @@ def convert_bytes(data, to_bytes=False):
     return data
 
 
-class TestPyParserBase(unittest.TestCase):
+class TestPythonDriverBase(unittest.TestCase):
     def _restart_data(self, format_='json'):
         assert format_ in ('json', 'msgpack')
 
@@ -51,28 +53,22 @@ class TestPyParserBase(unittest.TestCase):
 
         bufferclass = io.StringIO if format_ == 'json' else io.BytesIO
 
-        # This will mock the pyparser stdin
+        # This will mock the python_driver stdin
         self.sendbuffer = bufferclass()
-        # This will mock the pyparser stdout
+        # This will mock the python_driver stdout
         self.recvbuffer = bufferclass()
 
-    def _extract_docs(self, inbuffer):
+    @staticmethod
+    def _extract_docs(inbuffer):
         """
         This generator will read the inbuffer yielding the JSON
         docs when it finds the ending mark
         """
-        strio = io.StringIO()
-
         for line in inbuffer.readlines():
-            if line == pyparser.RequestProcessorJSON.JSONEndMark:
-                yield json.loads(strio.getvalue())
-                strio.seek(0)
-                strio = io.StringIO()
-            else:
-                strio.write(line)
+            yield json.loads(line)
 
     def _loadResults(self, format_):
-        "Read all msgpacks from the recvbuffer"
+        """Read all msgpacks from the recvbuffer"""
         self.recvbuffer.seek(0)
 
         if format_ == 'json':
@@ -84,21 +80,23 @@ class TestPyParserBase(unittest.TestCase):
 
         return res
 
-class Test10ProcessRequestFunc(TestPyParserBase):
+
+class Test10ProcessRequestFunc(TestPythonDriverBase):
 
     def _add_to_buffer(self, count, format_):
-        "Add count test msgpacks to the sendbuffer"
+        """Add count test msgpacks to the sendbuffer"""
         for i in range(count):
+            msg = ''
             if format_ == 'msgpack':
                 msg = msgpack.dumps(self.data)
             elif format_ == 'json':
-                msg = json.dumps(self.data, ensure_ascii=False) + '\n@@----@@\n'
+                msg = json.dumps(self.data, ensure_ascii=False) + '\n'
             self.sendbuffer.write(msg)
 
         self.sendbuffer.flush()
 
-    def _send_receive(self, nummsgs, outformat = 'msgpack', dataupdate=None,
-            restart_data=True):
+    def _send_receive(self, nummsgs, outformat='msgpack', dataupdate=None,
+                      restart_data=True):
         if restart_data:
             self._restart_data(outformat)
 
@@ -108,7 +106,7 @@ class Test10ProcessRequestFunc(TestPyParserBase):
         self._add_to_buffer(nummsgs, outformat)
         self.sendbuffer.seek(0)
 
-        processor, _ = pyparser.getRequestProcessorInstance(
+        processor, _ = get_processor_instance(
                 outformat,
                 custom_outbuffer=self.recvbuffer,
                 custom_inbuffer=self.sendbuffer
@@ -116,9 +114,9 @@ class Test10ProcessRequestFunc(TestPyParserBase):
         processor.process_requests(self.sendbuffer)
         return self._loadResults(outformat)
 
-    def _check_reply_dict(self, reply, check_ast=True, has_errors = False):
+    def _check_reply_dict(self, reply, has_errors=False):
         self.assertIsInstance(reply, dict)
-        self.assertEqual(reply.get('driver'), 'python23:{}'.format(pyparser.__version__))
+        self.assertEqual(reply.get('driver'), 'python23:{}'.format(__version__))
         status = reply.get('status')
 
         if has_errors:
@@ -216,11 +214,11 @@ class Test10ProcessRequestFunc(TestPyParserBase):
         self.assertEqual(len(reply['errors']), 1)
 
 
-class Test20ReqProcMethods(TestPyParserBase):
+class Test20ReqProcMethods(TestPythonDriverBase):
     def test_check_input(self):
         self._restart_data('msgpack')
         brequest = convert_bytes(self.data, to_bytes=True)
-        processor = pyparser.RequestProcessorMSGPack(self.recvbuffer)
+        processor = RequestProcessorMSGPack(self.recvbuffer)
         res = processor._check_input_request(brequest)
         self.assertEqual(res[1], 'test.py')
 
@@ -228,13 +226,13 @@ class Test20ReqProcMethods(TestPyParserBase):
         self._restart_data('msgpack')
         del self.data['content']
         brequest = convert_bytes(self.data, to_bytes=True)
-        processor = pyparser.RequestProcessorMSGPack(self.recvbuffer)
-        with self.assertRaises(pyparser.RequestCheckException) as _: # noqa: F841
+        processor = RequestProcessorMSGPack(self.recvbuffer)
+        with self.assertRaises(RequestCheckException) as _:  # noqa: F841
             processor._check_input_request(brequest)
 
     def test_send_response_msgpack(self):
         self._restart_data('msgpack')
-        processor = pyparser.RequestProcessorMSGPack(self.recvbuffer)
+        processor = RequestProcessorMSGPack(self.recvbuffer)
         processor._send_response(self.data)
         res = self._loadResults('msgpack')
         self.assertEqual(len(res), 1)
@@ -242,22 +240,22 @@ class Test20ReqProcMethods(TestPyParserBase):
 
     def test_send_response_json(self):
         self._restart_data('json')
-        processor = pyparser.RequestProcessorJSON(self.recvbuffer)
+        processor = RequestProcessorJSON(self.recvbuffer)
         processor._send_response(self.data)
         res = self._loadResults('json')
         self.assertEqual(len(res), 1)
         self.assertDictEqual(self.data, res[0])
 
-    # process request already tested with TetPyParserBase
+    # process request already tested with TestPythonDriverBase
 
     def test_return_error(self):
         self._restart_data('json')
-        processor = pyparser.RequestProcessorJSON(self.recvbuffer)
+        processor = RequestProcessorJSON(self.recvbuffer)
         processor.errors = ['test error']
         processor._return_error('test.py', 'fatal')
         res = self._loadResults('json')
         self.assertEqual(len(res), 1)
-        self.assertDictEqual(res[0] , {'driver': 'python23:1.0',
+        self.assertDictEqual(res[0] , {'driver': 'python23:{}'.format(__version__),
                                        'errors': ['test error'],
                                        'filepath': 'test.py',
                                        'status': 'fatal'})

@@ -1,3 +1,4 @@
+import sys
 from python_driver.requestprocessor import RequestProcessorJSON, RequestProcessorMSGPack
 
 ProcessorConfigs = {

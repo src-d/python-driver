@@ -1,6 +1,6 @@
 #!/bin/sh
-docker stop pyparser
-docker rm pyparser
-docker rmi pyparser:latest
+docker stop python_driver
+docker rm python_driver
+docker rmi python_driver:latest
 cp Dockerfile.alpine Dockerfile
-docker build --tag pyparser_alpine .
+docker build --tag python_driver_alpine .

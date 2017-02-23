@@ -1,5 +1,4 @@
 import abc
-import io
 import json
 import msgpack
 import logging
@@ -9,6 +8,7 @@ from python_driver.version import __version__
 # from typing import TypeVar, Generic
 
 # TODO: typing
+
 
 class RequestCheckException(Exception):
     """
@@ -45,9 +45,8 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         self.outbuffer = outbuffer
         self.errors    = []
 
-    @staticmethod
     @abc.abstractmethod
-    def _prepare_dict(d):
+    def _prepare_dict(self, d):
         """
         This method should be reimplemented by subclasses ensuring that all the keys
         and values in the request dictionary once deserialized have the str type.
@@ -101,7 +100,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
     def _return_error(self, filepath='', status='error'):
         """
         Build and send to stdout and error response. Also log
-        the errors to the pyparser.log.
+        the errors to the python_driver.log.
 
         :param filepath: optional str with the path of the source file that produced
         the error.
@@ -157,7 +156,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
                 'errors'           : self.errors,
                 'language'         : 'python',
                 'language_version' : version,
-                'driver'           : 'python23:1.0',
+                'driver'           : 'python23:{}'.format(__version__),
                 'ast'              : ast,
             }
             if filepath:
@@ -175,23 +174,17 @@ class RequestProcessorJSON(RequestProcessor):
     """
     RequestProcessor subclass that operates deserializing requests and serializing
     responses using the JSON format. When sending JSON documents on the inputbuffer
-    the documents must be separated with a like with the content @@----@@ followed
-    by a newline character. You can use a different separator passing the separator
-    parameter to the constructor. The documents produced on the output stream by this
-    class will also have this separator. Between them.
+    the documents must be separated with a Unix newline ('\n') .
+    The documents produced on the output stream by this
+    class will also have this newline separator between them.
     """
 
-
-    def __init__(self, outbuffer, separator='@@----@@'):
+    def __init__(self, outbuffer):
         """
         :param outbuffer: the output buffer. This must be a file-like object based on
         str (like sys.stdout or io.StringIO but not sys.stdout.buffer or io.BytesIO).
-        :param separator: the separator between JSON documents. It must go
-        on a separate line followed by a unix newline ('\n') character.
         """
         super().__init__(outbuffer)
-
-        self.separator = separator + '\n'
 
     def _send_response(self, response):
         """
@@ -203,11 +196,10 @@ class RequestProcessorJSON(RequestProcessor):
         :param response: deserialized response dictionary
         """
         self.outbuffer.write(json.dumps(response, ensure_ascii=False))
-        self.outbuffer.write('\n%s' % self.separator)
+        self.outbuffer.write('\n')
         self.outbuffer.flush()
 
-    @staticmethod
-    def _prepare_dict(d):
+    def _prepare_dict(self, d):
         """
         This interface method is a NOOP for this class since JSON keys already comes
         encoded as str so there is no need to lose time reencoding anything
@@ -220,23 +212,16 @@ class RequestProcessorJSON(RequestProcessor):
     def _extract_docs(self, inbuffer):
         """
         This generator will read the inbuffer yielding the JSON
-        docs when it finds the document separator line.
+        docs one by every line, without using other separators than '\n'
 
         :param inbuffer: the input buffer that be of type str and support
         the readlines method.
         """
-        strio = io.StringIO()
-
         for line in inbuffer.readlines():
             try:
-                if line == self.separator:
-                    yield json.loads(strio.getvalue())
-                    strio.seek(0)
-                    strio = io.StringIO()
-                else:
-                    strio.write(line)
+                yield json.loads(line)
             except:
-                self.errors = ['error decoding JSON from input: {}'.format(strio.getvalue())]
+                self.errors = ['error decoding JSON from input: {}'.format(line)]
                 self._return_error(filepath='<jsonstream>', status='fatal')
 
     def process_requests(self, inbuffer):
@@ -261,13 +246,13 @@ class RequestProcessorMSGPack(RequestProcessor):
         :param outbuffer: the output buffer. This must be a bytes-based file like object
         supporting the write(bytes) and flush() methods.
         """
+        super().__init__(outbuffer)
 
     def _send_response(self, response):
         self.outbuffer.write(msgpack.dumps(response))
         self.outbuffer.flush()
 
-    @staticmethod
-    def _prepare_dict(d):
+    def _prepare_dict(self, d):
         """
         Convert all byte-string keys and values to normal strings (non recursively since
         we only have one level)
@@ -276,14 +261,19 @@ class RequestProcessorMSGPack(RequestProcessor):
         :return: the converted dictionary
         """
         newdict = {}
-        for key, value in d.items():
-            if isinstance(value, bytes):
-                value = value.decode()
+        try:
+            for key, value in d.items():
+                if isinstance(value, bytes):
+                    value = value.decode()
 
-            if isinstance(key, bytes):
-                key = key.decode()
+                if isinstance(key, bytes):
+                    key = key.decode()
 
-            newdict[key] = value
+                newdict[key] = value
+        except AttributeError as exc:
+            self.errors.append('Error trying to decode message, are you sure that the input ' +
+                    'format is msgpack?')
+            raise AttributeError from exc
         return newdict
 
     def process_requests(self, inbuffer):

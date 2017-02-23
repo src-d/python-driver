@@ -9,10 +9,10 @@ import logging
 import msgpack
 import pydetector.detector as detector
 from pprint import pformat, pprint
-from traceback import format_exc
+from traceback import format_exc, print_exc
 from python_driver.processor_configs import ProcessorConfigs
 
-logging.basicConfig(filename="pyparser.log", level=logging.WARNING)
+logging.basicConfig(filename="python_driver.log", level=logging.WARNING)
 
 
 class RequestInstantiationException(Exception): pass
@@ -56,7 +56,12 @@ def main():
         format_ = 'msgpack'
 
     processor, inbuffer = get_processor_instance(format_)
-    processor.process_requests(inbuffer)
+    try:
+        processor.process_requests(inbuffer)
+    except UnicodeDecodeError:
+        print_exc()
+        print('Error while trying to decode the message, are you sure you are not '
+                'using a different input format that the currently configured (%s)?' % format_)
 
 
 if __name__ == '__main__':

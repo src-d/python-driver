@@ -8,4 +8,4 @@ RUN pip2 install msgpack-python six \
         git+https://github.com/juanjux/python-pydetector.git
 ADD bin /bin
 
-CMD ["python3",  "bin/pyparser.py"]
+CMD ["python3",  "bin/python_driver.py"]

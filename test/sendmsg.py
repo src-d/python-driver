@@ -2,22 +2,23 @@
 """
 Script to help test and debug. It will create a babelfish message
 with the code of the files passed as argument and output them
-on stdout so you can pipe them to pyparser or the docker image like
+on stdout so you can pipe them to python_driver or the docker image like
 this:
 
-$ ./sendmsg.py [source_file.py]|./pyparser.py
+$ ./sendmsg.py [source_file.py]|python_driver.py
 
 Or with the Docker image:
 
-$ ./sendmsg.py [source_file.py]|docker run -it --rm pyparser:latest
+$ ./sendmsg.py [source_file.py]|docker run -it --rm python_driver:latest
 """
 import sys
 import json
 import msgpack
 import logging
 sys.path.append('../bin')
-import pyparser
 # logging.basicConfig(filename="sendmsg.log", level=logging.DEBUG)
+
+JSONEndMark = '@@----@@\n'
 
 
 def main():
@@ -61,8 +62,7 @@ def main():
         if outformat == 'json':
             # msg = (json.dumps(d, ensure_ascii=True) + '\n@@----@@\n').encode()
             json.dump(d, sys.stdout, ensure_ascii=False)
-            outbuffer.write('\n%s' % pyparser.RequestProcessorJSON.JSONEndMark)
-            # @@----@@\n')
+            outbuffer.write('\n')
         else:
             msg = msgpack.packb(d)
             outbuffer.write(msg)
