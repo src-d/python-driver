@@ -5,7 +5,6 @@ import logging
 from pydetector import detector
 from traceback import format_exc
 from python_driver.version import __version__
-# from typing import TypeVar, Generic
 
 # TODO: typing
 
@@ -75,8 +74,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
 
         language = asstr(request.get('language', ''))
         if language.lower() != 'python':
-            raise RequestCheckException('Bad language requested for the Python driver: "%s"'
-                                        % language)
+            raise RequestCheckException(f'Bad language requested for the Python driver: "{language}"')
 
         language_version = asstr(request.get('language_version', ''))
         if language_version not in ('', '1', '2', '3'):
@@ -111,7 +109,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         response = {
             'status': status,
             'errors': self.errors,
-            'driver': 'python23:%s' % __version__,
+            'driver': f'python23:{__version__}',
         }
         if filepath:
             response['filepath'] = filepath
@@ -156,7 +154,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
                 'errors'           : self.errors,
                 'language'         : 'python',
                 'language_version' : version,
-                'driver'           : 'python23:{}'.format(__version__),
+                'driver'           : f'python23:{__version__}',
                 'ast'              : ast,
             }
             if filepath:
@@ -221,7 +219,7 @@ class RequestProcessorJSON(RequestProcessor):
             try:
                 yield json.loads(line)
             except:
-                self.errors = ['error decoding JSON from input: {}'.format(line)]
+                self.errors = [f'error decoding JSON from input: {line}']
                 self._return_error(filepath='<jsonstream>', status='fatal')
 
     def process_requests(self, inbuffer):

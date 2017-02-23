@@ -5,7 +5,7 @@ import msgpack
 import unittest
 from os.path import dirname, join
 
-sys.path.append('../bin')
+sys.path.append('..')
 from python_driver import __version__, get_processor_instance
 from python_driver.requestprocessor import (
         RequestProcessorMSGPack, RequestProcessorJSON, RequestCheckException
@@ -115,7 +115,7 @@ class Test10ProcessRequestFunc(TestPythonDriverBase):
 
     def _check_reply_dict(self, reply, has_errors=False):
         self.assertIsInstance(reply, dict)
-        self.assertEqual(reply.get('driver'), 'python23:{}'.format(__version__))
+        self.assertEqual(reply.get('driver'), f'python23:{__version__}')
         status = reply.get('status')
 
         if has_errors:
@@ -254,7 +254,7 @@ class Test20ReqProcMethods(TestPythonDriverBase):
         processor._return_error('test.py', 'fatal')
         res = self._loadResults('json')
         self.assertEqual(len(res), 1)
-        self.assertDictEqual(res[0] , {'driver': 'python23:{}'.format(__version__),
+        self.assertDictEqual(res[0] , {'driver': f'python23:{__version__}',
                                        'errors': ['test error'],
                                        'filepath': 'test.py',
                                        'status': 'fatal'})

@@ -92,3 +92,5 @@ ENV/
 
 test/nimcache/*
 test/sendmsg
+
+.idea/*

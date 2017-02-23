@@ -45,8 +45,8 @@ def main():
         logging.info(f)
         for encoding in ('utf_8', 'iso8859_15', 'iso8859_15', 'gb2313',
                          'cp1251', 'cp1252', 'cp1250', 'shift-jis', 'gbk', 'cp1256',
-                         'iso8859-2', 'euc_jp', 'big5', 'cp874', 'euc_kr', 'iso8859_7'
-                                                                           'cp1255'):
+                         'iso8859-2', 'euc_jp', 'big5', 'cp874', 'euc_kr', 'iso8859_7',
+                         'cp1255'):
             with open(f, encoding=encoding) as infile:
                 try:
                     content = infile.read()
@@ -60,7 +60,6 @@ def main():
         })
 
         if outformat == 'json':
-            # msg = (json.dumps(d, ensure_ascii=True) + '\n@@----@@\n').encode()
             json.dump(d, sys.stdout, ensure_ascii=False)
             outbuffer.write('\n')
         else:

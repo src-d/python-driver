@@ -19,10 +19,10 @@ version = main_ns['__version__']
 setup(
     name="python_driver",
     version=version,
-
     description=description,
     long_description=long_descr,
     license="MIT",
+    test_suite="test",
     # TODO: change this to the bblfsh directory
     url="https://github.com/juanjux/python-driver",
     # download_url = "https://github.com/juanjux/python_driver/archive/%s.tar.gz" % version,
@@ -52,7 +52,6 @@ setup(
         "Topic :: Software Development :: Disassemblers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.5"
+        "Programming Language :: Python :: 3.6"
     ]
 )

@@ -1,2 +1,2 @@
 msgpack-python==0.4.8
--e git+https://github.com/juanjux/python-pydetector.git
+pydetector==0.3.8
