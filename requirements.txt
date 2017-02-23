@@ -1,2 +1,2 @@
 msgpack-python==0.4.8
-pydetector==0.3.8
+pydetector==0.3.10
