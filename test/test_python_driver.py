@@ -71,12 +71,11 @@ class TestPythonDriverBase(unittest.TestCase):
         """Read all msgpacks from the recvbuffer"""
         self.recvbuffer.seek(0)
 
+        res = ''
         if format_ == 'json':
             res = [doc for doc in self._extract_docs(self.recvbuffer)]
         elif format_ == 'msgpack':
             res = [convert_bytes(msg) for msg in msgpack.Unpacker(self.recvbuffer)]
-        else:
-            assert False
 
         return res
 

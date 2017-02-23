@@ -1,25 +1,20 @@
 #!/usr/bin/env python3
 
-import io
-import abc
 import sys
-import json
 import signal
 import logging
-import msgpack
-import pydetector.detector as detector
-from pprint import pformat, pprint
-from traceback import format_exc, print_exc
+from traceback import print_exc
 from python_driver.processor_configs import ProcessorConfigs
 
 logging.basicConfig(filename="python_driver.log", level=logging.WARNING)
 
 
-class RequestInstantiationException(Exception): pass
+class RequestInstantiationException(Exception):
+    pass
 
 
 # Gracefully handle control c without adding another try-except on top of the loop
-def ctrlc_signal_handler(signal, frame):
+def ctrlc_signal_handler(sgn, frame):
     sys.exit(0)
 signal.signal(signal.SIGINT, ctrlc_signal_handler)
 
@@ -34,7 +29,7 @@ def get_processor_instance(format_, custom_inbuffer=None, custom_outbuffer=None)
     conf = ProcessorConfigs.get(format_)
     if not conf:
         raise RequestInstantiationException('No RequestProcessor found for format {}'
-                .format(format_))
+                                            .format(format_))
 
     outbuffer = custom_outbuffer if custom_outbuffer else conf['outbuffer']
     inbuffer = custom_inbuffer if custom_inbuffer else conf['inbuffer']
@@ -61,7 +56,7 @@ def main():
     except UnicodeDecodeError:
         print_exc()
         print('Error while trying to decode the message, are you sure you are not '
-                'using a different input format that the currently configured (%s)?' % format_)
+              'using a different input format that the currently configured (%s)?' % format_)
 
 
 if __name__ == '__main__':

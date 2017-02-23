@@ -7,6 +7,7 @@ the pydetector module tests so this is keept simple
 so we can tests the receive/reply cycle of the main module
 """
 
+
 def main():
     files = os.listdir('.')
     if files:

@@ -17,34 +17,34 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 version = main_ns['__version__']
 setup(
-    name = "python_driver",
-    version = version,
+    name="python_driver",
+    version=version,
 
-    description = description,
-    long_description = long_descr,
-    license = "MIT",
+    description=description,
+    long_description=long_descr,
+    license="MIT",
     # TODO: change this to the bblfsh directory
-    url = "https://github.com/juanjux/python-driver",
+    url="https://github.com/juanjux/python-driver",
     # download_url = "https://github.com/juanjux/python_driver/archive/%s.tar.gz" % version,
-    download_url = "https://github.com/juanjux/python_driver/archive/astcomments_profiling.tar.gz",
-    author = "Juanjo Alvarez",
-    author_email = "juanjo@sourced.tech",
-    packages = find_packages(exclude=["tests"]),
-    entry_points = {
+    download_url="https://github.com/juanjux/python_driver/archive/astcomments_profiling.tar.gz",
+    author="Juanjo Alvarez",
+    author_email="juanjo@sourced.tech",
+    packages=find_packages(exclude=["tests"]),
+    entry_points={
         "console_scripts": [
             "python_driver = python_driver.cli:main"
-            ]
+        ]
     },
-    install_requires = [
-		"msgpack-python==0.4.8",
-		"pydetector"
-		],
-	dependency_links = [
+    install_requires=[
+        "msgpack-python==0.4.8",
+        "pydetector"
+    ],
+    dependency_links=[
         "git+https://github.com/juanjux/python-pydetector.git",
-	],
-    extras_require = {
+    ],
+    extras_require={
     },
-    classifiers = [
+    classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
         "Intended Audience :: Developers",

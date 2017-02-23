@@ -272,7 +272,7 @@ class RequestProcessorMSGPack(RequestProcessor):
                 newdict[key] = value
         except AttributeError as exc:
             self.errors.append('Error trying to decode message, are you sure that the input ' +
-                    'format is msgpack?')
+                               'format is msgpack?')
             raise AttributeError from exc
         return newdict
 
