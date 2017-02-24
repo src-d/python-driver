@@ -5,6 +5,9 @@ import signal
 import logging
 from traceback import print_exc
 from python_driver.processor_configs import ProcessorConfigs
+from python_driver.requestprocessor import RequestProcessor, InBuffer, OutBuffer
+from typing import Any, Tuple, Optional
+
 logging.basicConfig(filename="python_driver.log", level=logging.ERROR)
 
 
@@ -13,13 +16,13 @@ class RequestInstantiationException(Exception):
 
 
 # Gracefully handle control c without adding another try-except on top of the loop
-def ctrlc_signal_handler(sgn: int, frame):
-    # reveal_type(frame)
+def ctrlc_signal_handler(sgn: int, frame: Any) -> None:
     sys.exit(0)
 signal.signal(signal.SIGINT, ctrlc_signal_handler)
 
 
-def get_processor_instance(format_, custom_inbuffer=None, custom_outbuffer=None):
+def get_processor_instance(format_: str, custom_inbuffer: InBuffer=None,
+               custom_outbuffer: OutBuffer=None) -> Tuple[Any, Any]:
     """
     Get a processor instance. The class and buffers will be selected based on the
     python_driver.ProcessorConfigs dictionary. The input and output buffers can
@@ -28,16 +31,16 @@ def get_processor_instance(format_, custom_inbuffer=None, custom_outbuffer=None)
     """
     conf = ProcessorConfigs.get(format_)
     if not conf:
-        raise RequestInstantiationException(f'No RequestProcessor found for format {format_}')
+        raise RequestInstantiationException('No RequestProcessor found for format %s' % format)
 
+    inbuffer  = custom_inbuffer if custom_inbuffer else conf['inbuffer']
     outbuffer = custom_outbuffer if custom_outbuffer else conf['outbuffer']
-    inbuffer = custom_inbuffer if custom_inbuffer else conf['inbuffer']
+    instance  = conf['class'](outbuffer) # type: ignore
 
-    instance = conf['class'](outbuffer)
     return instance, inbuffer
 
 
-def main():
+def main() -> None:
     """
     If you pass the --json command line parameter the replies will be
     printed using pprint without wrapping them in the msgpack format which
@@ -55,7 +58,7 @@ def main():
     except UnicodeDecodeError:
         print_exc()
         print('Error while trying to decode the message, are you sure you are not '
-              f'using a different input format that the currently configured ({format_})?')
+              'using a different input format that the currently configured (%s)?' % format)
 
 
 if __name__ == '__main__':

@@ -93,4 +93,10 @@ ENV/
 test/nimcache/*
 test/sendmsg
 
+# pycharm
 .idea/*
+
+# virtualenv
+36env/*
+install.sh
+mypy/*

@@ -5,8 +5,27 @@ import logging
 from pydetector import detector
 from traceback import format_exc
 from python_driver.version import __version__
+from typing import (Any, IO, NewType, Union, TypeVar, Tuple,
+                cast, List, Dict, Iterator, Dict)
 
-# TODO: typing
+# typing.AnyStr is bugged on this version of MyPy, so:
+AnyStr = Union[bytes, str]
+# alias
+ErrorList = List[str]
+
+# types
+OutStrBuffer = IO[str]
+InStrBuffer  = IO[str]
+
+OutBytesBuffer = IO[str]
+InBytesBuffer  = IO[str]
+
+OutBuffer = Union[OutBytesBuffer, OutStrBuffer]
+InBuffer  = Union[InBytesBuffer, InStrBuffer]
+
+RawRequest = NewType('RawRequest', Dict[AnyStr, Any])
+Request    = NewType('Request', Dict[AnyStr, Any])
+Response   = NewType('Response', Dict[AnyStr, Any])
 
 
 class RequestCheckException(Exception):
@@ -18,7 +37,7 @@ class RequestCheckException(Exception):
     pass
 
 
-def asstr(txt):
+def asstr(txt: AnyStr) -> str:
     """
     Convert from byte to str. Noop if it was already an str
     """
@@ -31,9 +50,9 @@ class RequestProcessor(metaclass=abc.ABCMeta):
     """
     Base class of RequestProcessors. This must be subclassed to add new communication
     protocols. This should be done reimplementing the methods: _send_response,
-    _prepare_dict and process_requests.
+    _tostr_request and process_requests.
     """
-    def __init__(self, outbuffer):
+    def __init__(self, outbuffer: OutBuffer) -> None:
         """
         Constructor for a RequestProcessor instance.
 
@@ -42,49 +61,49 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         specifics) supporting the write(type) and flush() methods.
         """
         self.outbuffer = outbuffer
-        self.errors    = []
+        self.errors: ErrorList = []
 
     @abc.abstractmethod
-    def _prepare_dict(self, d):
+    def _tostr_request(self, request: RawRequest) -> Request:
         """
         This method should be reimplemented by subclasses ensuring that all the keys
         and values in the request dictionary once deserialized have the str type.
-        :param d: the deserialized request dictionary
+        :param request: the deserialized request dictionary
         :return: the converted dictionary
         """
         pass
 
-    def _check_input_request(self, request):
+    def _check_input_request(self, request: RawRequest) -> Tuple[str, str]:
         """
         Check the incoming request package and validate that the 'content' and
         'language' keys are not missing and that 'language' and 'language_version'
         are the right ones for this driver. It will also call _preprare_dict
         to covnvert the request bytestrings to str.
 
-        :param request: The incoming request, already deserialized.
+        :param str_request: The incoming request, already deserialized.
 
         .. raises::
             RequestCheckException if the request failed to validate.
         """
-        request = self._prepare_dict(request)
-        code = asstr(request.get('content', ''))
+        str_request = self._tostr_request(request)
+        code = asstr(str_request.get('content', ''))
 
         if not code:
             raise RequestCheckException('Bad input message, missing content')
 
-        language = asstr(request.get('language', ''))
+        language = asstr(str_request.get('language', ''))
         if language.lower() != 'python':
-            raise RequestCheckException(f'Bad language requested for the Python driver: "{language}"')
+            raise RequestCheckException('Bad language requested for the Python driver: "%s"' % language)
 
-        language_version = asstr(request.get('language_version', ''))
+        language_version = asstr(str_request.get('language_version', ''))
         if language_version not in ('', '1', '2', '3'):
             raise RequestCheckException('Bad language version requested, Python driver only '
                                         'supports versions 1, 2 and 3')
 
-        return code, asstr(request.get('filepath', ''))
+        return code, asstr(str_request.get('filepath', ''))
 
     @abc.abstractmethod
-    def _send_response(self, response):
+    def _send_response(self, response: Response) -> None:
         """
         Send the response dictionary. This method must be reimplemented by
         protocol handling subclasses and must encapsulate the operations needed
@@ -95,7 +114,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         """
         pass
 
-    def _return_error(self, filepath='', status='error'):
+    def _return_error(self, filepath: AnyStr='', status: AnyStr='error') -> None:
         """
         Build and send to stdout and error response. Also log
         the errors to the python_driver.log.
@@ -106,16 +125,16 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         """
 
         logging.error('Filepath: {}, Errors: {}'.format(filepath, self.errors))
-        response = {
+        response = Response({
             'status': status,
             'errors': self.errors,
-            'driver': f'python23:{__version__}',
-        }
+            'driver': 'python23:%s' % __version__,
+        })
         if filepath:
             response['filepath'] = filepath
         self._send_response(response)
 
-    def process_request(self, request):
+    def process_request(self, request: RawRequest) -> None:
         """
         Main function doing the work of processing a single request. It will
         do its best effort to detect the code Python version(s), extract the AST,
@@ -149,14 +168,14 @@ class RequestProcessor(metaclass=abc.ABCMeta):
             if not ast:
                 raise Exception('Empty AST generated')
 
-            response = {
+            response = Response({
                 'status'           : 'ok',
                 'errors'           : self.errors,
                 'language'         : 'python',
                 'language_version' : version,
-                'driver'           : f'python23:{__version__}',
+                'driver'           : 'python23:%s' % __version__,
                 'ast'              : ast,
-            }
+            })
             if filepath:
                 response['filepath'] = filepath
 
@@ -167,6 +186,15 @@ class RequestProcessor(metaclass=abc.ABCMeta):
             self.errors.append(format_exc())
             self._return_error(filepath, status=status)
 
+    @abc.abstractmethod
+    def process_requests(self, inbuffer: InBuffer) -> None:
+        """
+        Main request-processing loop. It will call the _extract_docs iterator to
+        get the requests. Must be reimplemented.
+
+        :param inbuffer: file like object type str or abytes and supporting the readlines method.
+        """
+        pass
 
 class RequestProcessorJSON(RequestProcessor):
     """
@@ -177,14 +205,14 @@ class RequestProcessorJSON(RequestProcessor):
     class will also have this newline separator between them.
     """
 
-    def __init__(self, outbuffer):
+    def __init__(self, outbuffer: OutStrBuffer) -> None:
         """
         :param outbuffer: the output buffer. This must be a file-like object based on
         str (like sys.stdout or io.StringIO but not sys.stdout.buffer or io.BytesIO).
         """
         super().__init__(outbuffer)
 
-    def _send_response(self, response):
+    def _send_response(self, response: Response) -> None:
         """
         Serialized the response dictionary to JSON format and sent it on the
         (str-based) output buffer followed by the document separator line.
@@ -197,7 +225,7 @@ class RequestProcessorJSON(RequestProcessor):
         self.outbuffer.write('\n')
         self.outbuffer.flush()
 
-    def _prepare_dict(self, d):
+    def _tostr_request(self, request: RawRequest) -> Request:
         """
         This interface method is a NOOP for this class since JSON keys already comes
         encoded as str so there is no need to lose time reencoding anything
@@ -205,9 +233,9 @@ class RequestProcessorJSON(RequestProcessor):
         :return: the dictionary with str keys and values (where applicable) converted
         to str
         """
-        return d
+        return cast(Request, request)
 
-    def _extract_docs(self, inbuffer):
+    def _extract_docs(self, inbuffer: InStrBuffer) -> Iterator[RawRequest]:
         """
         This generator will read the inbuffer yielding the JSON
         docs one by every line, without using other separators than '\n'
@@ -219,10 +247,10 @@ class RequestProcessorJSON(RequestProcessor):
             try:
                 yield json.loads(line)
             except:
-                self.errors = [f'error decoding JSON from input: {line}']
+                self.errors = ['error decoding JSON from input: %s' % line]
                 self._return_error(filepath='<jsonstream>', status='fatal')
 
-    def process_requests(self, inbuffer):
+    def process_requests(self, inbuffer: InBuffer) -> None:
         """
         Main request-processing loop. It will call the _extract_docs iterator to
         get the requests.
@@ -239,42 +267,42 @@ class RequestProcessorMSGPack(RequestProcessor):
     using the MSGPACK format. Input and output packages
     """
 
-    def __init__(self, outbuffer):
+    def __init__(self, outbuffer: OutBytesBuffer) -> None:
         """
         :param outbuffer: the output buffer. This must be a bytes-based file like object
         supporting the write(bytes) and flush() methods.
         """
         super().__init__(outbuffer)
 
-    def _send_response(self, response):
+    def _send_response(self, response: Response) -> None:
         self.outbuffer.write(msgpack.dumps(response))
         self.outbuffer.flush()
 
-    def _prepare_dict(self, d):
+    def _tostr_request(self, request: RawRequest) -> Request:
         """
         Convert all byte-string keys and values to normal strings (non recursively since
         we only have one level)
 
-        :param d: dictionary that potentially can contain bytestring keys and values.
+        :param request: dictionary that potentially can contain bytestring keys and values.
         :return: the converted dictionary
         """
-        newdict = {}
         try:
-            for key, value in d.items():
+            newrequest = Request({})
+            for key, value in request.items():
                 if isinstance(value, bytes):
                     value = value.decode()
 
                 if isinstance(key, bytes):
                     key = key.decode()
 
-                newdict[key] = value
+                newrequest[key] = value
         except AttributeError as exc:
             self.errors.append('Error trying to decode message, are you sure that the input ' +
                                'format is msgpack?')
             raise AttributeError from exc
-        return newdict
+        return newrequest
 
-    def process_requests(self, inbuffer):
+    def process_requests(self, inbuffer: InStrBuffer) -> None:
         """
         :param inbuffer: file-like object based on bytes supporting the read() and
         readlines() methods.
