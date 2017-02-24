@@ -1,20 +1,24 @@
 import io
+import os
 import sys
 import json
 import msgpack
 import unittest
-from os.path import dirname, join
+import subprocess
+from os.path import join, abspath, dirname
 
 sys.path.append('..')
 from python_driver import __version__, get_processor_instance
 from python_driver.requestprocessor import (
     Request, Response, RequestProcessorMSGPack, RequestProcessorJSON,
-    InBuffer, OutBuffer, RequestCheckException
+    InBuffer, RequestCheckException
 )
-from typing import Dict, Any, List, AnyStr, Optional, Iterator, cast
+from typing import Dict, Any, List, AnyStr, Optional, Iterator, cast, TypeVar
+
+CURDIR = abspath(dirname(__file__))
 
 
-def convert_bytes(data: Any, to_bytes:bool=False) -> Any:
+def convert_bytes(data: Any, to_bytes: bool=False) -> Any:
     """
     Both in normal operation and with this tests data comes trough a bytestream so this is needed to
     recursively convert the msgpack incoming data (the pprint data is converted just decoding and using
@@ -39,11 +43,22 @@ def convert_bytes(data: Any, to_bytes:bool=False) -> Any:
     return data
 
 
+class TestTypeCheck(unittest.TestCase):
+    def test_10_check(self):
+        prevdir = os.getcwd()
+        try:
+            os.chdir(dirname(CURDIR))
+            srcdir = abspath(join(dirname(CURDIR), 'python_driver', '*'))
+            self.assertEqual(subprocess.call(['test/typecheck.sh', srcdir], shell=True), 0)
+        finally:
+            os.chdir(prevdir)
+
+
 class TestPythonDriverBase(unittest.TestCase):
-    def _restart_data(self, format_:str='json') -> None:
+    def _restart_data(self, format_: str='json') -> None:
         assert format_ in ('json', 'msgpack')
 
-        with open(join(dirname(__file__), 'data', 'helloworld.py')) as f:
+        with open(join(CURDIR, 'data', 'helloworld.py')) as f:
             testcode = f.read()
 
         self.data = Request({
@@ -66,7 +81,7 @@ class TestPythonDriverBase(unittest.TestCase):
         This generator will read the inbuffer yielding the JSON
         docs when it finds the ending mark
         """
-        line: str = ''
+        line: str
         for line in inbuffer.readlines():
             yield json.loads(line)
 
@@ -116,7 +131,7 @@ class Test10ProcessRequestFunc(TestPythonDriverBase):
         processor.process_requests(self.sendbuffer)
         return self._loadResults(outformat)
 
-    def _check_reply_dict(self, response: Response, has_errors:bool=False) -> None:
+    def _check_reply_dict(self, response: Response, has_errors: bool=False) -> None:
         self.assertIsInstance(response, dict)
         self.assertEqual(response.get('driver'), 'python23:%s' % __version__)
         status = response.get('status')
@@ -217,14 +232,14 @@ class Test10ProcessRequestFunc(TestPythonDriverBase):
 
 
 class Test20ReqProcMethods(TestPythonDriverBase):
-    def test_check_input(self) -> None:
+    def test_10_check_input(self) -> None:
         self._restart_data('msgpack')
         brequest = convert_bytes(self.data, to_bytes=True)
         processor = RequestProcessorMSGPack(self.recvbuffer)
         res = processor._check_input_request(brequest)
         self.assertEqual(res[1], 'test.py')
 
-    def test_check_input_bad(self) -> None:
+    def test_20_check_input_bad(self) -> None:
         self._restart_data('msgpack')
         del self.data['content']
         brequest = convert_bytes(self.data, to_bytes=True)
@@ -232,7 +247,7 @@ class Test20ReqProcMethods(TestPythonDriverBase):
         with self.assertRaises(RequestCheckException) as _:  # noqa: F841
             processor._check_input_request(brequest)
 
-    def test_send_response_msgpack(self) -> None:
+    def test_30_send_response_msgpack(self) -> None:
         self._restart_data('msgpack')
         processor = RequestProcessorMSGPack(self.recvbuffer)
         processor._send_response(cast(Response, self.data))
@@ -240,7 +255,7 @@ class Test20ReqProcMethods(TestPythonDriverBase):
         self.assertEqual(len(res), 1)
         self.assertDictEqual(self.data, res[0])
 
-    def test_send_response_json(self) -> None:
+    def test_40_send_response_json(self) -> None:
         self._restart_data('json')
         processor = RequestProcessorJSON(self.recvbuffer)
         processor._send_response(cast(Response, self.data))
@@ -250,7 +265,7 @@ class Test20ReqProcMethods(TestPythonDriverBase):
 
     # process request already tested with TestPythonDriverBase
 
-    def test_return_error(self) -> None:
+    def test_50_return_error(self) -> None:
         self._restart_data('json')
         processor = RequestProcessorJSON(self.recvbuffer)
         processor.errors = ['test error']

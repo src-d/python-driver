@@ -5,27 +5,23 @@ import logging
 from pydetector import detector
 from traceback import format_exc
 from python_driver.version import __version__
-from typing import (Any, IO, NewType, Union, TypeVar, Tuple,
-                cast, List, Dict, Iterator, Dict)
+from typing import (Any, IO, NewType, Tuple, cast, List, Iterator, Dict)
 
-# typing.AnyStr is bugged on this version of MyPy, so:
-AnyStr = Union[bytes, str]
-# alias
-ErrorList = List[str]
+# typing.AnyStr is bugged on this version of MyPy, so...:
+AnyStr = Any
+
+# aliases
+InBuffer       = IO[AnyStr]
+OutBuffer      = IO[AnyStr]
+OutStrBuffer   = IO[str]
+InStrBuffer    = IO[str]
+OutBytesBuffer = IO[bytes]
+InBytesBuffer  = IO[bytes]
 
 # types
-OutStrBuffer = IO[str]
-InStrBuffer  = IO[str]
-
-OutBytesBuffer = IO[str]
-InBytesBuffer  = IO[str]
-
-OutBuffer = Union[OutBytesBuffer, OutStrBuffer]
-InBuffer  = Union[InBytesBuffer, InStrBuffer]
-
 RawRequest = NewType('RawRequest', Dict[AnyStr, Any])
-Request    = NewType('Request', Dict[AnyStr, Any])
-Response   = NewType('Response', Dict[AnyStr, Any])
+Request    = NewType('Request',    Dict[str, Any])
+Response   = NewType('Response',   Dict[AnyStr, Any])
 
 
 class RequestCheckException(Exception):
@@ -61,7 +57,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         specifics) supporting the write(type) and flush() methods.
         """
         self.outbuffer = outbuffer
-        self.errors: ErrorList = []
+        self.errors: List[str] = []
 
     @abc.abstractmethod
     def _tostr_request(self, request: RawRequest) -> Request:
@@ -80,7 +76,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         are the right ones for this driver. It will also call _preprare_dict
         to covnvert the request bytestrings to str.
 
-        :param str_request: The incoming request, already deserialized.
+        :param request: The incoming request, already deserialized.
 
         .. raises::
             RequestCheckException if the request failed to validate.
@@ -196,6 +192,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         """
         pass
 
+
 class RequestProcessorJSON(RequestProcessor):
     """
     RequestProcessor subclass that operates deserializing requests and serializing
@@ -250,7 +247,7 @@ class RequestProcessorJSON(RequestProcessor):
                 self.errors = ['error decoding JSON from input: %s' % line]
                 self._return_error(filepath='<jsonstream>', status='fatal')
 
-    def process_requests(self, inbuffer: InBuffer) -> None:
+    def process_requests(self, inbuffer: InStrBuffer) -> None:
         """
         Main request-processing loop. It will call the _extract_docs iterator to
         get the requests.
