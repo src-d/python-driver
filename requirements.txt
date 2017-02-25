@@ -1,4 +1,4 @@
 msgpack-python==0.4.8
-pydetector==0.3.10
+pydetector==0.3.12
 -e git+git://github.com/python/mypy.git@0bb2d1680e8b9522108b38d203cb73021a617e64#egg=mypy-lang
 typed-ast==1.0.1

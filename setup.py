@@ -37,13 +37,8 @@ setup(
     },
     install_requires=[
         "msgpack-python==0.4.8",
-        "pydetector"
+        "pydetector==0.3.12"
     ],
-    dependency_links=[
-        "git+https://github.com/juanjux/python-pydetector.git",
-    ],
-    extras_require={
-    },
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
