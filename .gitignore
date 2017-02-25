@@ -87,3 +87,16 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+.idea/*
+
+test/nimcache/*
+test/sendmsg
+
+# pycharm
+.idea/*
+
+# virtualenv
+36env/*
+install.sh
+mypy/*
