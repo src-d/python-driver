@@ -47,10 +47,10 @@ def main() -> None:
     can be handy when debugging.
     """
 
-    if len(sys.argv) > 1 and sys.argv[1] == '--json':
-        format_ = 'json'
-    else:
+    if len(sys.argv) > 1 and sys.argv[1] == '--msgpack':
         format_ = 'msgpack'
+    else:
+        format_ = 'json'
 
     processor, inbuffer = get_processor_instance(format_)
     try:

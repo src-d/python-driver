@@ -23,7 +23,6 @@ RawRequest = NewType('RawRequest', Dict[AnyStr, Any])
 Request    = NewType('Request',    Dict[str, Any])
 Response   = NewType('Response',   Dict[AnyStr, Any])
 
-
 class RequestCheckException(Exception):
     """
     Exception produced while there is an error during the processing
@@ -83,6 +82,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         """
         str_request = self._tostr_request(request)
         code = asstr(str_request.get('content', ''))
+
 
         if not code:
             raise RequestCheckException('Bad input message, missing content')

@@ -1,11 +1,12 @@
-FROM python:3.6-alpine
-MAINTAINER source{d}
+# Dockerfile represents the container being use to run the driver, should be
+# small as possible containing strictly only the tools required to run the
+# driver.
 
-RUN apk add --update python py-pip git && rm -rf /var/cache/apk/*
-RUN pip3 install msgpack-python six \
-        git+https://github.com/juanjux/python-pydetector.git
-RUN pip2 install msgpack-python six \
-        git+https://github.com/juanjux/python-pydetector.git
-ADD bin /bin
+# The prefered base image is the lastest stable Alpine image, if alpine doesn't
+# meet the requirements you can switch the from to the latest stable slim
+# version of Debian (eg.: `debian:jessie-slim`). If the excution environment
+# is equals to the build environment the build image can be use as FROM:
+#   bblfsh/<language>-driver-build
+FROM alpine:3.5
 
-CMD ["python3",  "bin/python_driver.py"]
+CMD /opt/driver/bin/driver

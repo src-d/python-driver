@@ -4,7 +4,7 @@ cd test 2> /dev/null
 PY3PKGDIR=`python3 -c "import os, sys;sys.stdout.write(os.path.dirname(os.__file__))"`
 PY2PKGDIR=`python2 -c "import os, sys;sys.stdout.write(os.path.dirname(os.__file__))"`
 
-./sendmsg.py --json $PY2PKGDIR/*.py $PY3PKGDIR/*.py|python3 -m python_driver --json > integration_output.json
+./sendmsg.py $PY2PKGDIR/*.py $PY3PKGDIR/*.py|python3 -m python_driver > integration_output.json
 CMDOUT=$?
 cat integration_output.json | egrep '"status": "(error|fatal)"' > /dev/null
 EGREPOUT=$?

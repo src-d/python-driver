@@ -18,18 +18,15 @@ import logging
 sys.path.append('../bin')
 # logging.basicConfig(filename="sendmsg.log", level=logging.DEBUG)
 
-JSONEndMark = '@@----@@\n'
-
-
 def main():
     filesidx = 1
-    if len(sys.argv) > 1 and sys.argv[1] == '--json':
-        outformat = 'json'
-        filesidx += 1
-        outbuffer = sys.stdout
-    else:
+    if len(sys.argv) > 1 and sys.argv[1] == '--msgpack':
         outformat = 'msgpack'
+        filesidx += 1
         outbuffer = sys.stdout.buffer
+    else:
+        outformat = 'json'
+        outbuffer = sys.stdout
 
     files = sys.argv[filesidx:]
 
