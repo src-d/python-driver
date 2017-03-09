@@ -134,7 +134,6 @@ Temporal mapping of rules (remove as they're mapped), leave the currently un-map
 	stmt             =>
 	unaryop          =>
 	withitem         =>
-
  */
 
 // AnnotationRules for Python UAST.
