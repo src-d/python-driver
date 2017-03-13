@@ -5,142 +5,59 @@ import (
 	"github.com/bblfsh/sdk/uast"
 )
 
-// NewToNoder creates a new uast.ToNoder to convert
-// Python ASTs to UAST.
-//func NewToNoder() uast.ToNoder {
-//	return &uast.BaseToNoder{
-//		InternalTypeKey: "internalClass",
-//		LineKey:         "line",
-//		OffsetKey:       "startPosition",
-//		//TODO: Should this be part of the UAST rules?
-//		TokenKeys: map[string]bool{
-//			"identifier":        true, // SimpleName
-//			"escapedValue":      true, // StringLiteral
-//			"keyword":           true, // Modifier
-//			"primitiveTypeCode": true, // ?
-//		},
-//		SyntheticTokens: map[string]string{
-//			"PackageDeclaration": "package",
-//			"IfStatement":        "if",
-//			"NullLiteral":        "null",
-//		},
-//		//TODO: add names of children (e.g. elseStatement) as
-//		//      children node properties.
-//	}
-//}
-
 /*
-Temporal mapping of rules (remove as they're mapped), leave the currently un-mappable at the top:
+A lot of stuff is currently missing from the generated UAST. See:
 
-	DictComp         =>
-	ListComp         =>
-	SetComp          =>
-	Yield            =>
-	YieldFrom        =>
+https://github.com/bblfsh/documentation/issues/13
 
-	Add              =>
-	And              =>
-	AnnAssign        =>
-	Assign           =>
-	AsyncFor         =>
-	AsyncFunctionDef =>
-	AsyncWith        =>
-	Attribute        =>
-	AugAssign        =>
-	AugLoad          =>
-	AugStore         =>
-	Await            =>
-	BinOp            =>
-	BitAnd           =>
-	BitOr            =>
-	BitXor           =>
-	BoolOp           =>
-	Bytes            =>
-	Call             =>
-	ClassDef         =>
-	Compare          =>
-	Del              =>
-	Delete           =>
-	Div              =>
-	Ellipsis         =>
-	Eq               =>
-	ExceptHandler    =>
-	Exec             =>
-	ExtSlice         =>
-	FloorDiv         =>
-	For              =>
-	FormattedValue   =>
-	FunctionDef      =>
-	GeneratorExp     =>
-	Global           =>
-	Gt               =>
-	GtE              =>
-	If               =>
-	IfExp            =>
-	Import           =>
-	ImportFrom       =>
-	In               =>
-	Index            =>
-	Interactive      =>
-	Invert           =>
-	Is               =>
-	IsNot            =>
-	JoinedStr        =>
-	LShift           =>
-	Lambda           =>
-	Load             =>
-	Lt               =>
-	LtE              =>
-	MatMult          =>
-	Mod              =>
-	Module           =>
-	Mult             =>
-	Nonlocal         =>
-	Not              =>
-	NotEq            =>
-	NotIn            =>
-	Num              =>
-	Or               =>
-	Param            =>
-	Pass             =>
-	Pow              =>
-	Print            =>
-	RShift           =>
-	Raise            =>
-	Repr             =>
-	Slice            =>
-	Starred          =>
-	Store            =>
-	Str              =>
-	Sub              =>
-	Subscript        =>
-	Suite            =>
-	UAdd             =>
-	USub             =>
-	UnaryOp          =>
-	While            =>
-	alias            =>
-	arg              =>
-	arguments        =>
-	boolop           =>
-	cmpop            =>
-	comprehension    =>
-	excepthandler    =>
-	expr_context     =>
-	keyword          =>
-	mod              =>
-	operator         =>
-	slice            =>
-	stmt             =>
-	unaryop          =>
-	withitem         =>
+For a description of Python AST nodes:
+
+https://greentreesnakes.readthedocs.io/en/latest/nodes.html?highlight=joinedstr#JoinedStr
+
+	// Missing:
+	GeneratorExp
+	comprehension
+	DictComp
+	ListComp
+	SetComp
+	Yield
+	YieldFrom
+	AsyncFor
+	AsyncFunctionDef
+	AsyncWith => these three can be avoided and stored as For/FunctionDef/With if the save they
+	             "async" keyword node
+	Delete
+	Call
+	Lambda
+	arguments
+	arg              => arguments.args[list].arg (is both ast type and a key 'arg' pointing to the name)
+
+	// Operators:
+	Compare          => (comparators) .ops[list] = Eq | NotEq | Lt | LtE | Gt | GtE | Is | IsNot | In | NotIn
+	BoolOp           => .boolop = And | Or
+	BinOp            => .op = Add | Sub | Mult | MatMult | Div | Mod | Pow | LShift | RShift | BitOr |
+	                          BitXor | BitAnd | FloorDiv
+	UnaryOp          => .unaryop = Invert | Not | UAdd | USub
+
+	// Other Keywords that probably could be SimpleIdentifier/Name subnodes in a parent "Keyword" AST node:
+	Exec (body, globals, locals)
+	Repr (value)
+	Ellipsis ("..." for multidimensional arrays)
+	Global
+	Nonlocal
+	Async
+	Await
+	Print
+
+	// Other:
+	Starred          => *expanded_list, could be translated to UnaryOp.Star
  */
 
 // AnnotationRules for Python UAST.
 var AnnotationRules uast.Rule = uast.Rules(
+	uast.OnInternalType(pyast.Module).Role(uast.File),
 	// FIXME: check how to add annotations and add them
 	uast.OnInternalType(pyast.Name).Role(uast.SimpleIdentifier),
-
 	uast.OnInternalType(pyast.Expression).Role(uast.File),
 	uast.OnInternalType(pyast.Expr).Role(uast.File),
 	uast.OnInternalType(pyast.expr).Role(uast.File),
@@ -148,7 +65,11 @@ var AnnotationRules uast.Rule = uast.Rules(
 
 	uast.OnInternalType(pyast.Constant).Role(uast.Literal),
 	uast.OnInternalType(pyast.StringLiteral).Role(uast.StringLiteral),
+	// FIXME: should we make a distinction between StringLiteral and ByteLiteral on the UAST?
 	uast.OnInternalType(pyast.ByteLiteral).Role(uast.StringLiteral),
+	// FIXME: JoinedStr are the fstrings (f"my name is {name}"), they have a composite AST
+	// with a body that is a list of StringLiteral + FormattedValue(value, conversion, format_spec)
+	uast.OnInternalType(pyast.JoinedStr).Role(uast.StringLiteral),
 	uast.OnInternalType(pyast.NoneLiteral).Role(uast.NullLiteral),
 	uast.OnInternalType(pyast.NumLiteral).Role(uast.NumberLiteral),
 	// FIXME: change these to ContainerLiteral/CompoundLiteral/whatever if they're added
@@ -156,47 +77,48 @@ var AnnotationRules uast.Rule = uast.Rules(
 	uast.OnInternalType(pyast.List).Role(uast.Literal),
 	uast.OnInternalType(pyast.Dict).Role(uast.Literal),
 	uast.OnInternalType(pyast.Tuple).Role(uast.Literal),
-
-
 	uast.OnInternalType(pyast.Try).Role(uast.Try),
-	// FIXME: add OnPath Try.body => TryBody
+	// FIXME: add OnPath Try.body (uast_type=ExceptHandler) => TryBody
 	uast.OnInternalType(pyast.TryExcept).Role(uast.TryCatch),
 	uast.OnInternalType(pyast.TryFinally).Role(uast.TryFinally),
+	uast.OnInternalType(pyast.Raise).Role(uast.Throw),
 	// FIXME: review, add path for the body and items childs
+	// FIXME: withitem on Python to RAII on a resource and can aditionally create and alias on it,
+	// both of which currently doesn't have representation in the UAST
 	uast.OnInternalType(pyast.With).Role(uast.BlockScope),
-
 	uast.OnInternalType(pyast.Return).Role(uast.Return),
 	uast.OnInternalType(pyast.Break).Role(uast.Break),
 	uast.OnInternalType(pyast.Continue).Role(uast.Continue),
+	// FIXME: extract the test, orelse and the body to test-> IfCondition, orelse -> IfElse, body -> IfBody
+	// UAST are first level members
+	uast.OnInternalType(pyast.If).Role(uast.If),
+	// One liner if, like a normal If but it will be inside an Assign (like the ternary if in C)
+	// also applies the comment about the If
+	uast.OnInternalType(pyast.IfExp).Role(uast.If),
+	// FIXME: Import and ImportFrom can make an alias (name -> asname), extract it and put it as
+	// uast.ImportAlias
+	uast.OnInternalType(pyast.Import).Role(uast.Import),
+	uast.OnInternalType(pyast.ImportFrom).Role(uast.Import),
+	uast.OnInternalType(pyast.ClassDef).Role(uast.TypeDeclaration),
+	// FIXME: add .args[].arg, .body, .name, .decorator_list[]
+	uast.OnInternalType(pyast.FunctionDef).Role(uast.FunctionDeclaration),
+	// FIXME: Internal keys for the ForEach: iter -> ?, target -> ?, body -> ForBody,
+	uast.OnInternalType(pyast.For).Role(uast.ForEach),
+	// FIXME: while internal keys: body -> WhileBody, orelse -> ?, test -> WhileCondition
+	uast.OnInternalType(pyast.While).Role(uast.While),
+	// FIXME: detect qualified 'Call.func' with a "Call.func.value" member and
+	// "Call.func.ast_type" == attr (module/object calls) and convert the to this UAST:
+	// MethodInvocation + MethodInvocationObject (func.value.id) + MethodInvocationName (func.attr)
+	uast.OnInternalType(pyast.Pass).Role(uast.Noop),
+	uast.OnInternalType(pyast.Str).Role(uast.StringLiteral),
+	uast.OnInternalType(pyast.Num).Role(uast.NumberLiteral),
+	uast.OnInternalType(pyast.Assign).Role(uast.Assignment),
+	// FIXME: this is the annotated assignment (a: annotation = 3) not exactly Assignment
+	// it also lacks AssignmentValue and AssignmentVariable (see how to add them)
+	uast.OnInternalType(pyast.AnnAssign).Role(uast.Assignment),
+	// FIXME: this is the a += 1 style assigment
+	uast.OnInternalType(pyast.AugAssign).Role(uast.Assignment),
 )
-//var AnnotationRules uast.Rule = uast.Rules(
-//	uast.OnInternalType(pyast.CompilationUnit).Role(uast.File),
-//	uast.OnInternalType(pyast.PackageDeclaration).Role(uast.PackageDeclaration),
-//	uast.OnInternalType(pyast.MethodDeclaration).Role(uast.FunctionDeclaration),
-//	uast.OnInternalType(pyast.ImportDeclaration).Role(uast.ImportDeclaration),
-//	uast.OnInternalType(pyast.TypeDeclaration).Role(uast.TypeDeclaration),
-//	uast.OnInternalType(pyast.ImportDeclaration, pyast.QualifiedName).Role(uast.ImportPath),
-//	uast.OnInternalType(pyast.QualifiedName).Role(uast.QualifiedIdentifier),
-//	uast.OnInternalType(pyast.SimpleName).Role(uast.SimpleIdentifier),
-//	uast.OnInternalType(pyast.Block).Role(uast.BlockScope, uast.Block),
-//	uast.OnInternalType(pyast.ExpressionStatement).Role(uast.Statement),
-//	uast.OnInternalType(pyast.ReturnStatement).Role(uast.Return, uast.Statement),
-//	uast.OnInternalType(pyast.MethodInvocation).Role(uast.MethodInvocation),
-//	uast.OnInternalType(pyast.IfStatement).Role(uast.If, uast.Statement),
-//	uast.OnInternalRole("elseStatement").Role(uast.IfElse, uast.Statement),
-//	uast.OnPath(uast.OnInternalType(pyast.Assignment)).Role(uast.Assignment),
-//	uast.OnPath(uast.OnInternalType(pyast.Assignment), uast.OnInternalRole("leftHandSide")).Role(uast.AssignmentVariable),
-//	uast.OnPath(uast.OnInternalType(pyast.Assignment), uast.OnInternalRole("rightHandSide")).Role(uast.AssignmentValue),
-//	//TODO: IfBody, IfCondition
-//	uast.OnInternalType(pyast.NullLiteral).Role(uast.NullLiteral, uast.Literal),
-//	uast.OnInternalType(pyast.StringLiteral).Role(uast.StringLiteral, uast.Literal),
-//	uast.OnInternalType(pyast.NumberLiteral).Role(uast.NumberLiteral, uast.Literal),
-//	uast.OnInternalType(pyast.TypeLiteral).Role(uast.TypeLiteral, uast.Literal),
-//	uast.OnInternalType(pyast.ThisExpression).Role(uast.This, uast.Expression),
-//	//TODO: synchronized
-//	//TODO: try-with-resources
-//	uast.OnInternalType(pyast.Javadoc).Role(uast.Documentation, uast.Comment),
-//)
 
 // Annotate annotates the given Java UAST.
 func Annotate(n *uast.Node) error {
