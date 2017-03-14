@@ -6,7 +6,6 @@ import (
 	. "github.com/bblfsh/sdk/uast"
 	. "github.com/bblfsh/sdk/uast/ann"
 )
-
 /*
 Some stuff is missing from the current UAST spec to fully represent a Python AST. Issue:
 
@@ -64,7 +63,6 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.Name)).Roles(SimpleIdentifier),
 		On(HasInternalType(pyast.Expression)).Roles(File),
 		On(HasInternalType(pyast.Expr)).Roles(File),
-		On(HasInternalType(pyast.expr)).Roles(File),
 		On(HasInternalType(pyast.Assert)).Roles(Assert),
 
 		On(HasInternalType(pyast.Constant)).Roles(Literal),
@@ -101,8 +99,8 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.IfExp)).Roles(If),
 		// FIXME: Import and ImportFrom can make an alias (name -> asname), extract it and put it as
 		// uast.ImportAlias
-		On(HasInternalType(pyast.Import)).Roles(Import),
-		On(HasInternalType(pyast.ImportFrom)).Roles(Import),
+		On(HasInternalType(pyast.Import)).Roles(ImportDeclaration),
+		On(HasInternalType(pyast.ImportFrom)).Roles(ImportDeclaration),
 		On(HasInternalType(pyast.ClassDef)).Roles(TypeDeclaration),
 		// FIXME: add .args[].arg, .body, .name, .decorator_list[]
 		On(HasInternalType(pyast.FunctionDef)).Roles(FunctionDeclaration),
