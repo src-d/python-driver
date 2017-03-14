@@ -13,7 +13,7 @@ https://github.com/bblfsh/documentation/issues/13
 
 For a description of Python AST nodes:
 
-https://greentreesnakes.readthedocs.io/en/latest/nodes.html?highlight=joinedstr#JoinedStr
+https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 
 	// Missing:
 	GeneratorExp
@@ -56,9 +56,6 @@ https://greentreesnakes.readthedocs.io/en/latest/nodes.html?highlight=joinedstr#
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
-		On(HasInternalType(pyast.Module)).Roles(PackageDeclaration),
-
-		On(HasInternalType(pyast.Module)).Roles(File),
 		// FIXME: check how to add annotations and add them
 		On(HasInternalType(pyast.Name)).Roles(SimpleIdentifier),
 		On(HasInternalType(pyast.Expression)).Roles(File),

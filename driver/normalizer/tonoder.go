@@ -5,21 +5,22 @@ import (
 )
 
 var NativeToNoder = &uast.BaseToNoder{
-	InternalTypeKey: "internalClass",
-	LineKey:         "line",
-	OffsetKey:       "startPosition",
-	//TODO: Should this be part of the UAST rules?
+	// FIXME: column? (col_offset in Python)
+	InternalTypeKey: "ast_type",
+	LineKey:         "lineno",
+
+	// FIXME: if ones matches several? (ImportFrom -> Names can have name and asname)
 	TokenKeys: map[string]bool{
-		"identifier":        true, // SimpleName
-		"escapedValue":      true, // StringLiteral
-		"keyword":           true, // Modifier
-		"primitiveTypeCode": true, // ?
+		"module":            true, // Module on ImportFrom
+		"name":              true,
+		"asname":            true, // Alias from ImportFrom
+		"id":                true, // Name nodes
+		"attr":              true, // something.attr
+		"arg":               true, // function arguments
 	},
-	SyntheticTokens: map[string]string{
-		"PackageDeclaration": "package",
-		"IfStatement":        "if",
-		"NullLiteral":        "null",
-	},
-	//TODO: add names of children (e.g. elseStatement) as
-	//      children node properties.
+	//SyntheticTokens: map[string]string{
+	//	"PackageDeclaration": "package",
+	//	"IfStatement":        "if",
+	//	"NullLiteral":        "null",
+	//},
 }
