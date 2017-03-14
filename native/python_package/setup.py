@@ -12,15 +12,12 @@ main_ns = {}
 with open("python_driver/version.py") as ver_file:
     exec(ver_file.read(), main_ns)
 
-with open(path.join(here, "README.md"), encoding="utf-8") as f:
-    long_descr = f.read()
-
 version = main_ns['__version__']
 setup(
     name="python_driver",
     version=version,
     description=description,
-    long_description=long_descr,
+    long_description=description,
     license="MIT",
     test_suite="test",
     # TODO: change this to the bblfsh directory

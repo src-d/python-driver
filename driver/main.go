@@ -1,9 +1,9 @@
 package main
 
-// FIXME: change "juanjux" to bblfsh
 import (
 	"github.com/bblfsh/sdk/protocol/cmd"
-	"github.com/juanjux/python-driver/driver/normalizer"
+
+	"github.com/bblfsh/python-driver/driver/normalizer"
 )
 
 var version string
