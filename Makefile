@@ -1,11 +1,9 @@
+test-native-internal:
+	cd native/python_package/test; \
+	python3 -m unittest discover
+
+build-native-internal:
+	cd native/python_packagexx/; \
+	pip3 install -U .
+
 include .sdk/Makefile
-
-test-native:
-	cd native; \
-	echo "not implemented"
-
-build-native:
-	cd native; \
-	echo "not implemented"
-	echo -e "#!/bin/bash\necho 'not implemented'" > $(BUILD_PATH)/native
-	chmod +x $(BUILD_PATH)/native

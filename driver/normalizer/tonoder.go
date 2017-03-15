@@ -5,7 +5,7 @@ import (
 )
 
 var NativeToNoder = &uast.BaseToNoder{
-	// FIXME: column? (col_offset in Python)
+	// FIXME: ColumnKey? (col_offset in Python)
 	InternalTypeKey: "ast_type",
 	LineKey:         "lineno",
 
@@ -13,10 +13,11 @@ var NativeToNoder = &uast.BaseToNoder{
 	TokenKeys: map[string]bool{
 		"module":            true, // Module on ImportFrom
 		"name":              true,
-		"asname":            true, // Alias from ImportFrom
+		//"asname":            true, // Alias from ImportFrom
 		"id":                true, // Name nodes
 		"attr":              true, // something.attr
 		"arg":               true, // function arguments
+		"noops_remainder":   true,
 	},
 	//SyntheticTokens: map[string]string{
 	//	"PackageDeclaration": "package",

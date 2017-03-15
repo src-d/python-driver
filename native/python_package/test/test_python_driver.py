@@ -152,13 +152,15 @@ class Test10ProcessRequestFunc(TestPythonDriverBase):
         self.assertIsNotNone(response)
         assert 'ast' in response
         self.assertIsInstance(response['ast'], dict)
+        root_key = list(response['ast'].keys())[0]
+        assert root_key
 
         for key in ('ast_type', 'body'):
-            assert key in response['ast']
+            assert key in response['ast'][root_key]
 
-        self.assertIsInstance(response['ast']['body'], list)
+        self.assertIsInstance(response['ast'][root_key]['body'], list)
 
-        for item in response['ast']['body']:
+        for item in response['ast'][root_key]['body']:
             for key in ('ast_type', 'lineno', 'col_offset'):
                 assert key in item
 
