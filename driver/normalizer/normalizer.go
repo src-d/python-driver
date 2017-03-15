@@ -1,8 +1,7 @@
 package normalizer
 
-// FIXME: change "juanjux" to bblfsh
 import (
-	"github.com/juanjux/python-driver/driver/normalizer/pyast"
+	"github.com/bblfsh/python-driver/driver/normalizer/pyast"
 	. "github.com/bblfsh/sdk/uast"
 	. "github.com/bblfsh/sdk/uast/ann"
 )

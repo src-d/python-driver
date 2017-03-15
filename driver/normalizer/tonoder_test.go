@@ -10,7 +10,7 @@ import (
 func TestNativeToNoder(t *testing.T) {
 	require := require.New(t)
 
-	f, err := getFixture("java_example_1.json")
+	f, err := getFixture("python_example_1.json")
 	require.NoError(err)
 
 	n, err := NativeToNoder.ToNode(f)

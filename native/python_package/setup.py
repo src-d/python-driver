@@ -34,7 +34,7 @@ setup(
     },
     install_requires=[
         "msgpack-python==0.4.8",
-        "pydetector==0.3.14"
+        "pydetector==0.3.15"
     ],
     classifiers=[
         "Development Status :: 4 - Beta",
