@@ -17,11 +17,8 @@ var NativeToNoder = &uast.BaseToNoder{
 		"id":                true, // Name nodes
 		"attr":              true, // something.attr
 		"arg":               true, // function arguments
-		"noops_remainder":   true,
 	},
-	//SyntheticTokens: map[string]string{
-	//	"PackageDeclaration": "package",
-	//	"IfStatement":        "if",
-	//	"NullLiteral":        "null",
-	//},
+	SyntheticTokens: map[string]string{
+		"NullLiteral":        "null",
+	},
 }

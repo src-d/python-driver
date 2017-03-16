@@ -56,6 +56,12 @@ var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
 		// FIXME: check how to add annotations and add them
+		//On(HasInternalType(pyast.PreviousNoops)).Roles(Comment),
+		//On(HasInternalType(pyast.RemainderNoops)).Roles(Comment),
+		//On(HasInternalType(pyast.SameLineNoops)).Roles(Comment),
+		On(HasInternalType(pyast.NoopLine)).Children(
+			On(HasInternalRole("l")).Roles(Comment),
+		),
 		On(HasInternalType(pyast.Name)).Roles(SimpleIdentifier),
 		On(HasInternalType(pyast.Expression)).Roles(Statement),
 		On(HasInternalType(pyast.Expr)).Roles(Statement),
