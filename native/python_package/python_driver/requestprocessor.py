@@ -83,18 +83,8 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         str_request = self._tostr_request(request)
         code = asstr(str_request.get('content', ''))
 
-
         if not code:
             raise RequestCheckException('Bad input message, missing content')
-
-        language = asstr(str_request.get('language', ''))
-        if language.lower() != 'python':
-            raise RequestCheckException('Bad language requested for the Python driver: "%s"' % language)
-
-        language_version = asstr(str_request.get('language_version', ''))
-        if language_version not in ('', '1', '2', '3'):
-            raise RequestCheckException('Bad language version requested, Python driver only '
-                                        'supports versions 1, 2 and 3')
 
         return code, asstr(str_request.get('filepath', ''))
 
@@ -188,7 +178,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         Main request-processing loop. It will call the _extract_docs iterator to
         get the requests. Must be reimplemented.
 
-        :param inbuffer: file like object type str or abytes and supporting the readlines method.
+        :param inbuffer: file like object type str or abytes and supporting the iteration by lines
         """
         pass
 
@@ -238,9 +228,10 @@ class RequestProcessorJSON(RequestProcessor):
         docs one by every line, without using other separators than '\n'
 
         :param inbuffer: the input buffer that be of type str and support
-        the readlines method.
+        iteration by lines.
         """
-        for line in inbuffer.readlines():
+
+        for line in inbuffer:
             try:
                 yield json.loads(line)
             except:
@@ -252,7 +243,7 @@ class RequestProcessorJSON(RequestProcessor):
         Main request-processing loop. It will call the _extract_docs iterator to
         get the requests.
 
-        :param inbuffer: file like object type str and supporting the readlines method.
+        :param inbuffer: file like object type str and supporting iteration by lines.
         """
         for doc in self._extract_docs(inbuffer):
             self.process_request(doc)
@@ -302,7 +293,7 @@ class RequestProcessorMSGPack(RequestProcessor):
     def process_requests(self, inbuffer: InStrBuffer) -> None:
         """
         :param inbuffer: file-like object based on bytes supporting the read() and
-        readlines() methods.
+        iteration by lines
         """
         for request in msgpack.Unpacker(inbuffer):
             self.process_request(request)
