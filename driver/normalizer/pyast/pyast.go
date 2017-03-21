@@ -138,5 +138,6 @@ const (
 	stmt             = "stmt"
 	unaryop          = "unaryop"
 	withitem         = "withitem"
+	noop_line        = "noop_line"
 )
 

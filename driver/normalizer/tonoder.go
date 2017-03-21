@@ -18,6 +18,8 @@ var NativeToNoder = &uast.BaseToNoder{
 		"id":                true, // Name nodes
 		"attr":              true, // something.attr
 		"arg":               true, // function arguments
+		"LiteralValue":      true, // string/num/byte/constant literal
+		"noop_line":         true, // Comment/Noop (non significative whitespace)
 	},
 	SyntheticTokens: map[string]string{
 		"NullLiteral":        "null",
