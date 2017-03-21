@@ -55,6 +55,7 @@ https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
+		On(HasInternalType(pyast.Expression)).Roles(Expression),
 		// FIXME: check how to add annotations and add them
 		//On(HasInternalType(pyast.PreviousNoops)).Roles(Comment),
 		//On(HasInternalType(pyast.RemainderNoops)).Roles(Comment),
@@ -63,8 +64,7 @@ var AnnotationRules = On(Any).Self(
 			On(HasInternalRole("l")).Roles(Comment),
 		),
 		On(HasInternalType(pyast.Name)).Roles(SimpleIdentifier),
-		On(HasInternalType(pyast.Expression)).Roles(Statement),
-		On(HasInternalType(pyast.Expr)).Roles(Statement),
+		On(HasInternalType(pyast.Expr)).Roles(Expression),
 		On(HasInternalType(pyast.Assert)).Roles(Assert),
 
 		On(HasInternalType(pyast.Constant)).Roles(Literal),
@@ -112,12 +112,12 @@ var AnnotationRules = On(Any).Self(
 		// FIXME: add .args[].arg, .body, .name, .decorator_list[]
 		On(HasInternalType(pyast.FunctionDef)).Roles(FunctionDeclaration),
 		// FIXME: Internal keys for the ForEach: iter -> ?, target -> ?, body -> ForBody,
-		/*
-			For => Foreach:
-				body => ForBody
-				iter => ForIter
-				target => ForTarget
-		*/
+		//
+		//	For => Foreach:
+		//		body => ForBody
+		//		iter => ForIter
+		//		target => ForTarget
+		//
 		On(HasInternalType(pyast.For)).Roles(ForEach).Children(
 			On(HasInternalRole("body")).Roles(ForBody),
 			On(HasInternalRole("iter")).Roles(ForExpression),
@@ -135,11 +135,11 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.Pass)).Roles(Noop),
 		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
 		On(HasInternalType(pyast.Num)).Roles(NumberLiteral),
-		/*
-			Assign => Assigment:
-				targets[] => AssignmentVariable
-				value     => AssignmentValue
-		 */
+		//
+		//	Assign => Assigment:
+		//		targets[] => AssignmentVariable
+		//		value     => AssignmentValue
+		//
 		On(HasInternalType(pyast.Assign)).Roles(Assignment).Children(
 			On(HasInternalRole("targets")).Children(
 				On(Any).Self().Roles(AssignmentVariable),
@@ -152,16 +152,15 @@ var AnnotationRules = On(Any).Self(
 		// FIXME: this is the a += 1 style assigment
 		On(HasInternalType(pyast.AugAssign)).Roles(Assignment),
 		// Function or method calls (TODO: check that this is getting everything right)
-		/*
-			Call => MethodInvocation:
-				args[] => MethodInvocationArgument
-				func:
-					id   => MethodInvocationName
-					attr => MethodInvocationName
-					Attribute:
-						id => MethodInvocationObject
-
-		 */
+		//
+		//	Call => MethodInvocation:
+		//		args[] => MethodInvocationArgument
+		//		func:
+		//			id   => MethodInvocationName
+		//			attr => MethodInvocationName
+		//			Attribute:
+		//				id => MethodInvocationObject
+		//
 		On(HasInternalType(pyast.Call)).Roles(MethodInvocation).Children(
 			On(HasInternalRole("args")).Children(On(Any).Roles(MethodInvocationArgument)),
 			On(HasInternalRole("func")).Self(On(HasInternalRole("id"))).Roles(MethodInvocationName),
@@ -172,5 +171,4 @@ var AnnotationRules = On(Any).Self(
 		),
 	),
 )
-
 
