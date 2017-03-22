@@ -1,0 +1,235 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Expr",
+        "value": {
+          "ast_type": "Call",
+          "func": {
+            "ast_type": "Name",
+            "id": "print",
+            "ctx": "Load",
+            "lineno": 1,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# function"
+            }
+          },
+          "args": [
+            {
+              "ast_type": "StringLiteral",
+              "LiteralValue": "something1",
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# function"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 42,
+              "ast_type": "NumLiteral",
+              "lineno": 1,
+              "col_offset": 20,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# function"
+              }
+            },
+            {
+              "ast_type": "Name",
+              "id": "somesymbbol",
+              "ctx": "Load",
+              "lineno": 1,
+              "col_offset": 24,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# function"
+              }
+            }
+          ],
+          "keywords": [],
+          "lineno": 1,
+          "col_offset": 0,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# function"
+          }
+        },
+        "lineno": 1,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# function"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "a",
+            "ctx": "Store",
+            "lineno": 2,
+            "col_offset": 0
+          }
+        ],
+        "value": {
+          "NumType": "int",
+          "LiteralValue": 3,
+          "ast_type": "NumLiteral",
+          "lineno": 2,
+          "col_offset": 4
+        },
+        "lineno": 2,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "Expr",
+        "value": {
+          "ast_type": "Call",
+          "func": {
+            "ast_type": "Attribute",
+            "value": {
+              "ast_type": "Name",
+              "id": "a",
+              "ctx": "Load",
+              "lineno": 3,
+              "col_offset": 0,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# method-style call"
+              }
+            },
+            "attr": "bit_length",
+            "ctx": "Load",
+            "lineno": 3,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# method-style call"
+            }
+          },
+          "args": [
+            {
+              "ast_type": "StringLiteral",
+              "LiteralValue": "something",
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# method-style call"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 42,
+              "ast_type": "NumLiteral",
+              "lineno": 3,
+              "col_offset": 26,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# method-style call"
+              }
+            },
+            {
+              "ast_type": "Name",
+              "id": "somesymbol",
+              "ctx": "Load",
+              "lineno": 3,
+              "col_offset": 30,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# method-style call"
+              }
+            }
+          ],
+          "keywords": [],
+          "lineno": 3,
+          "col_offset": 0,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# method-style call"
+          }
+        },
+        "lineno": 3,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# method-style call"
+        }
+      },
+      {
+        "ast_type": "Import",
+        "names": [
+          {
+            "ast_type": "alias",
+            "name": "os",
+            "asname": null
+          }
+        ],
+        "lineno": 5,
+        "col_offset": 0,
+        "noops_previous": {
+          "ast_type": "PreviousNoops",
+          "lines": [
+            {
+              "ast_type": "NoopLine",
+              "noop_line": "\n"
+            }
+          ]
+        }
+      },
+      {
+        "ast_type": "Expr",
+        "value": {
+          "ast_type": "Call",
+          "func": {
+            "ast_type": "Attribute",
+            "value": {
+              "ast_type": "Name",
+              "id": "os",
+              "ctx": "Load",
+              "lineno": 6,
+              "col_offset": 0,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# module call"
+              }
+            },
+            "attr": "chdir",
+            "ctx": "Load",
+            "lineno": 6,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# module call"
+            }
+          },
+          "args": [
+            {
+              "ast_type": "StringLiteral",
+              "LiteralValue": ".",
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# module call"
+              }
+            }
+          ],
+          "keywords": [],
+          "lineno": 6,
+          "col_offset": 0,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# module call"
+          }
+        },
+        "lineno": 6,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# module call"
+        }
+      }
+    ]
+  }
+}

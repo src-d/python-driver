@@ -1,0 +1,271 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "FunctionDef",
+        "name": "somefunction",
+        "args": {
+          "ast_type": "arguments",
+          "args": [
+            {
+              "ast_type": "arg",
+              "arg": "arg1",
+              "annotation": null,
+              "lineno": 2,
+              "col_offset": 17
+            },
+            {
+              "ast_type": "arg",
+              "arg": "arg2",
+              "annotation": null,
+              "lineno": 2,
+              "col_offset": 23
+            },
+            {
+              "ast_type": "arg",
+              "arg": "arg3",
+              "annotation": null,
+              "lineno": 2,
+              "col_offset": 29
+            }
+          ],
+          "vararg": null,
+          "kwonlyargs": [],
+          "kw_defaults": [],
+          "kwarg": null,
+          "defaults": []
+        },
+        "body": [
+          {
+            "ast_type": "Expr",
+            "value": {
+              "ast_type": "StringLiteral",
+              "LiteralValue": "\n    This is the doc\n    "
+            },
+            "lineno": 5,
+            "col_offset": -1
+          },
+          {
+            "ast_type": "Assign",
+            "targets": [
+              {
+                "ast_type": "Name",
+                "id": "arg1",
+                "ctx": "Store",
+                "lineno": 6,
+                "col_offset": 4
+              }
+            ],
+            "value": {
+              "ast_type": "BinOp",
+              "left": {
+                "ast_type": "Name",
+                "id": "arg2",
+                "ctx": "Load",
+                "lineno": 6,
+                "col_offset": 11
+              },
+              "op": {
+                "ast_type": "Add"
+              },
+              "right": {
+                "ast_type": "Name",
+                "id": "arg3",
+                "ctx": "Load",
+                "lineno": 6,
+                "col_offset": 18
+              },
+              "lineno": 6,
+              "col_offset": 11
+            },
+            "lineno": 6,
+            "col_offset": 4
+          },
+          {
+            "ast_type": "If",
+            "test": {
+              "ast_type": "Compare",
+              "left": {
+                "ast_type": "Name",
+                "id": "arg1",
+                "ctx": "Load",
+                "lineno": 7,
+                "col_offset": 7
+              },
+              "ops": [
+                {
+                  "ast_type": "Gt"
+                }
+              ],
+              "comparators": [
+                {
+                  "NumType": "int",
+                  "LiteralValue": 1,
+                  "ast_type": "NumLiteral",
+                  "lineno": 7,
+                  "col_offset": 14
+                }
+              ],
+              "lineno": 7,
+              "col_offset": 7
+            },
+            "body": [
+              {
+                "ast_type": "Expr",
+                "value": {
+                  "ast_type": "Yield",
+                  "value": {
+                    "ast_type": "Name",
+                    "id": "arg1",
+                    "ctx": "Load",
+                    "lineno": 8,
+                    "col_offset": 14
+                  },
+                  "lineno": 8,
+                  "col_offset": 8
+                },
+                "lineno": 8,
+                "col_offset": 8
+              }
+            ],
+            "orelse": [],
+            "lineno": 7,
+            "col_offset": 4
+          },
+          {
+            "ast_type": "Return",
+            "value": {
+              "ast_type": "Name",
+              "id": "arg2",
+              "ctx": "Load",
+              "lineno": 9,
+              "col_offset": 11
+            },
+            "lineno": 9,
+            "col_offset": 4
+          }
+        ],
+        "decorator_list": [
+          {
+            "ast_type": "Call",
+            "func": {
+              "ast_type": "Name",
+              "id": "decorator",
+              "ctx": "Load",
+              "lineno": 1,
+              "col_offset": 1
+            },
+            "args": [
+              {
+                "ast_type": "Name",
+                "id": "param1",
+                "ctx": "Load",
+                "lineno": 1,
+                "col_offset": 11
+              },
+              {
+                "ast_type": "Name",
+                "id": "param2",
+                "ctx": "Load",
+                "lineno": 1,
+                "col_offset": 19
+              }
+            ],
+            "keywords": [],
+            "lineno": 1,
+            "col_offset": 1
+          }
+        ],
+        "returns": null,
+        "lineno": 1,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "l",
+            "ctx": "Store",
+            "lineno": 11,
+            "col_offset": 0,
+            "noops_previous": {
+              "ast_type": "PreviousNoops",
+              "lines": [
+                {
+                  "ast_type": "NoopLine",
+                  "noop_line": "\n"
+                }
+              ]
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "List",
+          "elts": [
+            {
+              "NumType": "int",
+              "LiteralValue": 4,
+              "ast_type": "NumLiteral",
+              "lineno": 11,
+              "col_offset": 5
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 8,
+              "ast_type": "NumLiteral",
+              "lineno": 11,
+              "col_offset": 8
+            }
+          ],
+          "ctx": "Load",
+          "lineno": 11,
+          "col_offset": 4
+        },
+        "lineno": 11,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "Expr",
+        "value": {
+          "ast_type": "Call",
+          "func": {
+            "ast_type": "Name",
+            "id": "somefunction",
+            "ctx": "Load",
+            "lineno": 12,
+            "col_offset": 0
+          },
+          "args": [
+            {
+              "NumType": "int",
+              "LiteralValue": 1,
+              "ast_type": "NumLiteral",
+              "lineno": 12,
+              "col_offset": 13
+            },
+            {
+              "ast_type": "Starred",
+              "value": {
+                "ast_type": "Name",
+                "id": "l",
+                "ctx": "Load",
+                "lineno": 12,
+                "col_offset": 17
+              },
+              "ctx": "Load",
+              "lineno": 12,
+              "col_offset": 16
+            }
+          ],
+          "keywords": [],
+          "lineno": 12,
+          "col_offset": 0
+        },
+        "lineno": 12,
+        "col_offset": 0
+      }
+    ]
+  }
+}

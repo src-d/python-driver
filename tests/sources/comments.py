@@ -1,3 +1,2 @@
 # comment above
-print("hello world") # line trailing comment
-# file trailing comments
+a = 1 # line trailing comment

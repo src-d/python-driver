@@ -1,0 +1,82 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Pass",
+        "lineno": 1,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# easy"
+        }
+      },
+      {
+        "ast_type": "FunctionDef",
+        "name": "somefun",
+        "args": {
+          "ast_type": "arguments",
+          "args": [],
+          "vararg": null,
+          "kwonlyargs": [],
+          "kw_defaults": [],
+          "kwarg": null,
+          "defaults": []
+        },
+        "body": [
+          {
+            "ast_type": "Pass",
+            "lineno": 3,
+            "col_offset": 15,
+            "noops_previous": {
+              "ast_type": "PreviousNoops",
+              "lines": [
+                {
+                  "ast_type": "NoopLine",
+                  "noop_line": "\n"
+                }
+              ]
+            }
+          }
+        ],
+        "decorator_list": [],
+        "returns": null,
+        "lineno": 3,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "FunctionDef",
+        "name": "otherfun",
+        "args": {
+          "ast_type": "arguments",
+          "args": [],
+          "vararg": null,
+          "kwonlyargs": [],
+          "kw_defaults": [],
+          "kwarg": null,
+          "defaults": []
+        },
+        "body": [
+          {
+            "ast_type": "Pass",
+            "lineno": 6,
+            "col_offset": 4,
+            "noops_previous": {
+              "ast_type": "PreviousNoops",
+              "lines": [
+                {
+                  "ast_type": "NoopLine",
+                  "noop_line": "\n"
+                }
+              ]
+            }
+          }
+        ],
+        "decorator_list": [],
+        "returns": null,
+        "lineno": 5,
+        "col_offset": 0
+      }
+    ]
+  }
+}

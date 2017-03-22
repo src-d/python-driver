@@ -1,0 +1,46 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Pass",
+        "lineno": 3,
+        "col_offset": 0,
+        "noops_previous": {
+          "ast_type": "PreviousNoops",
+          "lines": [
+            {
+              "ast_type": "NoopLine",
+              "noop_line": "# thse are\n"
+            },
+            {
+              "ast_type": "NoopLine",
+              "noop_line": "# previous comments\n"
+            }
+          ]
+        },
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# sameline comment"
+        }
+      }
+    ],
+    "noops_remainder": {
+      "ast_type": "RemainderNoops",
+      "lines": [
+        {
+          "ast_type": "NoopLine",
+          "noop_line": "\n"
+        },
+        {
+          "ast_type": "NoopLine",
+          "noop_line": "# remainder comment and newline\n"
+        },
+        {
+          "ast_type": "NoopLine",
+          "noop_line": "# last remainder comment line\n"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Assert",
+        "test": {
+          "ast_type": "BoolLiteral",
+          "LiteralValue": true
+        },
+        "msg": null,
+        "lineno": 1,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "Assert",
+        "test": {
+          "ast_type": "BoolLiteral",
+          "LiteralValue": false
+        },
+        "msg": null,
+        "lineno": 2,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "Assert",
+        "test": {
+          "ast_type": "NoneLiteral",
+          "LiteralValue": null
+        },
+        "msg": null,
+        "lineno": 3,
+        "col_offset": 0
+      }
+    ]
+  }
+}

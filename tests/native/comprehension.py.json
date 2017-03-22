@@ -1,0 +1,208 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "a",
+            "ctx": "Store",
+            "lineno": 1,
+            "col_offset": 0
+          }
+        ],
+        "value": {
+          "ast_type": "ListComp",
+          "elt": {
+            "ast_type": "Name",
+            "id": "i",
+            "ctx": "Load",
+            "lineno": 1,
+            "col_offset": 5
+          },
+          "generators": [
+            {
+              "ast_type": "comprehension",
+              "target": {
+                "ast_type": "Name",
+                "id": "i",
+                "ctx": "Store",
+                "lineno": 1,
+                "col_offset": 11
+              },
+              "iter": {
+                "ast_type": "Tuple",
+                "elts": [
+                  {
+                    "NumType": "int",
+                    "LiteralValue": 1,
+                    "ast_type": "NumLiteral",
+                    "lineno": 1,
+                    "col_offset": 17
+                  },
+                  {
+                    "NumType": "int",
+                    "LiteralValue": 2,
+                    "ast_type": "NumLiteral",
+                    "lineno": 1,
+                    "col_offset": 19
+                  },
+                  {
+                    "NumType": "int",
+                    "LiteralValue": 3,
+                    "ast_type": "NumLiteral",
+                    "lineno": 1,
+                    "col_offset": 21
+                  }
+                ],
+                "ctx": "Load",
+                "lineno": 1,
+                "col_offset": 17
+              },
+              "ifs": [
+                {
+                  "ast_type": "Compare",
+                  "left": {
+                    "ast_type": "Name",
+                    "id": "i",
+                    "ctx": "Load",
+                    "lineno": 1,
+                    "col_offset": 27
+                  },
+                  "ops": [
+                    {
+                      "ast_type": "Gt"
+                    }
+                  ],
+                  "comparators": [
+                    {
+                      "NumType": "int",
+                      "LiteralValue": 2,
+                      "ast_type": "NumLiteral",
+                      "lineno": 1,
+                      "col_offset": 29
+                    }
+                  ],
+                  "lineno": 1,
+                  "col_offset": 27
+                }
+              ],
+              "is_async": 0
+            }
+          ],
+          "lineno": 1,
+          "col_offset": 5
+        },
+        "lineno": 1,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "b",
+            "ctx": "Store",
+            "lineno": 2,
+            "col_offset": 0
+          }
+        ],
+        "value": {
+          "ast_type": "GeneratorExp",
+          "elt": {
+            "ast_type": "Name",
+            "id": "i",
+            "ctx": "Load",
+            "lineno": 2,
+            "col_offset": 5
+          },
+          "generators": [
+            {
+              "ast_type": "comprehension",
+              "target": {
+                "ast_type": "Name",
+                "id": "i",
+                "ctx": "Store",
+                "lineno": 2,
+                "col_offset": 11
+              },
+              "iter": {
+                "ast_type": "Tuple",
+                "elts": [
+                  {
+                    "NumType": "int",
+                    "LiteralValue": 1,
+                    "ast_type": "NumLiteral",
+                    "lineno": 2,
+                    "col_offset": 17
+                  },
+                  {
+                    "NumType": "int",
+                    "LiteralValue": 2,
+                    "ast_type": "NumLiteral",
+                    "lineno": 2,
+                    "col_offset": 19
+                  },
+                  {
+                    "NumType": "int",
+                    "LiteralValue": 3,
+                    "ast_type": "NumLiteral",
+                    "lineno": 2,
+                    "col_offset": 21
+                  }
+                ],
+                "ctx": "Load",
+                "lineno": 2,
+                "col_offset": 17
+              },
+              "ifs": [
+                {
+                  "ast_type": "Compare",
+                  "left": {
+                    "ast_type": "Name",
+                    "id": "i",
+                    "ctx": "Load",
+                    "lineno": 2,
+                    "col_offset": 27
+                  },
+                  "ops": [
+                    {
+                      "ast_type": "Gt"
+                    }
+                  ],
+                  "comparators": [
+                    {
+                      "NumType": "int",
+                      "LiteralValue": 2,
+                      "ast_type": "NumLiteral",
+                      "lineno": 2,
+                      "col_offset": 29
+                    }
+                  ],
+                  "lineno": 2,
+                  "col_offset": 27
+                }
+              ],
+              "is_async": 0
+            }
+          ],
+          "lineno": 2,
+          "col_offset": 5
+        },
+        "lineno": 2,
+        "col_offset": 0
+      }
+    ],
+    "noops_remainder": {
+      "ast_type": "RemainderNoops",
+      "lines": [
+        {
+          "ast_type": "NoopLine",
+          "noop_line": "# TODO: add dictionary and set\n"
+        }
+      ]
+    }
+  }
+}

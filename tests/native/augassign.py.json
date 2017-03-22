@@ -1,0 +1,95 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "AugAssign",
+        "target": {
+          "ast_type": "Name",
+          "id": "a",
+          "ctx": "Store",
+          "lineno": 1,
+          "col_offset": 0
+        },
+        "op": {
+          "ast_type": "Add"
+        },
+        "value": {
+          "NumType": "int",
+          "LiteralValue": 3,
+          "ast_type": "NumLiteral",
+          "lineno": 1,
+          "col_offset": 5
+        },
+        "lineno": 1,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "AugAssign",
+        "target": {
+          "ast_type": "Name",
+          "id": "b",
+          "ctx": "Store",
+          "lineno": 2,
+          "col_offset": 0
+        },
+        "op": {
+          "ast_type": "Sub"
+        },
+        "value": {
+          "NumType": "int",
+          "LiteralValue": 1,
+          "ast_type": "NumLiteral",
+          "lineno": 2,
+          "col_offset": 5
+        },
+        "lineno": 2,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "AugAssign",
+        "target": {
+          "ast_type": "Name",
+          "id": "c",
+          "ctx": "Store",
+          "lineno": 3,
+          "col_offset": 0
+        },
+        "op": {
+          "ast_type": "Mult"
+        },
+        "value": {
+          "NumType": "int",
+          "LiteralValue": 4,
+          "ast_type": "NumLiteral",
+          "lineno": 3,
+          "col_offset": 5
+        },
+        "lineno": 3,
+        "col_offset": 0
+      },
+      {
+        "ast_type": "AugAssign",
+        "target": {
+          "ast_type": "Name",
+          "id": "d",
+          "ctx": "Store",
+          "lineno": 4,
+          "col_offset": 0
+        },
+        "op": {
+          "ast_type": "Div"
+        },
+        "value": {
+          "NumType": "int",
+          "LiteralValue": 6,
+          "ast_type": "NumLiteral",
+          "lineno": 4,
+          "col_offset": 5
+        },
+        "lineno": 4,
+        "col_offset": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Try",
+        "body": [
+          {
+            "ast_type": "Assign",
+            "targets": [
+              {
+                "ast_type": "Name",
+                "id": "a",
+                "ctx": "Store",
+                "lineno": 2,
+                "col_offset": 4
+              }
+            ],
+            "value": {
+              "NumType": "int",
+              "LiteralValue": 1,
+              "ast_type": "NumLiteral",
+              "lineno": 2,
+              "col_offset": 8
+            },
+            "lineno": 2,
+            "col_offset": 4
+          },
+          {
+            "ast_type": "Raise",
+            "exc": {
+              "ast_type": "Call",
+              "func": {
+                "ast_type": "Name",
+                "id": "Exception",
+                "ctx": "Load",
+                "lineno": 3,
+                "col_offset": 10
+              },
+              "args": [
+                {
+                  "ast_type": "StringLiteral",
+                  "LiteralValue": "gogogo"
+                }
+              ],
+              "keywords": [],
+              "lineno": 3,
+              "col_offset": 10
+            },
+            "cause": null,
+            "lineno": 3,
+            "col_offset": 4
+          }
+        ],
+        "handlers": [
+          {
+            "ast_type": "ExceptHandler",
+            "type": null,
+            "name": null,
+            "body": [
+              {
+                "ast_type": "Expr",
+                "value": {
+                  "ast_type": "Call",
+                  "func": {
+                    "ast_type": "Name",
+                    "id": "print",
+                    "ctx": "Load",
+                    "lineno": 5,
+                    "col_offset": 4
+                  },
+                  "args": [
+                    {
+                      "ast_type": "StringLiteral",
+                      "LiteralValue": "ayyyy"
+                    }
+                  ],
+                  "keywords": [],
+                  "lineno": 5,
+                  "col_offset": 4
+                },
+                "lineno": 5,
+                "col_offset": 4
+              }
+            ],
+            "lineno": 4,
+            "col_offset": 0
+          }
+        ],
+        "orelse": [],
+        "finalbody": [
+          {
+            "ast_type": "Expr",
+            "value": {
+              "ast_type": "Call",
+              "func": {
+                "ast_type": "Name",
+                "id": "print",
+                "ctx": "Load",
+                "lineno": 7,
+                "col_offset": 4
+              },
+              "args": [
+                {
+                  "ast_type": "StringLiteral",
+                  "LiteralValue": "here we are"
+                }
+              ],
+              "keywords": [],
+              "lineno": 7,
+              "col_offset": 4
+            },
+            "lineno": 7,
+            "col_offset": 4
+          }
+        ],
+        "lineno": 1,
+        "col_offset": 0
+      }
+    ]
+  }
+}

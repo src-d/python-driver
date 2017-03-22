@@ -1,0 +1,508 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "a",
+            "ctx": "Store",
+            "lineno": 1,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# int"
+            }
+          }
+        ],
+        "value": {
+          "NumType": "int",
+          "LiteralValue": 3,
+          "ast_type": "NumLiteral",
+          "lineno": 1,
+          "col_offset": 4,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# int"
+          }
+        },
+        "lineno": 1,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# int"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "b",
+            "ctx": "Store",
+            "lineno": 2,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# float"
+            }
+          }
+        ],
+        "value": {
+          "NumType": "float",
+          "LiteralValue": 3.14,
+          "ast_type": "NumLiteral",
+          "lineno": 2,
+          "col_offset": 4,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# float"
+          }
+        },
+        "lineno": 2,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# float"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "c",
+            "ctx": "Store",
+            "lineno": 3,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# string"
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "StringLiteral",
+          "LiteralValue": "somestring",
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# string"
+          }
+        },
+        "lineno": 3,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# string"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "d",
+            "ctx": "Store",
+            "lineno": 4,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# None"
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "NoneLiteral",
+          "LiteralValue": null,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# None"
+          }
+        },
+        "lineno": 4,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# None"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "e",
+            "ctx": "Store",
+            "lineno": 5,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# list literal"
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "List",
+          "elts": [
+            {
+              "NumType": "int",
+              "LiteralValue": 1,
+              "ast_type": "NumLiteral",
+              "lineno": 5,
+              "col_offset": 5,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# list literal"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 2,
+              "ast_type": "NumLiteral",
+              "lineno": 5,
+              "col_offset": 8,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# list literal"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 3,
+              "ast_type": "NumLiteral",
+              "lineno": 5,
+              "col_offset": 11,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# list literal"
+              }
+            }
+          ],
+          "ctx": "Load",
+          "lineno": 5,
+          "col_offset": 4,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# list literal"
+          }
+        },
+        "lineno": 5,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# list literal"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "f",
+            "ctx": "Store",
+            "lineno": 6,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# tuple literal"
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "Tuple",
+          "elts": [
+            {
+              "NumType": "int",
+              "LiteralValue": 1,
+              "ast_type": "NumLiteral",
+              "lineno": 6,
+              "col_offset": 5,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# tuple literal"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 2,
+              "ast_type": "NumLiteral",
+              "lineno": 6,
+              "col_offset": 8,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# tuple literal"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 3,
+              "ast_type": "NumLiteral",
+              "lineno": 6,
+              "col_offset": 11,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# tuple literal"
+              }
+            }
+          ],
+          "ctx": "Load",
+          "lineno": 6,
+          "col_offset": 5,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# tuple literal"
+          }
+        },
+        "lineno": 6,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# tuple literal"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "g",
+            "ctx": "Store",
+            "lineno": 7,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# set literal"
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "Set",
+          "elts": [
+            {
+              "NumType": "int",
+              "LiteralValue": 1,
+              "ast_type": "NumLiteral",
+              "lineno": 7,
+              "col_offset": 5,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# set literal"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 2,
+              "ast_type": "NumLiteral",
+              "lineno": 7,
+              "col_offset": 8,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# set literal"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 3,
+              "ast_type": "NumLiteral",
+              "lineno": 7,
+              "col_offset": 11,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# set literal"
+              }
+            }
+          ],
+          "lineno": 7,
+          "col_offset": 4,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# set literal"
+          }
+        },
+        "lineno": 7,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# set literal"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "h",
+            "ctx": "Store",
+            "lineno": 8,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# dict literal"
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "Dict",
+          "keys": [
+            {
+              "ast_type": "StringLiteral",
+              "LiteralValue": "a",
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# dict literal"
+              }
+            },
+            {
+              "ast_type": "StringLiteral",
+              "LiteralValue": "b",
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# dict literal"
+              }
+            }
+          ],
+          "values": [
+            {
+              "NumType": "int",
+              "LiteralValue": 1,
+              "ast_type": "NumLiteral",
+              "lineno": 8,
+              "col_offset": 10,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# dict literal"
+              }
+            },
+            {
+              "NumType": "int",
+              "LiteralValue": 2,
+              "ast_type": "NumLiteral",
+              "lineno": 8,
+              "col_offset": 18,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# dict literal"
+              }
+            }
+          ],
+          "lineno": 8,
+          "col_offset": 4,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# dict literal"
+          }
+        },
+        "lineno": 8,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# dict literal"
+        }
+      },
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "i",
+            "ctx": "Store",
+            "lineno": 9,
+            "col_offset": 0,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# expression assignment"
+            }
+          }
+        ],
+        "value": {
+          "ast_type": "BinOp",
+          "left": {
+            "ast_type": "BinOp",
+            "left": {
+              "ast_type": "Name",
+              "id": "a",
+              "ctx": "Load",
+              "lineno": 9,
+              "col_offset": 4,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# expression assignment"
+              }
+            },
+            "op": {
+              "ast_type": "Add"
+            },
+            "right": {
+              "ast_type": "Name",
+              "id": "b",
+              "ctx": "Load",
+              "lineno": 9,
+              "col_offset": 8,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# expression assignment"
+              }
+            },
+            "lineno": 9,
+            "col_offset": 4,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# expression assignment"
+            }
+          },
+          "op": {
+            "ast_type": "Sub"
+          },
+          "right": {
+            "ast_type": "Call",
+            "func": {
+              "ast_type": "Name",
+              "id": "int",
+              "ctx": "Load",
+              "lineno": 9,
+              "col_offset": 12,
+              "noops_sameline": {
+                "ast_type": "SameLineNoops",
+                "noop_line": "# expression assignment"
+              }
+            },
+            "args": [
+              {
+                "ast_type": "Name",
+                "id": "d",
+                "ctx": "Load",
+                "lineno": 9,
+                "col_offset": 16,
+                "noops_sameline": {
+                  "ast_type": "SameLineNoops",
+                  "noop_line": "# expression assignment"
+                }
+              }
+            ],
+            "keywords": [],
+            "lineno": 9,
+            "col_offset": 12,
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "noop_line": "# expression assignment"
+            }
+          },
+          "lineno": 9,
+          "col_offset": 10,
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "noop_line": "# expression assignment"
+          }
+        },
+        "lineno": 9,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "noop_line": "# expression assignment"
+        }
+      }
+    ]
+  }
+}

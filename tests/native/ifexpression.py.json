@@ -1,0 +1,66 @@
+{
+  "AST": {
+    "ast_type": "Module",
+    "body": [
+      {
+        "ast_type": "Assign",
+        "targets": [
+          {
+            "ast_type": "Name",
+            "id": "a",
+            "ctx": "Store",
+            "lineno": 1,
+            "col_offset": 0
+          }
+        ],
+        "value": {
+          "ast_type": "IfExp",
+          "test": {
+            "ast_type": "Compare",
+            "left": {
+              "NumType": "int",
+              "LiteralValue": 3,
+              "ast_type": "NumLiteral",
+              "lineno": 1,
+              "col_offset": 9
+            },
+            "ops": [
+              {
+                "ast_type": "Gt"
+              }
+            ],
+            "comparators": [
+              {
+                "NumType": "int",
+                "LiteralValue": 4,
+                "ast_type": "NumLiteral",
+                "lineno": 1,
+                "col_offset": 13
+              }
+            ],
+            "lineno": 1,
+            "col_offset": 9
+          },
+          "body": {
+            "NumType": "int",
+            "LiteralValue": 1,
+            "ast_type": "NumLiteral",
+            "lineno": 1,
+            "col_offset": 4
+          },
+          "orelse": {
+            "NumType": "int",
+            "LiteralValue": 2,
+            "ast_type": "NumLiteral",
+            "lineno": 1,
+            "col_offset": 20
+          },
+          "lineno": 1,
+          "col_offset": 4
+        },
+        "lineno": 1,
+        "col_offset": 0
+      }
+    ]
+  }
+}
