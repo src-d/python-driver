@@ -1,0 +1,63 @@
+{
+  "ast_type": "Module",
+  "body": [
+    {
+      "ast_type": "Expr",
+      "value": {
+        "ast_type": "Call",
+        "func": {
+          "ast_type": "Name",
+          "id": "print",
+          "ctx": "Load",
+          "lineno": 2,
+          "col_offset": 0,
+          "noops_previous": {
+            "ast_type": "PreviousNoops",
+            "lines": [
+              {
+                "ast_type": "NoopLine",
+                "l": "# comment above\n"
+              }
+            ]
+          },
+          "noops_sameline": {
+            "ast_type": "SameLineNoops",
+            "lines": "# line trailing comment"
+          }
+        },
+        "args": [
+          {
+            "ast_type": "StringLiteral",
+            "LiteralValue": "hello world",
+            "noops_sameline": {
+              "ast_type": "SameLineNoops",
+              "lines": "# line trailing comment"
+            }
+          }
+        ],
+        "keywords": [],
+        "lineno": 2,
+        "col_offset": 0,
+        "noops_sameline": {
+          "ast_type": "SameLineNoops",
+          "lines": "# line trailing comment"
+        }
+      },
+      "lineno": 2,
+      "col_offset": 0,
+      "noops_sameline": {
+        "ast_type": "SameLineNoops",
+        "lines": "# line trailing comment"
+      }
+    }
+  ],
+  "noops_remainder": {
+    "ast_type": "RemainderNoops",
+    "lines": [
+      {
+        "ast_type": "NoopLine",
+        "l": "# file trailing comments\n"
+      }
+    ]
+  }
+}
