@@ -55,16 +55,37 @@ https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
+
 		On(HasInternalType(pyast.Expression)).Roles(Expression),
-		On(HasInternalType(pyast.PreviousNoops)).Roles(Whitespace).Children(
-			On(HasInternalRole(pyast.NoopLine)).Roles(Comment),
+		On(HasInternalType(pyast.Expr)).Roles(Expression),
+		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
+
+		On(HasInternalType(pyast.Call)).Roles(MethodInvocation).Children(
+			On(HasInternalRole("args")).Children(On(Any).Roles(MethodInvocationArgument)),
+			On(HasInternalRole("func")).Self(On(HasInternalRole("id"))).Roles(MethodInvocationName),
+			On(HasInternalRole("func")).Self(On(HasInternalRole("attr"))).Roles(MethodInvocationName),
+			On(HasInternalRole("func")).Self(On(HasInternalType(pyast.Attribute))).Children(
+				On(HasInternalRole("id")).Roles(MethodInvocationObject),
+			),
 		),
+
+		// Comments and non significative whitespace
+		On(HasInternalRole(pyast.NoopLine)).Roles(Comment),
+		On(HasInternalType(pyast.PreviousNoops)).Roles(Whitespace),
+		On(HasInternalType(pyast.SameLineNoops)).Roles(Comment),
+		//On(HasInternalType(pyast.RemainderNoops)).Roles(Whitespace),
+
+		//On(HasInternalType(pyast.PreviousNoops)).Roles(Whitespace).Children(
+		//	On(HasInternalRole(pyast.NoopLine)).Roles(Comment),
+		//),
 		On(HasInternalType(pyast.RemainderNoops)).Roles(Whitespace).Children(
 			On(HasInternalRole(pyast.NoopLine)).Roles(Comment),
 		),
-		On(HasInternalType(pyast.SameLineNoops)).Roles(Comment),
+		//On(HasInternalType(pyast.SameLineNoops)).Roles(Comment),
+
+		// XXX integration tests cover until the above roles
+
 		On(HasInternalType(pyast.Name)).Roles(SimpleIdentifier),
-		On(HasInternalType(pyast.Expr)).Roles(Expression),
 		On(HasInternalType(pyast.Assert)).Roles(Assert),
 
 		On(HasInternalType(pyast.Constant)).Roles(Literal),
@@ -133,7 +154,6 @@ var AnnotationRules = On(Any).Self(
 		// "Call.func.ast_type" == attr (module/object calls) and convert the to this UAST:
 		// MethodInvocation + MethodInvocationObject (func.value.id) + MethodInvocationName (func.attr)
 		On(HasInternalType(pyast.Pass)).Roles(Noop),
-		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
 		On(HasInternalType(pyast.Num)).Roles(NumberLiteral),
 		//
 		//	Assign => Assigment:
@@ -151,24 +171,6 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.AnnAssign)).Roles(Assignment),
 		// FIXME: this is the a += 1 style assigment
 		On(HasInternalType(pyast.AugAssign)).Roles(Assignment),
-		// Function or method calls (TODO: check that this is getting everything right)
-		//
-		//	Call => MethodInvocation:
-		//		args[] => MethodInvocationArgument
-		//		func:
-		//			id   => MethodInvocationName
-		//			attr => MethodInvocationName
-		//			Attribute:
-		//				id => MethodInvocationObject
-		//
-		On(HasInternalType(pyast.Call)).Roles(MethodInvocation).Children(
-			On(HasInternalRole("args")).Children(On(Any).Roles(MethodInvocationArgument)),
-			On(HasInternalRole("func")).Self(On(HasInternalRole("id"))).Roles(MethodInvocationName),
-			On(HasInternalRole("func")).Self(On(HasInternalRole("attr"))).Roles(MethodInvocationName),
-			On(HasInternalRole("func")).Self(On(HasInternalType(pyast.Attribute))).Children(
-				On(HasInternalRole("id")).Roles(MethodInvocationObject),
-			),
-		),
 	),
 )
 
