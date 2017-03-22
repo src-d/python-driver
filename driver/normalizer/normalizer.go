@@ -83,7 +83,7 @@ var AnnotationRules = On(Any).Self(
 		),
 		//On(HasInternalType(pyast.SameLineNoops)).Roles(Comment),
 
-		// XXX integration tests cover until the above roles
+		// XXX current integration tests cover until the above roles
 
 		On(HasInternalType(pyast.Name)).Roles(SimpleIdentifier),
 		On(HasInternalType(pyast.Assert)).Roles(Assert),
