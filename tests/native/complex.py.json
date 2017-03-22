@@ -31,7 +31,7 @@
         "lines": [
           {
             "ast_type": "NoopLine",
-            "l": "\n"
+            "noop_line": "\n"
           }
         ]
       }
@@ -119,15 +119,15 @@
               "lines": [
                 {
                   "ast_type": "NoopLine",
-                  "l": "\n"
+                  "noop_line": "\n"
                 },
                 {
                   "ast_type": "NoopLine",
-                  "l": "# TODO: add an option to not change the node names of NameConstant, Num and Str\n"
+                  "noop_line": "# TODO: add an option to not change the node names of NameConstant, Num and Str\n"
                 },
                 {
                   "ast_type": "NoopLine",
-                  "l": "\n"
+                  "noop_line": "\n"
                 }
               ]
             }
@@ -225,11 +225,11 @@
               "lines": [
                 {
                   "ast_type": "NoopLine",
-                  "l": "\n"
+                  "noop_line": "\n"
                 },
                 {
                   "ast_type": "NoopLine",
-                  "l": "\n"
+                  "noop_line": "\n"
                 }
               ]
             }
@@ -431,7 +431,7 @@
             "lines": [
               {
                 "ast_type": "NoopLine",
-                "l": "\n"
+                "noop_line": "\n"
               }
             ]
           }
@@ -491,11 +491,11 @@
                 "lines": [
                   {
                     "ast_type": "NoopLine",
-                    "l": "    # TODO: use fillcolor for different ast_types\n"
+                    "noop_line": "    # TODO: use fillcolor for different ast_types\n"
                   },
                   {
                     "ast_type": "NoopLine",
-                    "l": "    # TODO: use shape for giving different shapes to different nodes: http://www.graphviz.org/content/node-shapes#polygon\n"
+                    "noop_line": "    # TODO: use shape for giving different shapes to different nodes: http://www.graphviz.org/content/node-shapes#polygon\n"
                   }
                 ]
               }
@@ -582,11 +582,11 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     },
                     {
                       "ast_type": "NoopLine",
-                      "l": "    # These nodes will show their childs as hanging from their parent\n"
+                      "noop_line": "    # These nodes will show their childs as hanging from their parent\n"
                     }
                   ]
                 }
@@ -655,7 +655,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -726,7 +726,7 @@
                       "lines": [
                         {
                           "ast_type": "NoopLine",
-                          "l": "\n"
+                          "noop_line": "\n"
                         }
                       ]
                     }
@@ -1216,7 +1216,7 @@
                         "lines": [
                           {
                             "ast_type": "NoopLine",
-                            "l": "\n"
+                            "noop_line": "\n"
                           }
                         ]
                       }
@@ -1479,7 +1479,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -1685,7 +1685,7 @@
                             "lines": [
                               {
                                 "ast_type": "NoopLine",
-                                "l": "\n"
+                                "noop_line": "\n"
                               }
                             ]
                           }
@@ -1836,7 +1836,7 @@
                 "lines": [
                   {
                     "ast_type": "NoopLine",
-                    "l": "\n"
+                    "noop_line": "\n"
                   }
                 ]
               }
@@ -1997,7 +1997,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -2096,11 +2096,11 @@
             "lines": [
               {
                 "ast_type": "NoopLine",
-                "l": "\n"
+                "noop_line": "\n"
               },
               {
                 "ast_type": "NoopLine",
-                "l": "\n"
+                "noop_line": "\n"
               }
             ]
           }
@@ -2189,7 +2189,7 @@
             "lines": [
               {
                 "ast_type": "NoopLine",
-                "l": "\n"
+                "noop_line": "\n"
               }
             ]
           }
@@ -2223,7 +2223,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -2324,7 +2324,7 @@
                       "lines": [
                         {
                           "ast_type": "NoopLine",
-                          "l": "\n"
+                          "noop_line": "\n"
                         }
                       ]
                     }
@@ -2464,7 +2464,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -2609,7 +2609,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -3163,7 +3163,7 @@
                       "lines": [
                         {
                           "ast_type": "NoopLine",
-                          "l": "\n"
+                          "noop_line": "\n"
                         }
                       ]
                     }
@@ -3335,7 +3335,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -3568,7 +3568,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -4039,7 +4039,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -4398,7 +4398,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -4492,7 +4492,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -4615,7 +4615,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -4703,7 +4703,7 @@
                             "lines": [
                               {
                                 "ast_type": "NoopLine",
-                                "l": "                # restart\n"
+                                "noop_line": "                # restart\n"
                               }
                             ]
                           }
@@ -4860,7 +4860,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -5207,7 +5207,7 @@
               "lines": [
                 {
                   "ast_type": "NoopLine",
-                  "l": "\n"
+                  "noop_line": "\n"
                 }
               ]
             }
@@ -5330,7 +5330,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -5520,7 +5520,7 @@
               "lines": [
                 {
                   "ast_type": "NoopLine",
-                  "l": "\n"
+                  "noop_line": "\n"
                 }
               ]
             }
@@ -5549,7 +5549,7 @@
             "lines": [
               {
                 "ast_type": "NoopLine",
-                "l": "\n"
+                "noop_line": "\n"
               }
             ]
           }
@@ -5592,7 +5592,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -5751,7 +5751,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -5910,11 +5910,11 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     },
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -5996,15 +5996,15 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # the ctx property always has a \"Load\"/\"Store\"/etc nodes that\n"
+                        "noop_line": "        # the ctx property always has a \"Load\"/\"Store\"/etc nodes that\n"
                       },
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # can be perfectly converted to a string value since they don't\n"
+                        "noop_line": "        # can be perfectly converted to a string value since they don't\n"
                       },
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # hold anything more than the name\n"
+                        "noop_line": "        # hold anything more than the name\n"
                       }
                     ]
                   }
@@ -6095,7 +6095,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -6210,7 +6210,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -6250,11 +6250,11 @@
                         "lines": [
                           {
                             "ast_type": "NoopLine",
-                            "l": "            # Add all the noop (whitespace and comments) lines between the\n"
+                            "noop_line": "            # Add all the noop (whitespace and comments) lines between the\n"
                           },
                           {
                             "ast_type": "NoopLine",
-                            "l": "            # last node and this one\n"
+                            "noop_line": "            # last node and this one\n"
                           }
                         ]
                       }
@@ -6430,15 +6430,15 @@
                         "lines": [
                           {
                             "ast_type": "NoopLine",
-                            "l": "\n"
+                            "noop_line": "\n"
                           },
                           {
                             "ast_type": "NoopLine",
-                            "l": "            # Other noops at the end of its significative line except the implicit\n"
+                            "noop_line": "            # Other noops at the end of its significative line except the implicit\n"
                           },
                           {
                             "ast_type": "NoopLine",
-                            "l": "            # finishing newline\n"
+                            "noop_line": "            # finishing newline\n"
                           }
                         ]
                       }
@@ -6613,11 +6613,11 @@
                       "lines": [
                         {
                           "ast_type": "NoopLine",
-                          "l": "\n"
+                          "noop_line": "\n"
                         },
                         {
                           "ast_type": "NoopLine",
-                          "l": "            # Finally, if this is the root node, add all noops after the last op node\n"
+                          "noop_line": "            # Finally, if this is the root node, add all noops after the last op node\n"
                         }
                       ]
                     }
@@ -6827,7 +6827,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -6896,7 +6896,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -6948,11 +6948,11 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     },
                     {
                       "ast_type": "NoopLine",
-                      "l": "        # Visit fields\n"
+                      "noop_line": "        # Visit fields\n"
                     }
                   ]
                 }
@@ -7133,11 +7133,11 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     },
                     {
                       "ast_type": "NoopLine",
-                      "l": "        # Visit attributes\n"
+                      "noop_line": "        # Visit attributes\n"
                     }
                   ]
                 }
@@ -7269,7 +7269,7 @@
                           "lines": [
                             {
                               "ast_type": "NoopLine",
-                              "l": "            # Use None as default when lineno/col_offset are not set\n"
+                              "noop_line": "            # Use None as default when lineno/col_offset are not set\n"
                             }
                           ]
                         }
@@ -7380,7 +7380,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -7651,7 +7651,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -7730,7 +7730,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -7823,7 +7823,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -7933,7 +7933,7 @@
                             "lines": [
                               {
                                 "ast_type": "NoopLine",
-                                "l": "            # try with base64\n"
+                                "noop_line": "            # try with base64\n"
                               }
                             ]
                           }
@@ -8049,7 +8049,7 @@
                         "lines": [
                           {
                             "ast_type": "NoopLine",
-                            "l": "\n"
+                            "noop_line": "\n"
                           }
                         ]
                       }
@@ -8117,7 +8117,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -8169,7 +8169,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -8203,23 +8203,23 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # Python AST by default stores global and nonlocal variable names\n"
+                        "noop_line": "        # Python AST by default stores global and nonlocal variable names\n"
                       },
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # in a \"names\" array of strings. That breaks the structure of everything\n"
+                        "noop_line": "        # in a \"names\" array of strings. That breaks the structure of everything\n"
                       },
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # else in the AST (dictionaries, properties or list of objects) so we\n"
+                        "noop_line": "        # else in the AST (dictionaries, properties or list of objects) so we\n"
                       },
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # convert those names to Name objects\n"
+                        "noop_line": "        # convert those names to Name objects\n"
                       },
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -8404,7 +8404,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -8438,7 +8438,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "        # ditto\n"
+                        "noop_line": "        # ditto\n"
                       }
                     ]
                   }
@@ -8623,11 +8623,11 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     },
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -8949,7 +8949,7 @@
                   "lines": [
                     {
                       "ast_type": "NoopLine",
-                      "l": "\n"
+                      "noop_line": "\n"
                     }
                   ]
                 }
@@ -9310,7 +9310,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -9373,11 +9373,11 @@
             "lines": [
               {
                 "ast_type": "NoopLine",
-                "l": "\n"
+                "noop_line": "\n"
               },
               {
                 "ast_type": "NoopLine",
-                "l": "\n"
+                "noop_line": "\n"
               }
             ]
           }
@@ -9423,7 +9423,7 @@
                 "lines": [
                   {
                     "ast_type": "NoopLine",
-                    "l": "\n"
+                    "noop_line": "\n"
                   }
                 ]
               }
@@ -9480,7 +9480,7 @@
                     "lines": [
                       {
                         "ast_type": "NoopLine",
-                        "l": "\n"
+                        "noop_line": "\n"
                       }
                     ]
                   }
@@ -9562,7 +9562,7 @@
                 "lines": [
                   {
                     "ast_type": "NoopLine",
-                    "l": "    # pprint(export_dict(content))\n"
+                    "noop_line": "    # pprint(export_dict(content))\n"
                   }
                 ]
               }
@@ -9634,7 +9634,7 @@
     "lines": [
       {
         "ast_type": "NoopLine",
-        "l": "    # export_graphviz(content)\n"
+        "noop_line": "    # export_graphviz(content)\n"
       }
     ]
   }

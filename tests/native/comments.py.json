@@ -16,13 +16,13 @@
             "lines": [
               {
                 "ast_type": "NoopLine",
-                "l": "# comment above\n"
+                "noop_line": "# comment above\n"
               }
             ]
           },
           "noops_sameline": {
             "ast_type": "SameLineNoops",
-            "lines": "# line trailing comment"
+            "noop_line": "# line trailing comment"
           }
         },
         "args": [
@@ -31,7 +31,7 @@
             "LiteralValue": "hello world",
             "noops_sameline": {
               "ast_type": "SameLineNoops",
-              "lines": "# line trailing comment"
+              "noop_line": "# line trailing comment"
             }
           }
         ],
@@ -40,14 +40,14 @@
         "col_offset": 0,
         "noops_sameline": {
           "ast_type": "SameLineNoops",
-          "lines": "# line trailing comment"
+          "noop_line": "# line trailing comment"
         }
       },
       "lineno": 2,
       "col_offset": 0,
       "noops_sameline": {
         "ast_type": "SameLineNoops",
-        "lines": "# line trailing comment"
+        "noop_line": "# line trailing comment"
       }
     }
   ],
@@ -56,7 +56,7 @@
     "lines": [
       {
         "ast_type": "NoopLine",
-        "l": "# file trailing comments\n"
+        "noop_line": "# file trailing comments\n"
       }
     ]
   }
