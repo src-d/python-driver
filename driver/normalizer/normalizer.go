@@ -58,7 +58,6 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.Assert)).Roles(Assert),
 		// FIXME: boolliteral should probably be added to the UAST
 		On(HasInternalType(pyast.BoolLiteral)).Roles(Literal),
-		/*
 		On(HasInternalType(pyast.StringLiteral)).Roles(StringLiteral),
 		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
 		On(HasInternalType(pyast.NumLiteral)).Roles(NumberLiteral),
@@ -167,7 +166,6 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.AnnAssign)).Roles(Assignment),
 		// FIXME: this is the a += 1 style assigment
 		On(HasInternalType(pyast.AugAssign)).Roles(Assignment),
-		*/
 	),
 )
 
