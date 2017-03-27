@@ -31,6 +31,12 @@ https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 	Lambda
 	arguments
 	arg              => arguments.args[list].arg (is both ast type and a key 'arg' pointing to the name)
+			 => for python we would need:
+			 	- FunctionDefArg (a)
+			 	- FunctionDefArgDefaultValue (a = 3)
+			 	- FunctionDefArgAnnotation (a: int)
+			 	- FunctionDefVarArgsList (*args)
+			 	- FunctionDefVarArgsMap (**kwargs)
 
 	// Operators:
 	Compare          => (comparators) .ops[list] = Eq | NotEq | Lt | LtE | Gt | GtE | Is | IsNot | In | NotIn
@@ -49,19 +55,22 @@ https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 	Await
 	Print
 
+	For, while and exception Else statements
+
 	// Other:
 	Starred          => *expanded_list, could be translated to UnaryOp.Star
  */
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
-		On(HasInternalType(pyast.Assert)).Roles(Assert),
 		// FIXME: boolliteral should probably be added to the UAST
-		On(HasInternalType(pyast.BoolLiteral)).Roles(Literal),
 		On(HasInternalType(pyast.StringLiteral)).Roles(StringLiteral),
-		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
 		On(HasInternalType(pyast.NumLiteral)).Roles(NumberLiteral),
+		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
+		On(HasInternalType(pyast.BoolLiteral)).Roles(Literal),
 
+		// FIXME: add .args[].arg, .body, .name, .decorator_list[]
+		On(HasInternalType(pyast.FunctionDef)).Roles(FunctionDeclaration),
 		On(HasInternalType(pyast.Call)).Roles(MethodInvocation).Children(
 			On(HasInternalRole("args")).Roles(MethodInvocationArgument),
 			On(HasInternalRole("func")).Self(On(HasInternalRole("id"))).Roles(MethodInvocationName),
@@ -135,9 +144,8 @@ var AnnotationRules = On(Any).Self(
 		// uast.ImportAlias
 		On(HasInternalType(pyast.Import)).Roles(ImportDeclaration),
 		On(HasInternalType(pyast.ImportFrom)).Roles(ImportDeclaration),
+		On(HasInternalType(pyast.Alias)).Roles(ImportPath),
 		On(HasInternalType(pyast.ClassDef)).Roles(TypeDeclaration),
-		// FIXME: add .args[].arg, .body, .name, .decorator_list[]
-		On(HasInternalType(pyast.FunctionDef)).Roles(FunctionDeclaration),
 		// FIXME: Internal keys for the ForEach: iter -> ?, target -> ?, body -> ForBody,
 		//
 		//	For => Foreach:
@@ -166,6 +174,7 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.AnnAssign)).Roles(Assignment),
 		// FIXME: this is the a += 1 style assigment
 		On(HasInternalType(pyast.AugAssign)).Roles(Assignment),
+		On(HasInternalType(pyast.Assert)).Roles(Assert),
 	),
 )
 

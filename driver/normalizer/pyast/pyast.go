@@ -123,7 +123,7 @@ const (
 	With             = "With"
 	Yield            = "Yield"
 	YieldFrom        = "YieldFrom"
-	alias            = "alias"
+	Alias            = "alias"
 	arg              = "arg"
 	arguments        = "arguments"
 	boolop           = "boolop"
