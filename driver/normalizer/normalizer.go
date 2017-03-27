@@ -136,7 +136,11 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.Continue)).Roles(Continue),
 		// FIXME: extract the test, orelse and the body to test-> IfCondition, orelse -> IfElse, body -> IfBody
 		// UAST are first level members
-		On(HasInternalType(pyast.If)).Roles(If),
+		On(HasInternalType(pyast.If)).Roles(If).Children(
+			On(HasInternalRole("body")).Roles(IfBody),
+			On(HasInternalRole("orelse")).Roles(IfElse),
+			On(HasInternalType(pyast.Compare)).Roles(IfCondition),
+		),
 		// One liner if, like a normal If but it will be inside an Assign (like the ternary if in C)
 		// also applies the comment about the If
 		On(HasInternalType(pyast.IfExp)).Roles(If),
