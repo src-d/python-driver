@@ -55,8 +55,10 @@ https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
-
 		On(HasInternalType(pyast.Assert)).Roles(Assert),
+		// FIXME: boolliteral should probably be added to the UAST
+		On(HasInternalType(pyast.BoolLiteral)).Roles(Literal),
+		/*
 		On(HasInternalType(pyast.StringLiteral)).Roles(StringLiteral),
 		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
 		On(HasInternalType(pyast.NumLiteral)).Roles(NumberLiteral),
@@ -85,7 +87,7 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.Name)).Roles(SimpleIdentifier),
 
 		// Comments and non significative whitespace
-		On(HasInternalType(pyast.SameLineNoops)).Roles(Comment), // this works on test
+		On(HasInternalType(pyast.SameLineNoops)).Roles(Comment),
 		On(HasInternalType(pyast.PreviousNoops)).Roles(Whitespace).Children(
 			On(HasInternalRole("lines")).Roles(Comment),
 		),
@@ -165,6 +167,7 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.AnnAssign)).Roles(Assignment),
 		// FIXME: this is the a += 1 style assigment
 		On(HasInternalType(pyast.AugAssign)).Roles(Assignment),
+		*/
 	),
 )
 

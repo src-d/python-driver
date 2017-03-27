@@ -82,7 +82,7 @@ def generate2():
 def generate23(outpath):
     allsyms = list( generate2().union(generate3()) )
     # add the types that we add to improve the raw AST information
-    allsyms.extend(["StringLiteral", "NoneLiteral", "NumLiteral", "ByteLiteral",
+    allsyms.extend(["StringLiteral", "NoneLiteral", "NumLiteral", "ByteLiteral", "BoolLiteral",
                     "PreviousNoops", "NoopLine", "SameLineNoops", "RemainderNoops",
                     "noop_line"])
     allsyms.sort()

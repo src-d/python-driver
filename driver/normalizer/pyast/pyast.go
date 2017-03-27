@@ -28,6 +28,7 @@ const (
 	BitAnd           = "BitAnd"
 	BitOr            = "BitOr"
 	BitXor           = "BitXor"
+	BoolLiteral      = "BoolLiteral"
 	BoolOp           = "BoolOp"
 	Break            = "Break"
 	ByteLiteral      = "ByteLiteral"
@@ -133,11 +134,11 @@ const (
 	expr_context     = "expr_context"
 	keyword          = "keyword"
 	mod              = "mod"
+	noop_line        = "noop_line"
 	operator         = "operator"
 	slice            = "slice"
 	stmt             = "stmt"
 	unaryop          = "unaryop"
 	withitem         = "withitem"
-	noop_line        = "noop_line"
 )
 
