@@ -59,6 +59,7 @@ https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 
 	// Other:
 	Starred          => *expanded_list, could be translated to UnaryOp.Star
+	context_expr (the "thing" in "with thing:")
  */
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
@@ -102,8 +103,6 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.RemainderNoops)).Roles(Whitespace).Children(
 			On(HasInternalRole("lines")).Roles(Comment),
 		),
-		// XXX current integration tests cover until the above roles
-
 
 		On(HasInternalType(pyast.Constant)).Roles(Literal),
 		// FIXME: should we make a distinction between StringLiteral and ByteLiteral on the UAST?
