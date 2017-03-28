@@ -49,10 +49,13 @@
 	TryFinally
 	Throw
 	Assert
-	MethodInvocation
-	MethodInvocationObject
-	MethodInvocationName
-	MethodInvocationArgument
+	Call
+	CallReceiver
+	CallCallee
+	CallPositionalArgument
+	CallNamedArgument
+	CallNamedArgumentName
+	CallNamedArgumentValue
 	Noop
 	Literal
 	NullLiteral

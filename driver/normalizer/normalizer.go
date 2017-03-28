@@ -72,12 +72,12 @@ var AnnotationRules = On(Any).Self(
 
 		// FIXME: add .args[].arg, .body, .name, .decorator_list[]
 		On(HasInternalType(pyast.FunctionDef)).Roles(FunctionDeclaration),
-		On(HasInternalType(pyast.Call)).Roles(MethodInvocation).Children(
-			On(HasInternalRole("args")).Roles(MethodInvocationArgument),
-			On(HasInternalRole("func")).Self(On(HasInternalRole("id"))).Roles(MethodInvocationName),
-			On(HasInternalRole("func")).Self(On(HasInternalRole("attr"))).Roles(MethodInvocationName),
+		On(HasInternalType(pyast.Call)).Roles(Call).Children(
+			On(HasInternalRole("args")).Roles(CallPositionalArgument),
+			On(HasInternalRole("func")).Self(On(HasInternalRole("id"))).Roles(CallCallee),
+			On(HasInternalRole("func")).Self(On(HasInternalRole("attr"))).Roles(CallCallee),
 			On(HasInternalRole("func")).Self(On(HasInternalType(pyast.Attribute))).Children(
-				On(HasInternalRole("id")).Roles(MethodInvocationObject),
+				On(HasInternalRole("id")).Roles(CallReceiver),
 			),
 		),
 
@@ -168,8 +168,6 @@ var AnnotationRules = On(Any).Self(
 
 		),
 		// FIXME: detect qualified 'Call.func' with a "Call.func.value" member and
-		// "Call.func.ast_type" == attr (module/object calls) and convert the to this UAST:
-		// MethodInvocation + MethodInvocationObject (func.value.id) + MethodInvocationName (func.attr)
 		On(HasInternalType(pyast.Pass)).Roles(Noop),
 		On(HasInternalType(pyast.Num)).Roles(NumberLiteral),
 		// FIXME: this is the annotated assignment (a: annotation = 3) not exactly Assignment

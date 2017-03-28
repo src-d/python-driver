@@ -1,1 +1,1 @@
-{"status":"ok","errors":[],"ast":{"PY3AST":{"ast_type":"Module","body":[{"ast_type":"Assert","col_offset":0,"lineno":1,"msg":null,"test":{"LiteralValue":true,"ast_type":"BoolLiteral","col_offset":7,"lineno":1}}]}}}
+{"status":"ok","errors":[],"ast":{"PY3AST":{"ast_type":"Module","body":[{"ast_type":"Assert","col_offset":0,"lineno":1,"msg":null,"test":{"LiteralValue":true,"ast_type":"BoolLiteral","col_offset":7,"lineno":1}}],"col_offset":0,"lineno":1}}}
