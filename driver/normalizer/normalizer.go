@@ -14,63 +14,101 @@ For a description of Python AST nodes:
 
 https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 
-	// Missing:
-	GeneratorExp
-	comprehension
-	DictComp
-	ListComp
-	SetComp
-	Yield
-	YieldFrom
-	AsyncFor
-	AsyncFunctionDef
-	AsyncWith => these three can be avoided and stored as For/FunctionDef/With if the save they
-	             "async" keyword node
-	Delete
-	Call
-	Lambda
-	arguments
-	arg              => arguments.args[list].arg (is both ast type and a key 'arg' pointing to the name)
+	// Missing: =======================================
+	// Comprehensions
+	comprehension: DictComp ListComp SetComp
+
+	Ellipsis ("..." for multidimensional arrays)
+
+	Lambda (wait for FunctionDef to be complete)
+
+	arg => arguments.args[list].arg (is both ast type and a key 'arg' pointing to the name)
 			 => for python we would need:
 			 	- FunctionDefArg (a)
 			 	- FunctionDefArgDefaultValue (a = 3)
 			 	- FunctionDefArgAnnotation (a: int)
 			 	- FunctionDefVarArgsList (*args)
 			 	- FunctionDefVarArgsMap (**kwargs)
+	// TODO: make a full proposal for FunctionDef
+
+	// To do in rules (TODO): ========================================
+	exec, repr, print: are nodes in the Python 2 AST but they take the form of a functioncall.
+	Convert them to function calls using the rules
+	Convert ellipsis to a SimpleIdentifier with the name "pyellipsis".
+
+	// Merged or added as issue: ==============================================
+	Issue #52: Global Nonlocal
+	Issue #53: Async, Await, AsyncFor AsyncFunctionDef AsyncWith => these three can be avoided and stored as
+		For/FunctionDef/With if the save they "async" keyword node
 
 	// Operators:
-	Compare          => (comparators) .ops[list] = Eq | NotEq | Lt | LtE | Gt | GtE | Is | IsNot | In | NotIn
-	BoolOp           => .boolop = And | Or
-	BinOp            => .op = Add | Sub | Mult | MatMult | Div | Mod | Pow | LShift | RShift | BitOr |
+	PR: Compare          => (comparators) .ops[list] = Eq | NotEq | Lt | LtE | Gt | GtE | Is | IsNot | In | NotIn
+	PR: BoolOp           => .boolop = And | Or
+	PR: BinOp            => .op = Add | Sub | Mult | MatMult | Div | Mod | Pow | LShift | RShift | BitOr |
 	                          BitXor | BitAnd | FloorDiv
-	UnaryOp          => .unaryop = Invert | Not | UAdd | USub
+	PR: UnaryOp          => .unaryop = Invert | Not | UAdd | USub
+	PR #55: Delete
+	PR #56: Yield and YieldFrom
+	PR #57	ListExpansion (Starred) MapExpansion (**)
+	PR #58: BlockResource (the "thing" in "with thing:"), content_expr in the Python AST
+		>>> c = "with thing as t: t"
+		>>> ast.dump(ast.parse(c))
+		"Module(body=[With(
+				items=[
+				   withitem(context_expr=Name(id='thing', ctx=Load()), optional_vars=Name(id='t', ctx=Store()))
+				  ],
+				  body=[
+				    Expr(value=Name(id='t', ctx=Load())
+				    ) ] )
+			       ]
+			  )"
+    PR #59:
+		Subscript ->
+			a[1] -> Index value=NumLiteral
+			a[1:2] -> Slice lower=NumLiteral upper=NumLiteral
+			a[1:2,3:4] -> ExtSlice -> [Slice, Slice]
 
-	// Other Keywords that probably could be SimpleIdentifier/Name subnodes in a parent "Keyword" AST node:
-	Exec (body, globals, locals)
-	Repr (value)
-	Ellipsis ("..." for multidimensional arrays)
-	Global
-	Nonlocal
-	Async
-	Await
-	Print
+	// Noop (decently parsed by the rules even if unorthodox):
+	"else" clauses for for/while/try -> Added as "IfElse" child nodes of the for/while/try
+	"stride" third element in slices
 
-	For, while and exception Else statements
-
-	// Other:
-	Starred          => *expanded_list, could be translated to UnaryOp.Star
-	context_expr (the "thing" in "with thing:")
  */
+
+ // TODO: all the "orelse" subnodes of for/while/try as "IfElse" childs
+ // TODO: add the "stride", third element of slices in some way once we've the index/slice roles
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
+		// Comparison operators
+		On(HasInternalType(pyast.Eq).Roles(OpEqual),
+		On(HasInternalType(pyast.NotEq).Roles(OpNotEqual),
+		On(HasInternalType(pyast.Lt).Roles(OpLessThan),
+		On(HasInternalType(pyast.LtE).Roles(OpLessThanEqual),
+		On(HasInternalType(pyast.Gt).Roles(OpGreaterThan),
+		On(HasInternalType(pyast.GtE).Roles(OpGreaterThanEqual),
+		On(HasInternalType(pyast.Is).Roles(OpSame),
+		On(HasInternalType(pyast.IsNot).Roles(OpNotSame),
+		On(HasInternalType(pyast.In).Roles(OpContains),
+		On(HasInternalType(pyast.NotIn).Roles(OpNotContains),
+
 		// FIXME: boolliteral should probably be added to the UAST
 		On(HasInternalType(pyast.StringLiteral)).Roles(StringLiteral),
+		On(HasInternalType(pyast.ByteLiteral)).Roles(ByteStringLiteral),
 		On(HasInternalType(pyast.NumLiteral)).Roles(NumberLiteral),
 		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
-		On(HasInternalType(pyast.BoolLiteral)).Roles(Literal),
+		On(HasInternalType(pyast.BoolLiteral)).Roles(BooleanLiteral),
+		// FIXME: JoinedStr are the fstrings (f"my name is {name}"), they have a composite AST
+		// with a body that is a list of StringLiteral + FormattedValue(value, conversion, format_spec)
+		On(HasInternalType(pyast.JoinedStr)).Roles(StringLiteral),
+		On(HasInternalType(pyast.NoneLiteral)).Roles(NullLiteral),
+		// FIXME: change these to ContainerLiteral/CompoundLiteral/whatever if they're added
+		On(HasInternalType(pyast.Set)).Roles(SetLiteral),
+		On(HasInternalType(pyast.List)).Roles(ListLiteral),
+		On(HasInternalType(pyast.Dict)).Roles(MapLiteral),
+		On(HasInternalType(pyast.Tuple)).Roles(TupleLiteral),
 
 		// FIXME: add .args[].arg, .body, .name, .decorator_list[]
+		// FIXME XXX BUG: Call is for calls, not for definitions!
 		On(HasInternalType(pyast.FunctionDef)).Roles(FunctionDeclaration),
 		On(HasInternalType(pyast.Call)).Roles(Call).Children(
 			On(HasInternalRole("args")).Roles(CallPositionalArgument),
@@ -105,17 +143,6 @@ var AnnotationRules = On(Any).Self(
 		),
 
 		On(HasInternalType(pyast.Constant)).Roles(Literal),
-		// FIXME: should we make a distinction between StringLiteral and ByteLiteral on the UAST?
-		On(HasInternalType(pyast.ByteLiteral)).Roles(StringLiteral),
-		// FIXME: JoinedStr are the fstrings (f"my name is {name}"), they have a composite AST
-		// with a body that is a list of StringLiteral + FormattedValue(value, conversion, format_spec)
-		On(HasInternalType(pyast.JoinedStr)).Roles(StringLiteral),
-		On(HasInternalType(pyast.NoneLiteral)).Roles(NullLiteral),
-		// FIXME: change these to ContainerLiteral/CompoundLiteral/whatever if they're added
-		On(HasInternalType(pyast.Set)).Roles(Literal),
-		On(HasInternalType(pyast.List)).Roles(Literal),
-		On(HasInternalType(pyast.Dict)).Roles(Literal),
-		On(HasInternalType(pyast.Tuple)).Roles(Literal),
 		On(HasInternalType(pyast.Try)).Roles(Try).Children(
 			On(HasInternalRole("body")).Roles(TryBody),
 			On(HasInternalRole("finalbody")).Roles(TryFinally),
