@@ -190,6 +190,7 @@ Module {
 .  .  .  .  .  .  .  Children: {
 .  .  .  .  .  .  .  .  0: Gt {
 .  .  .  .  .  .  .  .  .  Roles: OpGreaterThan
+.  .  .  .  .  .  .  .  .  TOKEN ">"
 .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 1

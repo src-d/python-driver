@@ -46,6 +46,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: BitAnd {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseAnd
+.  .  .  .  .  .  .  TOKEN "&"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 1
@@ -109,6 +110,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: BitOr {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseOr
+.  .  .  .  .  .  .  TOKEN "|"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 2
@@ -172,6 +174,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: BitXor {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseXor
+.  .  .  .  .  .  .  TOKEN "^"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3
@@ -235,6 +238,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: LShift {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseLeftShift
+.  .  .  .  .  .  .  TOKEN "<<"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
@@ -298,6 +302,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: RShift {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseRightShift
+.  .  .  .  .  .  .  TOKEN ">>"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 5
@@ -383,6 +388,7 @@ Module {
 .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  1: BitAnd {
 .  .  .  .  .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseAnd
+.  .  .  .  .  .  .  .  .  .  .  TOKEN "&"
 .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
@@ -409,6 +415,7 @@ Module {
 .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  1: BitAnd {
 .  .  .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseAnd
+.  .  .  .  .  .  .  .  .  TOKEN "&"
 .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 6
@@ -435,6 +442,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: BitOr {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseOr
+.  .  .  .  .  .  .  TOKEN "|"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 6
@@ -509,6 +517,7 @@ Module {
 .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  1: Add {
 .  .  .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpAdd
+.  .  .  .  .  .  .  .  .  TOKEN "+"
 .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 7
@@ -535,6 +544,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: BitOr {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpBitwiseOr
+.  .  .  .  .  .  .  TOKEN "|"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 7
@@ -570,6 +580,7 @@ Module {
 .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  1: Add {
 .  .  .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpAdd
+.  .  .  .  .  .  .  .  .  TOKEN "+"
 .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 7

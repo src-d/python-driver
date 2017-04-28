@@ -11,6 +11,7 @@ Module {
 .  Children: {
 .  .  0: AugAssign {
 .  .  .  Roles: AugmentedAssignment,Assignment
+.  .  .  TOKEN "?="
 .  .  .  StartPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 1
@@ -22,6 +23,7 @@ Module {
 .  .  .  Children: {
 .  .  .  .  0: Add {
 .  .  .  .  .  Roles: OpAdd,AugmentedAssignmentOperator
+.  .  .  .  .  TOKEN "+"
 .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 1
@@ -61,6 +63,7 @@ Module {
 .  .  }
 .  .  1: AugAssign {
 .  .  .  Roles: AugmentedAssignment,Assignment
+.  .  .  TOKEN "?="
 .  .  .  StartPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 2
@@ -72,6 +75,7 @@ Module {
 .  .  .  Children: {
 .  .  .  .  0: Sub {
 .  .  .  .  .  Roles: OpSubstract,AugmentedAssignmentOperator
+.  .  .  .  .  TOKEN "-"
 .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 2
@@ -111,6 +115,7 @@ Module {
 .  .  }
 .  .  2: AugAssign {
 .  .  .  Roles: AugmentedAssignment,Assignment
+.  .  .  TOKEN "?="
 .  .  .  StartPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 3
@@ -122,6 +127,7 @@ Module {
 .  .  .  Children: {
 .  .  .  .  0: Mult {
 .  .  .  .  .  Roles: OpMultiply,AugmentedAssignmentOperator
+.  .  .  .  .  TOKEN "*"
 .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 3
@@ -161,6 +167,7 @@ Module {
 .  .  }
 .  .  3: AugAssign {
 .  .  .  Roles: AugmentedAssignment,Assignment
+.  .  .  TOKEN "?="
 .  .  .  StartPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 4
@@ -172,6 +179,7 @@ Module {
 .  .  .  Children: {
 .  .  .  .  0: Div {
 .  .  .  .  .  Roles: OpDivide,AugmentedAssignmentOperator
+.  .  .  .  .  TOKEN "/"
 .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 4

@@ -88,6 +88,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: Add {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpAdd
+.  .  .  .  .  .  .  TOKEN "+"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 2

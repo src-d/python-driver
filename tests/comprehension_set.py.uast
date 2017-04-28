@@ -56,6 +56,7 @@ Module {
 .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  1: Mult {
 .  .  .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpMultiply
+.  .  .  .  .  .  .  .  .  TOKEN "*"
 .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 1
@@ -135,6 +136,7 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  Children: {
 .  .  .  .  .  .  .  .  .  .  .  .  0: Gt {
 .  .  .  .  .  .  .  .  .  .  .  .  .  Roles: OpGreaterThan
+.  .  .  .  .  .  .  .  .  .  .  .  .  TOKEN ">"
 .  .  .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 1

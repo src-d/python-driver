@@ -28,6 +28,7 @@ Module {
 .  .  .  .  .  Children: {
 .  .  .  .  .  .  0: AugAssign {
 .  .  .  .  .  .  .  Roles: AugmentedAssignment,Assignment
+.  .  .  .  .  .  .  TOKEN "?="
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 2
@@ -36,6 +37,7 @@ Module {
 .  .  .  .  .  .  .  Children: {
 .  .  .  .  .  .  .  .  0: Add {
 .  .  .  .  .  .  .  .  .  Roles: OpAdd,AugmentedAssignmentOperator
+.  .  .  .  .  .  .  .  .  TOKEN "+"
 .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 2
