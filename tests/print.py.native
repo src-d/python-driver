@@ -1,4 +1,6 @@
 {
+    "status": "ok",
+    "errors": [],
     "ast": {
         "PY2AST": {
             "ast_type": "Module",
@@ -39,7 +41,5 @@
             "col_offset": 1,
             "lineno": 1
         }
-    },
-    "errors": [],
-    "status": "ok"
+    }
 }

@@ -2,6 +2,7 @@ package normalizer
 
 import (
 	"github.com/bblfsh/python-driver/driver/normalizer/pyast"
+
 	. "github.com/bblfsh/sdk/uast"
 	. "github.com/bblfsh/sdk/uast/ann"
 )
@@ -18,9 +19,9 @@ For a description of Python AST nodes:
 
 https://greentreesnakes.readthedocs.io/en/latest/nodes.html
 
- */
+*/
 
- // TODO: add the "stride", third element of slices in some way once we've the index/slice roles
+// TODO: add the "stride", third element of slices in some way once we've the index/slice roles
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error("root must be Module"),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
@@ -100,11 +101,11 @@ var AnnotationRules = On(Any).Self(
 			On(HasInternalType("arguments")).Roles(FunctionDeclarationArgument).Children(
 				On(HasInternalRole("args")).Roles(FunctionDeclarationArgument, FunctionDeclarationArgumentName),
 				On(HasInternalRole("vararg")).Roles(FunctionDeclarationArgument, FunctionDeclarationVarArgsList,
-													FunctionDeclarationArgumentName),
+					FunctionDeclarationArgumentName),
 				// FIXME: this is really different from vararg, change it when we have FunctionDeclarationMap
 				// or something similar in the UAST
 				On(HasInternalRole("kwarg")).Roles(FunctionDeclarationArgument, FunctionDeclarationVarArgsList,
-												   FunctionDeclarationArgumentName),
+					FunctionDeclarationArgumentName),
 				// Default arguments: Python's AST puts default arguments on a sibling list to the one of
 				// arguments that must be mapped to the arguments right-aligned like:
 				// a, b=2, c=3 ->
@@ -261,4 +262,3 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.Ellipsis)).Roles(SimpleIdentifier),
 	),
 )
-
