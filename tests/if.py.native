@@ -202,6 +202,82 @@
                             }
                         ]
                     }
+                },
+                {
+                    "ast_type": "If",
+                    "body": [
+                        {
+                            "ast_type": "Pass",
+                            "col_offset": 5,
+                            "lineno": 12
+                        }
+                    ],
+                    "col_offset": 1,
+                    "lineno": 11,
+                    "orelse": [],
+                    "test": {
+                        "ast_type": "Compare",
+                        "col_offset": 4,
+                        "comparators": [
+                            {
+                                "ast_type": "Name",
+                                "col_offset": 8,
+                                "ctx": "Load",
+                                "id": "b",
+                                "lineno": 11
+                            },
+                            {
+                                "ast_type": "Name",
+                                "col_offset": 12,
+                                "ctx": "Load",
+                                "id": "c",
+                                "lineno": 11
+                            },
+                            {
+                                "ast_type": "Name",
+                                "col_offset": 16,
+                                "ctx": "Load",
+                                "id": "d",
+                                "lineno": 11
+                            }
+                        ],
+                        "left": {
+                            "ast_type": "Name",
+                            "col_offset": 4,
+                            "ctx": "Load",
+                            "id": "a",
+                            "lineno": 11,
+                            "noops_previous": {
+                                "ast_type": "PreviousNoops",
+                                "col_offset": 1,
+                                "end_lineno": 10,
+                                "lineno": 10,
+                                "lines": [
+                                    {
+                                        "ast_type": "NoopLine",
+                                        "col_offset": 1,
+                                        "lineno": 10,
+                                        "noop_line": "\n"
+                                    }
+                                ]
+                            }
+                        },
+                        "lineno": 11,
+                        "ops": [
+                            {
+                                "ast_type": "Gt",
+                                "lineno": 11
+                            },
+                            {
+                                "ast_type": "Gt",
+                                "lineno": 11
+                            },
+                            {
+                                "ast_type": "Gt",
+                                "lineno": 11
+                            }
+                        ]
+                    }
                 }
             ],
             "col_offset": 1,

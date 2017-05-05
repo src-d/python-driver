@@ -75,8 +75,8 @@ var ToNoder = &native.ObjectToNoder{
 	// FIXME: test[ast_type=Compare].comparators is a list?? (should be "right")
 }
 
-// UASTParserBuilder creates a parser that transform source code files into *uast.Node.
-func UASTParserBuilder(opts driver.UASTParserOptions) (driver.UASTParser, error) {
+// ASTParserBuilder creates a parser that transform source code files into *uast.Node.
+func ASTParserBuilder(opts driver.UASTParserOptions) (driver.UASTParser, error) {
 	parser, err := native.ExecParser(ToNoder, opts.NativeBin)
 	if err != nil {
 		return nil, err

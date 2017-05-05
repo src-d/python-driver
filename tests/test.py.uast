@@ -37,7 +37,7 @@ Module {
 .  .  .  .  .  }
 .  .  .  .  }
 .  .  .  .  1: Compare {
-.  .  .  .  .  Roles: IfCondition
+.  .  .  .  .  Roles: IfCondition,BinaryExpression
 .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 1
@@ -48,6 +48,7 @@ Module {
 .  .  .  .  .  }
 .  .  .  .  .  Children: {
 .  .  .  .  .  .  0: Compare.comparators {
+.  .  .  .  .  .  .  Roles: BinaryExpressionRight
 .  .  .  .  .  .  .  Properties: {
 .  .  .  .  .  .  .  .  promotedPropertyList: true
 .  .  .  .  .  .  .  }
@@ -67,7 +68,7 @@ Module {
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: NumLiteral {
-.  .  .  .  .  .  .  Roles: NumberLiteral
+.  .  .  .  .  .  .  Roles: NumberLiteral,BinaryExpressionLeft
 .  .  .  .  .  .  .  TOKEN "1"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
@@ -80,6 +81,7 @@ Module {
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  }
 .  .  .  .  .  .  2: Compare.ops {
+.  .  .  .  .  .  .  Roles: BinaryExpressionOp
 .  .  .  .  .  .  .  Properties: {
 .  .  .  .  .  .  .  .  promotedPropertyList: true
 .  .  .  .  .  .  .  }
