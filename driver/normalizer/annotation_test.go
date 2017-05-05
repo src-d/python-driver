@@ -22,7 +22,7 @@ func TestAnnotate(t *testing.T) {
 	f, err := getFixture("python_example_1.json")
 	require.NoError(err)
 
-	n, err := NativeToNoder.ToNode(f)
+	n, err := ToNoder.ToNode(f)
 	require.NoError(err)
 	require.NotNil(n)
 
@@ -47,7 +47,7 @@ func TestAnnotatePrettyAnnotationsOnly(t *testing.T) {
 	f, err := getFixture("python_example_1.json")
 	require.NoError(err)
 
-	n, err := NativeToNoder.ToNode(f)
+	n, err := ToNoder.ToNode(f)
 	require.NoError(err)
 	require.NotNil(n)
 
@@ -66,7 +66,7 @@ func TestNodeTokens(t *testing.T) {
 	f, err := getFixture("python_example_1.json")
 	require.NoError(err)
 
-	n, err := NativeToNoder.ToNode(f)
+	n, err := ToNoder.ToNode(f)
 	require.NoError(err)
 	require.NotNil(n)
 
@@ -74,7 +74,7 @@ func TestNodeTokens(t *testing.T) {
 	require.True(len(tokens) > 0)
 	//func Pretty(n *Node, w io.Writer, includes IncludeFlag) error {
 	buf := bytes.NewBuffer(nil)
-	err = uast.Pretty(n, os.Stdout, uast.IncludeAll);
+	err = uast.Pretty(n, os.Stdout, uast.IncludeAll)
 	require.NoError(err)
 	fmt.Println(buf.String())
 }
@@ -85,7 +85,7 @@ func TestAll(t *testing.T) {
 	f, err := getFixture("python_example_1.json")
 	require.NoError(err)
 
-	n, err := NativeToNoder.ToNode(f)
+	n, err := ToNoder.ToNode(f)
 	require.NoError(err)
 	require.NotNil(n)
 
@@ -97,7 +97,7 @@ func TestAll(t *testing.T) {
 
 	//func Pretty(n *Node, w io.Writer, includes IncludeFlag) error {
 	buf := bytes.NewBuffer(nil)
-	err = uast.Pretty(n, os.Stdout, uast.IncludeAll);
+	err = uast.Pretty(n, os.Stdout, uast.IncludeAll)
 	require.NoError(err)
 	fmt.Println(buf.String())
 }

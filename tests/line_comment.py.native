@@ -1,4 +1,6 @@
 {
+    "status": "ok",
+    "errors": [],
     "ast": {
         "PY3AST": {
             "ast_type": "Module",
@@ -65,7 +67,5 @@
                 ]
             }
         }
-    },
-    "errors": [],
-    "status": "ok"
+    }
 }

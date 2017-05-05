@@ -11,6 +11,7 @@ Module {
 .  Children: {
 .  .  0: Print {
 .  .  .  Roles: Call,CallCallee
+.  .  .  TOKEN "print"
 .  .  .  StartPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 1
@@ -39,6 +40,7 @@ Module {
 .  .  }
 .  .  1: Print {
 .  .  .  Roles: Call,CallCallee
+.  .  .  TOKEN "print"
 .  .  .  StartPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 2
