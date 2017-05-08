@@ -33,6 +33,7 @@ Module {
 .  .  .  .  .  Children: {
 .  .  .  .  .  .  0: Invert {
 .  .  .  .  .  .  .  Roles: OpBitwiseComplement
+.  .  .  .  .  .  .  TOKEN "~"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 1
@@ -83,6 +84,7 @@ Module {
 .  .  .  .  .  Children: {
 .  .  .  .  .  .  0: USub {
 .  .  .  .  .  .  .  Roles: OpNegative
+.  .  .  .  .  .  .  TOKEN "-"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 2
@@ -133,6 +135,7 @@ Module {
 .  .  .  .  .  Children: {
 .  .  .  .  .  .  0: UAdd {
 .  .  .  .  .  .  .  Roles: OpPositive
+.  .  .  .  .  .  .  TOKEN "+"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3

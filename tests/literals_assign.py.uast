@@ -684,6 +684,7 @@ Module {
 .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  1: Add {
 .  .  .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpAdd
+.  .  .  .  .  .  .  .  .  TOKEN "+"
 .  .  .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 9
@@ -710,6 +711,7 @@ Module {
 .  .  .  .  .  .  }
 .  .  .  .  .  .  1: Sub {
 .  .  .  .  .  .  .  Roles: BinaryExpressionOp,OpSubstract
+.  .  .  .  .  .  .  TOKEN "-"
 .  .  .  .  .  .  .  StartPosition: {
 .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 9
