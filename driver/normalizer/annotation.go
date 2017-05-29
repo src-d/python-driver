@@ -35,6 +35,9 @@ Missing nodes or nodes needing new features from the SDK:
 	   Yield
 	   YieldFrom
 
+   = PR 57:
+	   Starred
+
    = PR 58:
        withitem
 
@@ -44,6 +47,11 @@ Missing nodes or nodes needing new features from the SDK:
 	   Slice
 	   ExtSlice
 
+   = PR 63:
+	   Lambda
+	   kwarg
+	   FunctionDef.decorator_list
+
    = PR 81:
 	   ListComp
 	   SetComp
@@ -52,35 +60,37 @@ Missing nodes or nodes needing new features from the SDK:
    = PR 79:
 	   arguments
 
+   = PR 111:
+	   FormattedValue (InterpolatedValue)
+
+   = PR 112:
+	   AnnAssign
+	   annotation
+
+   = PR 113:
+	   AsyncFunctionDef (FunctionDef + async)
+	   Await
+	   AsyncFor (For + async)
+	   AsyncWith (With + async)
+
+   = PR 114:
+	   Global
+	   Nonlocal
+
    === No PR:
-
-   JoinedStr
-   FormattedValue
-
-   Starred
 
    BoolOp collapsing: needs SDK features
    arguments.defaults: needs SDK features
    arguments.keywords: same
 
-   GeneratorExp: check
-
-   AnnAssign (currently as assign, needs Annotation UAST)
-
-   Lambda
-
-   Global
-   Nonlocal
-
-   AsyncFunctionDef (FunctionDef + async)
-   Await
-   AsyncFor (For + async)
-   AsyncWith (With + async)
-
+   These also need SDK list-mix features:
+	   Compare.comparators
+	   Compare.ops
+	   IfCondition.left
+	(see: https://greentreesnakes.readthedocs.io/en/latest/nodes.html#Compare)
 
 */
 
-// TODO: add the "stride", third element of slices in some way once we've the index/slice roles
 var AnnotationRules = On(Any).Self(
 	On(Not(HasInternalType(pyast.Module))).Error(errors.New("root must be Module")),
 	On(HasInternalType(pyast.Module)).Roles(File).Descendants(
@@ -138,9 +148,10 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.NumLiteral)).Roles(NumberLiteral),
 		On(HasInternalType(pyast.Str)).Roles(StringLiteral),
 		On(HasInternalType(pyast.BoolLiteral)).Roles(BooleanLiteral),
-		// FIXME: JoinedStr are the fstrings (f"my name is {name}"), they have a composite AST
-		// with a body that is a list of StringLiteral + FormattedValue(value, conversion, format_spec)
-		On(HasInternalType(pyast.JoinedStr)).Roles(StringLiteral),
+		On(HasInternalType(pyast.JoinedStr)).Roles(StringLiteral).Children(
+			// FIXME: should be StringInterpolatedExpression or something like that
+			On(HasInternalType(pyast.FormattedValue)).Roles(Expression),
+		),
 		On(HasInternalType(pyast.NoneLiteral)).Roles(NullLiteral),
 		On(HasInternalType(pyast.Set)).Roles(SetLiteral),
 		On(HasInternalType(pyast.List)).Roles(ListLiteral),
@@ -225,7 +236,7 @@ var AnnotationRules = On(Any).Self(
 			On(HasInternalRole("handlers")).Roles(TryCatch),
 			On(HasInternalRole("orelse")).Roles(IfElse),
 		),
-		On(HasInternalType(pyast.TryExcept)).Roles(TryCatch), // py2
+		On(HasInternalType(pyast.TryExcept)).Roles(TryCatch),     // py2
 		On(HasInternalType(pyast.ExceptHandler)).Roles(TryCatch), // py3
 		On(HasInternalType(pyast.TryFinally)).Roles(TryFinally),
 		On(HasInternalType(pyast.Raise)).Roles(Throw),
@@ -236,10 +247,27 @@ var AnnotationRules = On(Any).Self(
 		On(HasInternalType(pyast.Return)).Roles(Return),
 		On(HasInternalType(pyast.Break)).Roles(Break),
 		On(HasInternalType(pyast.Continue)).Roles(Continue),
+		// FIXME: IfCondition bodies in Python take the form:
+		// 1 < a < 10
+		// - left (internalRole): 1 (first element)
+		// - Compare.ops (internalType): [LessThan, LessThan]
+		// - Compare.comparators (internalType): ['a', 10]
+		// The current mapping is:
+		// - left: BinaryExpressionLeft
+		// - Compare.ops: BinaryExpressionOp
+		// - Compare.comparators: BinaryExpressionRight
+		// But this is obviously not correct. To fix this properly we would need
+		// and SDK feature to mix lists (also needed for default and keyword arguments and
+		// boolean operators).
+		// "If that sounds awkward is because it is" (their words)
 		On(HasInternalType(pyast.If)).Roles(If).Children(
 			On(HasInternalType("If.body")).Roles(IfBody),
-			On(HasInternalType(pyast.Compare)).Roles(IfCondition),
 			On(HasInternalType("If.orelse")).Roles(IfElse),
+			On(HasInternalType(pyast.Compare)).Roles(IfCondition, BinaryExpression).Children(
+				On(HasInternalType("Compare.ops")).Roles(BinaryExpressionOp),
+				On(HasInternalType("Compare.comparators")).Roles(BinaryExpressionRight),
+				On(HasInternalRole("left")).Roles(BinaryExpressionLeft),
+			),
 		),
 		On(HasInternalType(pyast.IfExp)).Roles(If, Expression).Children(
 			// These are used on ifexpressions (a = 1 if x else 2)
@@ -296,11 +324,27 @@ var AnnotationRules = On(Any).Self(
 		// information by themselves and this we consider it comments (some preprocessors or linters can use
 		// them, the runtimes ignore them). The TOKEN will take the annotation in the UAST node so
 		// the information is keept in any case.
+		// FIXME: change to Annotation when PR 112 is merged
 		On(HasInternalRole("annotation")).Roles(Comment),
 		On(HasInternalRole("returns")).Roles(Comment),
 
 		// Python very odd ellipsis operator. Has a special rule in tonoder synthetic tokens
 		// map to load it with the token "PythonEllipsisOperator" and gets the role SimpleIdentifier
 		On(HasInternalType(pyast.Ellipsis)).Roles(SimpleIdentifier),
+
+		// List/Map/Set comprehensions. We map the "for x in y" to ForEach roles and the
+		// "if something" to If* roles. FIXME: missing the top comprehension roles in the UAST, change
+		// once they've been merged
+		On(HasInternalType(pyast.Comprehension)).Roles(ForEach).Children(
+			On(HasInternalRole("iter")).Roles(ForUpdate),
+			On(HasInternalRole("target")).Roles(ForExpression),
+			// FIXME: see the comment on IfCondition above
+			On(HasInternalType(pyast.Compare)).Roles(IfCondition, BinaryExpression).Children(
+				On(HasInternalType("Compare.ops")).Roles(BinaryExpressionOp),
+				On(HasInternalType("Compare.comparators")).Roles(BinaryExpressionRight),
+				On(HasInternalRole("left")).Roles(BinaryExpressionLeft),
+			),
+		),
+
 	),
 )

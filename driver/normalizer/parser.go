@@ -31,25 +31,25 @@ var ToNoder = &native.ObjectToNoder{
 		"Mod":       "%%",
 		"Pow":       "**",
 		"AugAssign": "?=",
-		"BitAnd"  : "&",
-		"BitOr"   : "|",
-		"BitXor"  : "^",
-		"LShift"  : "<<",
-		"RShift"  : ">>",
-		"Eq"      : "==",
-		"NotEq"   : "!=",
-		"Not"     : "!",
-		"Lt"      : "<",
-		"LtE"     : "<=",
-		"Gt"      : ">",
-		"GtE"     : ">=",
-		"Is"      : "is",
-		"IsNot"   : "not is",
-		"In"      : "in",
-		"NotIn"   : "not in",
-		"UAdd"    : "+",
-		"USub"    : "-",
-		"Invert"  : "~",
+		"BitAnd":    "&",
+		"BitOr":     "|",
+		"BitXor":    "^",
+		"LShift":    "<<",
+		"RShift":    ">>",
+		"Eq":        "==",
+		"NotEq":     "!=",
+		"Not":       "!",
+		"Lt":        "<",
+		"LtE":       "<=",
+		"Gt":        ">",
+		"GtE":       ">=",
+		"Is":        "is",
+		"IsNot":     "not is",
+		"In":        "in",
+		"NotIn":     "not in",
+		"UAdd":      "+",
+		"USub":      "-",
+		"Invert":    "~",
 	},
 	PromoteAllPropertyLists: false,
 	PromotedPropertyLists: map[string]map[string]bool{
@@ -75,8 +75,8 @@ var ToNoder = &native.ObjectToNoder{
 	// FIXME: test[ast_type=Compare].comparators is a list?? (should be "right")
 }
 
-// UASTParserBuilder creates a parser that transform source code files into *uast.Node.
-func UASTParserBuilder(opts driver.UASTParserOptions) (driver.UASTParser, error) {
+// ASTParserBuilder creates a parser that transform source code files into *uast.Node.
+func ASTParserBuilder(opts driver.UASTParserOptions) (driver.UASTParser, error) {
 	parser, err := native.ExecParser(ToNoder, opts.NativeBin)
 	if err != nil {
 		return nil, err

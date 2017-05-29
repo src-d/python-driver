@@ -1,0 +1,473 @@
+{
+    "status": "ok",
+    "errors": [],
+    "ast": {
+        "PY3AST": {
+            "ast_type": "Module",
+            "body": [
+                {
+                    "ast_type": "Assign",
+                    "col_offset": 1,
+                    "lineno": 1,
+                    "targets": [
+                        {
+                            "ast_type": "Name",
+                            "col_offset": 1,
+                            "ctx": "Store",
+                            "id": "a",
+                            "lineno": 1
+                        }
+                    ],
+                    "value": {
+                        "LiteralValue": 42,
+                        "NumType": "int",
+                        "ast_type": "NumLiteral",
+                        "col_offset": 5,
+                        "lineno": 1
+                    }
+                },
+                {
+                    "ast_type": "Assign",
+                    "col_offset": 1,
+                    "lineno": 2,
+                    "targets": [
+                        {
+                            "ast_type": "Name",
+                            "col_offset": 1,
+                            "ctx": "Store",
+                            "id": "b",
+                            "lineno": 2
+                        }
+                    ],
+                    "value": {
+                        "LiteralValue": 3.14,
+                        "NumType": "float",
+                        "ast_type": "NumLiteral",
+                        "col_offset": 5,
+                        "lineno": 2
+                    }
+                },
+                {
+                    "ast_type": "Expr",
+                    "col_offset": 1,
+                    "lineno": 3,
+                    "value": {
+                        "ast_type": "JoinedStr",
+                        "col_offset": 1,
+                        "lineno": 3,
+                        "values": [
+                            {
+                                "LiteralValue": "This is an fstring with an ",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 3
+                            },
+                            {
+                                "ast_type": "FormattedValue",
+                                "col_offset": 1,
+                                "conversion": -1,
+                                "format_spec": null,
+                                "lineno": 3,
+                                "value": {
+                                    "ast_type": "Name",
+                                    "col_offset": 2,
+                                    "ctx": "Load",
+                                    "id": "a",
+                                    "lineno": 1
+                                }
+                            },
+                            {
+                                "LiteralValue": " inserted parameter",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 3
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ast_type": "Expr",
+                    "col_offset": 1,
+                    "lineno": 4,
+                    "value": {
+                        "ast_type": "JoinedStr",
+                        "col_offset": 1,
+                        "lineno": 4,
+                        "values": [
+                            {
+                                "LiteralValue": "Another with ",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 4
+                            },
+                            {
+                                "ast_type": "FormattedValue",
+                                "col_offset": 1,
+                                "conversion": 115,
+                                "format_spec": null,
+                                "lineno": 4,
+                                "value": {
+                                    "ast_type": "Name",
+                                    "col_offset": 2,
+                                    "ctx": "Load",
+                                    "id": "a",
+                                    "lineno": 1
+                                }
+                            },
+                            {
+                                "LiteralValue": " tostring indicator",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 4
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ast_type": "Expr",
+                    "col_offset": 1,
+                    "lineno": 5,
+                    "value": {
+                        "ast_type": "JoinedStr",
+                        "col_offset": 1,
+                        "lineno": 5,
+                        "values": [
+                            {
+                                "LiteralValue": "Another with ",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 5
+                            },
+                            {
+                                "ast_type": "FormattedValue",
+                                "col_offset": 1,
+                                "conversion": 114,
+                                "format_spec": null,
+                                "lineno": 5,
+                                "value": {
+                                    "ast_type": "Name",
+                                    "col_offset": 2,
+                                    "ctx": "Load",
+                                    "id": "a",
+                                    "lineno": 1
+                                }
+                            },
+                            {
+                                "LiteralValue": " repr indicator",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 5
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ast_type": "Expr",
+                    "col_offset": 1,
+                    "lineno": 6,
+                    "value": {
+                        "ast_type": "JoinedStr",
+                        "col_offset": 1,
+                        "lineno": 6,
+                        "values": [
+                            {
+                                "LiteralValue": "Another with ",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 6
+                            },
+                            {
+                                "ast_type": "FormattedValue",
+                                "col_offset": 1,
+                                "conversion": 97,
+                                "format_spec": null,
+                                "lineno": 6,
+                                "value": {
+                                    "ast_type": "Name",
+                                    "col_offset": 2,
+                                    "ctx": "Load",
+                                    "id": "a",
+                                    "lineno": 1
+                                }
+                            },
+                            {
+                                "LiteralValue": " ascii indicator",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 6
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ast_type": "Expr",
+                    "col_offset": 1,
+                    "lineno": 7,
+                    "value": {
+                        "ast_type": "JoinedStr",
+                        "col_offset": 1,
+                        "lineno": 7,
+                        "values": [
+                            {
+                                "LiteralValue": "Another with ",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 7
+                            },
+                            {
+                                "ast_type": "FormattedValue",
+                                "col_offset": 1,
+                                "conversion": -1,
+                                "format_spec": {
+                                    "ast_type": "JoinedStr",
+                                    "col_offset": 1,
+                                    "lineno": 7,
+                                    "values": [
+                                        {
+                                            "ast_type": "FormattedValue",
+                                            "col_offset": 1,
+                                            "conversion": -1,
+                                            "format_spec": null,
+                                            "lineno": 7,
+                                            "value": {
+                                                "LiteralValue": 2,
+                                                "NumType": "int",
+                                                "ast_type": "NumLiteral",
+                                                "col_offset": 2,
+                                                "lineno": 1
+                                            }
+                                        },
+                                        {
+                                            "LiteralValue": ".",
+                                            "ast_type": "StringLiteral",
+                                            "col_offset": 1,
+                                            "lineno": 7
+                                        },
+                                        {
+                                            "ast_type": "FormattedValue",
+                                            "col_offset": 1,
+                                            "conversion": -1,
+                                            "format_spec": null,
+                                            "lineno": 7,
+                                            "value": {
+                                                "LiteralValue": 3,
+                                                "NumType": "int",
+                                                "ast_type": "NumLiteral",
+                                                "col_offset": 2,
+                                                "lineno": 1
+                                            }
+                                        }
+                                    ]
+                                },
+                                "lineno": 7,
+                                "value": {
+                                    "ast_type": "Name",
+                                    "col_offset": 2,
+                                    "ctx": "Load",
+                                    "id": "b",
+                                    "lineno": 1
+                                }
+                            },
+                            {
+                                "LiteralValue": " width and precission float indicator",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 7
+                            }
+                        ]
+                    }
+                },
+                {
+                    "args": {
+                        "args": [
+                            {
+                                "annotation": null,
+                                "arg": "i",
+                                "ast_type": "arg",
+                                "col_offset": 14,
+                                "lineno": 9,
+                                "noops_previous": {
+                                    "ast_type": "PreviousNoops",
+                                    "col_offset": 1,
+                                    "end_lineno": 8,
+                                    "lineno": 8,
+                                    "lines": [
+                                        {
+                                            "ast_type": "NoopLine",
+                                            "col_offset": 1,
+                                            "lineno": 8,
+                                            "noop_line": "\n"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "ast_type": "arguments",
+                        "defaults": [],
+                        "kw_defaults": [],
+                        "kwarg": null,
+                        "kwonlyargs": [],
+                        "lineno": 9,
+                        "vararg": null
+                    },
+                    "ast_type": "FunctionDef",
+                    "body": [
+                        {
+                            "ast_type": "Return",
+                            "col_offset": 18,
+                            "lineno": 9,
+                            "value": {
+                                "ast_type": "BinOp",
+                                "col_offset": 25,
+                                "left": {
+                                    "ast_type": "Name",
+                                    "col_offset": 25,
+                                    "ctx": "Load",
+                                    "id": "i",
+                                    "lineno": 9
+                                },
+                                "lineno": 9,
+                                "op": {
+                                    "ast_type": "Mult",
+                                    "lineno": 9
+                                },
+                                "right": {
+                                    "LiteralValue": 2,
+                                    "NumType": "int",
+                                    "ast_type": "NumLiteral",
+                                    "col_offset": 27,
+                                    "lineno": 9
+                                }
+                            }
+                        }
+                    ],
+                    "col_offset": 1,
+                    "decorator_list": [],
+                    "lineno": 9,
+                    "name": "somefunc",
+                    "returns": null
+                },
+                {
+                    "ast_type": "Expr",
+                    "col_offset": 1,
+                    "lineno": 10,
+                    "value": {
+                        "ast_type": "JoinedStr",
+                        "col_offset": 1,
+                        "lineno": 10,
+                        "values": [
+                            {
+                                "LiteralValue": "Another with ",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 10
+                            },
+                            {
+                                "ast_type": "FormattedValue",
+                                "col_offset": 1,
+                                "conversion": -1,
+                                "format_spec": null,
+                                "lineno": 10,
+                                "value": {
+                                    "args": [
+                                        {
+                                            "LiteralValue": 10,
+                                            "NumType": "int",
+                                            "ast_type": "NumLiteral",
+                                            "col_offset": 11,
+                                            "lineno": 1
+                                        }
+                                    ],
+                                    "ast_type": "Call",
+                                    "col_offset": 2,
+                                    "func": {
+                                        "ast_type": "Name",
+                                        "col_offset": 2,
+                                        "ctx": "Load",
+                                        "id": "somefunc",
+                                        "lineno": 1
+                                    },
+                                    "keywords": [],
+                                    "lineno": 1
+                                }
+                            },
+                            {
+                                "LiteralValue": " an embedded call",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 10
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ast_type": "Expr",
+                    "col_offset": 1,
+                    "lineno": 11,
+                    "value": {
+                        "ast_type": "JoinedStr",
+                        "col_offset": 1,
+                        "lineno": 11,
+                        "values": [
+                            {
+                                "LiteralValue": "Another with ",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 11
+                            },
+                            {
+                                "ast_type": "FormattedValue",
+                                "col_offset": 1,
+                                "conversion": -1,
+                                "format_spec": null,
+                                "lineno": 11,
+                                "value": {
+                                    "args": [],
+                                    "ast_type": "Call",
+                                    "col_offset": 2,
+                                    "func": {
+                                        "ast_type": "Attribute",
+                                        "attr": "upper",
+                                        "col_offset": 2,
+                                        "ctx": "Load",
+                                        "lineno": 1,
+                                        "value": {
+                                            "LiteralValue": "pok",
+                                            "ast_type": "StringLiteral",
+                                            "col_offset": 2,
+                                            "lineno": 1
+                                        }
+                                    },
+                                    "keywords": [],
+                                    "lineno": 1
+                                }
+                            },
+                            {
+                                "LiteralValue": " an embedded expression",
+                                "ast_type": "StringLiteral",
+                                "col_offset": 1,
+                                "lineno": 11
+                            }
+                        ]
+                    }
+                }
+            ],
+            "col_offset": 1,
+            "lineno": 1,
+            "noops_remainder": {
+                "ast_type": "RemainderNoops",
+                "col_offset": 1,
+                "end_lineno": 13,
+                "lineno": 12,
+                "lines": [
+                    {
+                        "ast_type": "NoopLine",
+                        "col_offset": 1,
+                        "lineno": 12,
+                        "noop_line": "\n"
+                    }
+                ]
+            }
+        }
+    }
+}
