@@ -225,7 +225,7 @@ var AnnotationRules = On(Any).Self(
 			On(HasInternalRole("handlers")).Roles(TryCatch),
 			On(HasInternalRole("orelse")).Roles(IfElse),
 		),
-		On(HasInternalType(pyast.TryExcept)).Roles(TryCatch), // py2
+		On(HasInternalType(pyast.TryExcept)).Roles(TryCatch),     // py2
 		On(HasInternalType(pyast.ExceptHandler)).Roles(TryCatch), // py3
 		On(HasInternalType(pyast.TryFinally)).Roles(TryFinally),
 		On(HasInternalType(pyast.Raise)).Roles(Throw),
