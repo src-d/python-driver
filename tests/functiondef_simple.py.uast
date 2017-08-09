@@ -1,6 +1,5 @@
-Status:  error
+Status:  ok
 Errors: 
- .  column out of bounds: 0 [1, 1]
 UAST: 
 Module {
 .  Roles: File
@@ -220,9 +219,9 @@ Module {
 .  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  Offset: 57
 .  .  .  .  .  .  .  .  .  .  Line: 4
-.  .  .  .  .  .  .  .  .  .  Col: 0
+.  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  Properties: {
 .  .  .  .  .  .  .  .  .  .  internalRole: noops_previous
@@ -233,7 +232,7 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  TOKEN "
 "
 .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 57
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  .  .  }
@@ -249,12 +248,12 @@ Module {
 .  .  .  .  .  .  .  Roles: FunctionDeclarationArgument,FunctionDeclarationArgumentName
 .  .  .  .  .  .  .  TOKEN "n2"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 74
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 75
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 18
 .  .  .  .  .  .  .  }
@@ -267,12 +266,12 @@ Module {
 .  .  .  .  .  .  .  Roles: FunctionDeclarationArgument,FunctionDeclarationArgumentName
 .  .  .  .  .  .  .  TOKEN "n3"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 78
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 21
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 79
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 22
 .  .  .  .  .  .  .  }
@@ -292,12 +291,12 @@ Module {
 .  .  .  .  .  .  0: Expr {
 .  .  .  .  .  .  .  Roles: Expression
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 87
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 5
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 102
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 20
 .  .  .  .  .  .  .  }
@@ -305,12 +304,12 @@ Module {
 .  .  .  .  .  .  .  .  0: Yield {
 .  .  .  .  .  .  .  .  .  Roles: Return,Statement,Incomplete,ListLiteral,Expression,Incomplete
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  Offset: 87
 .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  Col: 5
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  Offset: 102
 .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  Col: 20
 .  .  .  .  .  .  .  .  .  }
@@ -321,12 +320,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  0: Tuple {
 .  .  .  .  .  .  .  .  .  .  .  Roles: TupleLiteral,Expression
 .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 93
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 11
 .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 102
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 20
 .  .  .  .  .  .  .  .  .  .  .  }
@@ -339,12 +338,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  .  .  .  .  TOKEN "n1"
 .  .  .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 93
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 11
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 94
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 12
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
@@ -357,12 +356,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  .  .  .  .  TOKEN "n2"
 .  .  .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 97
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 15
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 98
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 16
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
@@ -375,12 +374,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  .  .  .  .  TOKEN "n3"
 .  .  .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 101
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 19
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 102
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 20
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
@@ -403,12 +402,12 @@ Module {
 .  .  .  Roles: FunctionDeclaration,FunctionDeclarationName,SimpleIdentifier,Incomplete
 .  .  .  TOKEN "asyncfunc"
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 0
+.  .  .  .  Offset: 115
 .  .  .  .  Line: 8
 .  .  .  .  Col: 11
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 0
+.  .  .  .  Offset: 128
 .  .  .  .  Line: 8
 .  .  .  .  Col: 24
 .  .  .  }
@@ -420,12 +419,12 @@ Module {
 .  .  .  .  0: arguments {
 .  .  .  .  .  Roles: FunctionDeclarationArgument,Incomplete
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  Offset: 126
 .  .  .  .  .  .  Line: 8
 .  .  .  .  .  .  Col: 22
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  Offset: 128
 .  .  .  .  .  .  Line: 8
 .  .  .  .  .  .  Col: 24
 .  .  .  .  .  }
@@ -439,12 +438,12 @@ Module {
 .  .  .  .  .  .  .  Roles: FunctionDeclarationArgument,FunctionDeclarationArgumentName
 .  .  .  .  .  .  .  TOKEN "arg1"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 125
 .  .  .  .  .  .  .  .  Line: 8
 .  .  .  .  .  .  .  .  Col: 21
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  Offset: 128
 .  .  .  .  .  .  .  .  Line: 8
 .  .  .  .  .  .  .  .  Col: 24
 .  .  .  .  .  .  .  }
@@ -456,14 +455,14 @@ Module {
 .  .  .  .  .  .  .  .  0: PreviousNoops {
 .  .  .  .  .  .  .  .  .  Roles: Whitespace
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  Offset: 104
 .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  Offset: 104
 .  .  .  .  .  .  .  .  .  .  Line: 7
-.  .  .  .  .  .  .  .  .  .  Col: 0
+.  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  Properties: {
 .  .  .  .  .  .  .  .  .  .  internalRole: noops_previous
@@ -474,7 +473,7 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  TOKEN "
 "
 .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 104
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  .  .  }
@@ -491,7 +490,7 @@ Module {
 .  .  .  .  1: Pass {
 .  .  .  .  .  Roles: Noop,Statement
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 0
+.  .  .  .  .  .  Offset: 136
 .  .  .  .  .  .  Line: 9
 .  .  .  .  .  .  Col: 5
 .  .  .  .  .  }

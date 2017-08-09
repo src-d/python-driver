@@ -375,7 +375,7 @@
                                 "noops_previous": {
                                     "ast_type": "PreviousNoops",
                                     "col_offset": 1,
-                                    "end_col_offset": 0,
+                                    "end_col_offset": 1,
                                     "end_lineno": 8,
                                     "lineno": 8,
                                     "lines": [
@@ -582,13 +582,13 @@
                 }
             ],
             "col_offset": 1,
-            "end_col_offset": 1,
+            "end_col_offset": 2,
             "end_lineno": 12,
             "lineno": 1,
             "noops_remainder": {
                 "ast_type": "RemainderNoops",
                 "col_offset": 1,
-                "end_col_offset": 1,
+                "end_col_offset": 2,
                 "end_lineno": 12,
                 "lineno": 12,
                 "lines": [

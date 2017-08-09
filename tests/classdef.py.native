@@ -121,7 +121,7 @@
                                         "noops_previous": {
                                             "ast_type": "PreviousNoops",
                                             "col_offset": 1,
-                                            "end_col_offset": 0,
+                                            "end_col_offset": 1,
                                             "end_lineno": 5,
                                             "lineno": 5,
                                             "lines": [
@@ -210,7 +210,7 @@
                                             "noops_previous": {
                                                 "ast_type": "PreviousNoops",
                                                 "col_offset": 1,
-                                                "end_col_offset": 0,
+                                                "end_col_offset": 1,
                                                 "end_lineno": 8,
                                                 "lineno": 8,
                                                 "lines": [
@@ -258,7 +258,7 @@
                                         "noops_previous": {
                                             "ast_type": "PreviousNoops",
                                             "col_offset": 1,
-                                            "end_col_offset": 0,
+                                            "end_col_offset": 1,
                                             "end_lineno": 12,
                                             "lineno": 12,
                                             "lines": [
@@ -376,7 +376,7 @@
                             "noops_previous": {
                                 "ast_type": "PreviousNoops",
                                 "col_offset": 1,
-                                "end_col_offset": 0,
+                                "end_col_offset": 1,
                                 "end_lineno": 16,
                                 "lineno": 16,
                                 "lines": [

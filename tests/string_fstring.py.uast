@@ -1,6 +1,6 @@
 Status:  error
 Errors: 
- .  column out of bounds: 0 [1, 1]
+ .  column out of bounds: 2 [1, 1]
 UAST: 
 Module {
 .  Roles: File
@@ -10,9 +10,9 @@ Module {
 .  .  Col: 1
 .  }
 .  EndPosition: {
-.  .  Offset: 382
+.  .  Offset: 0
 .  .  Line: 12
-.  .  Col: 1
+.  .  Col: 2
 .  }
 .  Children: {
 .  .  0: Assign {
@@ -23,7 +23,7 @@ Module {
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 5
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 1
 .  .  .  .  Col: 6
 .  .  .  }
@@ -53,12 +53,12 @@ Module {
 .  .  .  .  .  Roles: NumberLiteral,Expression,AssignmentValue
 .  .  .  .  .  TOKEN "42"
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 4
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 1
 .  .  .  .  .  .  Col: 5
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 5
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 1
 .  .  .  .  .  .  Col: 6
 .  .  .  .  .  }
@@ -72,12 +72,12 @@ Module {
 .  .  1: Assign {
 .  .  .  Roles: Assignment,Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 7
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 2
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 14
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 2
 .  .  .  .  Col: 8
 .  .  .  }
@@ -89,12 +89,12 @@ Module {
 .  .  .  .  .  Roles: AssignmentVariable,SimpleIdentifier,Expression
 .  .  .  .  .  TOKEN "b"
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 7
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 2
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 7
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 2
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
@@ -107,12 +107,12 @@ Module {
 .  .  .  .  .  Roles: NumberLiteral,Expression,AssignmentValue
 .  .  .  .  .  TOKEN "3.14"
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 11
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 2
 .  .  .  .  .  .  Col: 5
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 14
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 2
 .  .  .  .  .  .  Col: 8
 .  .  .  .  .  }
@@ -126,12 +126,12 @@ Module {
 .  .  2: Expr {
 .  .  .  Roles: Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 16
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 3
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 67
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 3
 .  .  .  .  Col: 52
 .  .  .  }
@@ -142,12 +142,12 @@ Module {
 .  .  .  .  0: JoinedStr {
 .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 16
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 67
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  Col: 52
 .  .  .  .  .  }
@@ -159,12 +159,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN "This is an fstring with an "
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 18
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  Col: 3
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 67
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  Col: 52
 .  .  .  .  .  .  .  }
@@ -175,12 +175,12 @@ Module {
 .  .  .  .  .  .  1: FormattedValue {
 .  .  .  .  .  .  .  Roles: Expression,Incomplete
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 26
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  Col: 11
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 67
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  Col: 52
 .  .  .  .  .  .  .  }
@@ -194,12 +194,12 @@ Module {
 .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  TOKEN "a"
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 26
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  .  .  Col: 11
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 67
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  .  .  Col: 52
 .  .  .  .  .  .  .  .  .  }
@@ -214,12 +214,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN " inserted parameter"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 48
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  Col: 33
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 67
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  Col: 52
 .  .  .  .  .  .  .  }
@@ -234,12 +234,12 @@ Module {
 .  .  3: Expr {
 .  .  .  Roles: Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 69
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 4
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 108
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 4
 .  .  .  .  Col: 40
 .  .  .  }
@@ -250,12 +250,12 @@ Module {
 .  .  .  .  0: JoinedStr {
 .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 69
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 108
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  Col: 40
 .  .  .  .  .  }
@@ -267,12 +267,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN "Another with "
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 71
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 3
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 108
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 40
 .  .  .  .  .  .  .  }
@@ -283,12 +283,12 @@ Module {
 .  .  .  .  .  .  1: FormattedValue {
 .  .  .  .  .  .  .  Roles: Expression,Incomplete
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 85
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 108
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 40
 .  .  .  .  .  .  .  }
@@ -302,12 +302,12 @@ Module {
 .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  TOKEN "a"
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 85
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 108
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  .  .  Col: 40
 .  .  .  .  .  .  .  .  .  }
@@ -322,12 +322,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN " tostring indicator"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 89
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 21
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 108
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 40
 .  .  .  .  .  .  .  }
@@ -342,12 +342,12 @@ Module {
 .  .  4: Expr {
 .  .  .  Roles: Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 110
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 5
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 145
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 5
 .  .  .  .  Col: 36
 .  .  .  }
@@ -358,12 +358,12 @@ Module {
 .  .  .  .  0: JoinedStr {
 .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 110
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 145
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  Col: 36
 .  .  .  .  .  }
@@ -375,12 +375,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN "Another with "
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 112
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 3
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 145
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 36
 .  .  .  .  .  .  .  }
@@ -391,12 +391,12 @@ Module {
 .  .  .  .  .  .  1: FormattedValue {
 .  .  .  .  .  .  .  Roles: Expression,Incomplete
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 126
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 145
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 36
 .  .  .  .  .  .  .  }
@@ -410,12 +410,12 @@ Module {
 .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  TOKEN "a"
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 126
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 145
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  .  .  Col: 36
 .  .  .  .  .  .  .  .  .  }
@@ -430,12 +430,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN " repr indicator"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 130
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 21
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 145
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 5
 .  .  .  .  .  .  .  .  Col: 36
 .  .  .  .  .  .  .  }
@@ -450,12 +450,12 @@ Module {
 .  .  5: Expr {
 .  .  .  Roles: Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 147
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 6
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 183
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 6
 .  .  .  .  Col: 37
 .  .  .  }
@@ -466,12 +466,12 @@ Module {
 .  .  .  .  0: JoinedStr {
 .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 147
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 183
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  Col: 37
 .  .  .  .  .  }
@@ -483,12 +483,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN "Another with "
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 149
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 3
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 183
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 37
 .  .  .  .  .  .  .  }
@@ -499,12 +499,12 @@ Module {
 .  .  .  .  .  .  1: FormattedValue {
 .  .  .  .  .  .  .  Roles: Expression,Incomplete
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 163
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 183
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 37
 .  .  .  .  .  .  .  }
@@ -518,12 +518,12 @@ Module {
 .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  TOKEN "a"
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 163
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 183
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  .  .  Col: 37
 .  .  .  .  .  .  .  .  .  }
@@ -538,12 +538,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN " ascii indicator"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 167
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 21
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 183
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 6
 .  .  .  .  .  .  .  .  Col: 37
 .  .  .  .  .  .  .  }
@@ -558,12 +558,12 @@ Module {
 .  .  6: Expr {
 .  .  .  Roles: Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 185
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 7
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 248
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 7
 .  .  .  .  Col: 64
 .  .  .  }
@@ -574,12 +574,12 @@ Module {
 .  .  .  .  0: JoinedStr {
 .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 185
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  Col: 64
 .  .  .  .  .  }
@@ -591,12 +591,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN "Another with "
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 187
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  Col: 3
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  }
@@ -607,12 +607,12 @@ Module {
 .  .  .  .  .  .  1: FormattedValue {
 .  .  .  .  .  .  .  Roles: Expression,Incomplete
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 201
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  }
@@ -624,12 +624,12 @@ Module {
 .  .  .  .  .  .  .  .  0: JoinedStr {
 .  .  .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 185
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  .  .  }
@@ -640,12 +640,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  0: FormattedValue {
 .  .  .  .  .  .  .  .  .  .  .  Roles: Expression,Incomplete
 .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 204
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 20
 .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  .  .  .  .  }
@@ -659,12 +659,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  .  .  Roles: NumberLiteral,Expression
 .  .  .  .  .  .  .  .  .  .  .  .  .  TOKEN "2"
 .  .  .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 204
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 20
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
@@ -679,12 +679,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  .  .  .  .  TOKEN "."
 .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 206
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 22
 .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  .  .  .  .  }
@@ -695,12 +695,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  2: FormattedValue {
 .  .  .  .  .  .  .  .  .  .  .  Roles: Expression,Incomplete
 .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 208
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 24
 .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  .  .  .  .  }
@@ -714,12 +714,12 @@ Module {
 .  .  .  .  .  .  .  .  .  .  .  .  .  Roles: NumberLiteral,Expression
 .  .  .  .  .  .  .  .  .  .  .  .  .  TOKEN "3"
 .  .  .  .  .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 208
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 24
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  .  .  .  .  .  .  }
@@ -736,12 +736,12 @@ Module {
 .  .  .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  .  .  TOKEN "b"
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 201
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  Col: 17
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  .  .  }
@@ -756,12 +756,12 @@ Module {
 .  .  .  .  .  .  .  Roles: StringLiteral,Expression
 .  .  .  .  .  .  .  TOKEN " width and precission float indicator"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 211
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  Col: 27
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 248
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 7
 .  .  .  .  .  .  .  .  Col: 64
 .  .  .  .  .  .  .  }
@@ -777,12 +777,12 @@ Module {
 .  .  .  Roles: FunctionDeclaration,FunctionDeclarationName,SimpleIdentifier
 .  .  .  TOKEN "somefunc"
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 255
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 9
 .  .  .  .  Col: 5
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 277
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 9
 .  .  .  .  Col: 27
 .  .  .  }
@@ -794,12 +794,12 @@ Module {
 .  .  .  .  0: arguments {
 .  .  .  .  .  Roles: FunctionDeclarationArgument,Incomplete
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 265
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 9
 .  .  .  .  .  .  Col: 15
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 264
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 9
 .  .  .  .  .  .  Col: 14
 .  .  .  .  .  }
@@ -813,12 +813,12 @@ Module {
 .  .  .  .  .  .  .  Roles: FunctionDeclarationArgument,FunctionDeclarationArgumentName
 .  .  .  .  .  .  .  TOKEN "i"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 264
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 9
 .  .  .  .  .  .  .  .  Col: 14
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 264
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 9
 .  .  .  .  .  .  .  .  Col: 14
 .  .  .  .  .  .  .  }
@@ -830,14 +830,14 @@ Module {
 .  .  .  .  .  .  .  .  0: PreviousNoops {
 .  .  .  .  .  .  .  .  .  Roles: Whitespace
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 250
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 8
 .  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 8
-.  .  .  .  .  .  .  .  .  .  Col: 0
+.  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  Properties: {
 .  .  .  .  .  .  .  .  .  .  internalRole: noops_previous
@@ -1242,7 +1242,7 @@ Module {
 .  .  .  EndPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 12
-.  .  .  .  Col: 1
+.  .  .  .  Col: 2
 .  .  .  }
 .  .  .  Properties: {
 .  .  .  .  internalRole: noops_remainder

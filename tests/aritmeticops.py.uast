@@ -9,9 +9,9 @@ Module {
 .  .  Col: 1
 .  }
 .  EndPosition: {
-.  .  Offset: 30
+.  .  Offset: 31
 .  .  Line: 8
-.  .  Col: 1
+.  .  Col: 2
 .  }
 .  Children: {
 .  .  0: Expr {
@@ -640,9 +640,9 @@ Module {
 .  .  .  .  Col: 1
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 30
+.  .  .  .  Offset: 31
 .  .  .  .  Line: 8
-.  .  .  .  Col: 1
+.  .  .  .  Col: 2
 .  .  .  }
 .  .  .  Properties: {
 .  .  .  .  internalRole: noops_remainder

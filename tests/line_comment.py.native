@@ -8,13 +8,13 @@
                 {
                     "ast_type": "Pass",
                     "col_offset": 1,
-                    "end_col_offset": 23,
+                    "end_col_offset": 24,
                     "end_lineno": 3,
                     "lineno": 3,
                     "noops_previous": {
                         "ast_type": "PreviousNoops",
                         "col_offset": 1,
-                        "end_col_offset": 19,
+                        "end_col_offset": 20,
                         "end_lineno": 2,
                         "lineno": 1,
                         "lines": [
@@ -35,7 +35,7 @@
                     "noops_sameline": {
                         "ast_type": "SameLineNoops",
                         "col_offset": 5,
-                        "end_col_offset": 23,
+                        "end_col_offset": 24,
                         "end_lineno": 3,
                         "lineno": 3,
                         "noop_line": "# sameline comment"
@@ -43,13 +43,13 @@
                 }
             ],
             "col_offset": 1,
-            "end_col_offset": 1,
+            "end_col_offset": 2,
             "end_lineno": 6,
             "lineno": 1,
             "noops_remainder": {
                 "ast_type": "RemainderNoops",
                 "col_offset": 1,
-                "end_col_offset": 1,
+                "end_col_offset": 2,
                 "end_lineno": 6,
                 "lineno": 4,
                 "lines": [

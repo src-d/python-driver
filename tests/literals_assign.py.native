@@ -8,7 +8,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 11,
+                    "end_col_offset": 12,
                     "end_lineno": 1,
                     "lineno": 1,
                     "targets": [
@@ -16,14 +16,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 11,
+                            "end_col_offset": 12,
                             "end_lineno": 1,
                             "id": "a",
                             "lineno": 1,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 6,
-                                "end_col_offset": 11,
+                                "end_col_offset": 12,
                                 "end_lineno": 1,
                                 "lineno": 1,
                                 "noop_line": "# int"
@@ -43,7 +43,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 16,
+                    "end_col_offset": 17,
                     "end_lineno": 2,
                     "lineno": 2,
                     "targets": [
@@ -51,14 +51,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 16,
+                            "end_col_offset": 17,
                             "end_lineno": 2,
                             "id": "b",
                             "lineno": 2,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 9,
-                                "end_col_offset": 16,
+                                "end_col_offset": 17,
                                 "end_lineno": 2,
                                 "lineno": 2,
                                 "noop_line": "# float"
@@ -78,7 +78,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 25,
+                    "end_col_offset": 26,
                     "end_lineno": 3,
                     "lineno": 3,
                     "targets": [
@@ -86,14 +86,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 25,
+                            "end_col_offset": 26,
                             "end_lineno": 3,
                             "id": "c",
                             "lineno": 3,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 17,
-                                "end_col_offset": 25,
+                                "end_col_offset": 26,
                                 "end_lineno": 3,
                                 "lineno": 3,
                                 "noop_line": "# string"
@@ -112,7 +112,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 15,
+                    "end_col_offset": 16,
                     "end_lineno": 4,
                     "lineno": 4,
                     "targets": [
@@ -120,14 +120,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 15,
+                            "end_col_offset": 16,
                             "end_lineno": 4,
                             "id": "d",
                             "lineno": 4,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 9,
-                                "end_col_offset": 15,
+                                "end_col_offset": 16,
                                 "end_lineno": 4,
                                 "lineno": 4,
                                 "noop_line": "# None"
@@ -146,7 +146,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 28,
+                    "end_col_offset": 29,
                     "end_lineno": 5,
                     "lineno": 5,
                     "targets": [
@@ -154,14 +154,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 28,
+                            "end_col_offset": 29,
                             "end_lineno": 5,
                             "id": "e",
                             "lineno": 5,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 14,
-                                "end_col_offset": 28,
+                                "end_col_offset": 29,
                                 "end_lineno": 5,
                                 "lineno": 5,
                                 "noop_line": "# list literal"
@@ -209,7 +209,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 29,
+                    "end_col_offset": 30,
                     "end_lineno": 6,
                     "lineno": 6,
                     "targets": [
@@ -217,14 +217,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 29,
+                            "end_col_offset": 30,
                             "end_lineno": 6,
                             "id": "f",
                             "lineno": 6,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 14,
-                                "end_col_offset": 29,
+                                "end_col_offset": 30,
                                 "end_lineno": 6,
                                 "lineno": 6,
                                 "noop_line": "# tuple literal"
@@ -272,7 +272,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 27,
+                    "end_col_offset": 28,
                     "end_lineno": 7,
                     "lineno": 7,
                     "targets": [
@@ -280,14 +280,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 27,
+                            "end_col_offset": 28,
                             "end_lineno": 7,
                             "id": "g",
                             "lineno": 7,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 14,
-                                "end_col_offset": 27,
+                                "end_col_offset": 28,
                                 "end_lineno": 7,
                                 "lineno": 7,
                                 "noop_line": "# set literal"
@@ -334,7 +334,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 35,
+                    "end_col_offset": 36,
                     "end_lineno": 8,
                     "lineno": 8,
                     "targets": [
@@ -342,14 +342,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 35,
+                            "end_col_offset": 36,
                             "end_lineno": 8,
                             "id": "h",
                             "lineno": 8,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 21,
-                                "end_col_offset": 35,
+                                "end_col_offset": 36,
                                 "end_lineno": 8,
                                 "lineno": 8,
                                 "noop_line": "# dict literal"
@@ -405,7 +405,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 42,
+                    "end_col_offset": 43,
                     "end_lineno": 9,
                     "lineno": 9,
                     "targets": [
@@ -413,14 +413,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 42,
+                            "end_col_offset": 43,
                             "end_lineno": 9,
                             "id": "i",
                             "lineno": 9,
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 19,
-                                "end_col_offset": 42,
+                                "end_col_offset": 43,
                                 "end_lineno": 9,
                                 "lineno": 9,
                                 "noop_line": "# expression assignment"
@@ -504,7 +504,7 @@
                 }
             ],
             "col_offset": 1,
-            "end_col_offset": 42,
+            "end_col_offset": 43,
             "end_lineno": 9,
             "lineno": 1
         }

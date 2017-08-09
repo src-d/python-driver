@@ -278,13 +278,13 @@
                 }
             ],
             "col_offset": 1,
-            "end_col_offset": 1,
+            "end_col_offset": 2,
             "end_lineno": 8,
             "lineno": 1,
             "noops_remainder": {
                 "ast_type": "RemainderNoops",
                 "col_offset": 1,
-                "end_col_offset": 1,
+                "end_col_offset": 2,
                 "end_lineno": 8,
                 "lineno": 8,
                 "lines": [
