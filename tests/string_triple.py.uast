@@ -1,5 +1,6 @@
-Status:  ok
+Status:  error
 Errors: 
+ .  column out of bounds: 0 [1, 4]
 UAST: 
 Module {
 .  Roles: File
@@ -17,12 +18,12 @@ Module {
 .  .  0: Expr {
 .  .  .  Roles: Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 44
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 4
-.  .  .  .  Col: 1
+.  .  .  .  Col: 0
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 46
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 4
 .  .  .  .  Col: 3
 .  .  .  }
@@ -37,12 +38,12 @@ Triple double-quoted string
 Second line
 "
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 44
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 46
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  Col: 3
 .  .  .  .  .  }
@@ -55,12 +56,12 @@ Second line
 .  .  1: Expr {
 .  .  .  Roles: Expression
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 92
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 8
-.  .  .  .  Col: 1
+.  .  .  .  Col: 0
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 94
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 8
 .  .  .  .  Col: 3
 .  .  .  }
@@ -75,12 +76,12 @@ Triple single-quoted string
 Second line
 "
 .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  Offset: 92
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 8
 .  .  .  .  .  .  Col: 1
 .  .  .  .  .  }
 .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  Offset: 94
+.  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  Line: 8
 .  .  .  .  .  .  Col: 3
 .  .  .  .  .  }

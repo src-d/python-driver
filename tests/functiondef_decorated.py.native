@@ -61,13 +61,13 @@
                         {
                             "ast_type": "Return",
                             "col_offset": 5,
-                            "end_col_offset": 0,
+                            "end_col_offset": 1,
                             "end_lineno": 4,
                             "lineno": 7,
                             "noops_previous": {
                                 "ast_type": "PreviousNoops",
                                 "col_offset": 1,
-                                "end_col_offset": 0,
+                                "end_col_offset": 1,
                                 "end_lineno": 4,
                                 "lineno": 4,
                                 "lines": [

@@ -1,6 +1,6 @@
 Status:  error
 Errors: 
- .  column out of bounds: 0 [1, 1]
+ .  column out of bounds: 2 [1, 1]
 UAST: 
 Module {
 .  Roles: File
@@ -10,21 +10,21 @@ Module {
 .  .  Col: 1
 .  }
 .  EndPosition: {
-.  .  Offset: 66
+.  .  Offset: 0
 .  .  Line: 6
-.  .  Col: 1
+.  .  Col: 2
 .  }
 .  Children: {
 .  .  0: ClassDef {
 .  .  .  Roles: TypeDeclaration,SimpleIdentifier,Statement
 .  .  .  TOKEN "Dog"
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 6
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 1
 .  .  .  .  Col: 7
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 15
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 1
 .  .  .  .  Col: 16
 .  .  .  }
@@ -42,12 +42,12 @@ Module {
 .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  TOKEN "Animal"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 10
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 1
 .  .  .  .  .  .  .  .  Col: 11
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 15
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 1
 .  .  .  .  .  .  .  .  Col: 16
 .  .  .  .  .  .  .  }
@@ -66,7 +66,7 @@ Module {
 .  .  .  .  .  .  0: Pass {
 .  .  .  .  .  .  .  Roles: Noop,Statement
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 23
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 2
 .  .  .  .  .  .  .  .  Col: 5
 .  .  .  .  .  .  .  }
@@ -79,12 +79,12 @@ Module {
 .  .  .  Roles: TypeDeclaration,SimpleIdentifier,Statement
 .  .  .  TOKEN "RobotDog"
 .  .  .  StartPosition: {
-.  .  .  .  Offset: 35
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 4
 .  .  .  .  Col: 7
 .  .  .  }
 .  .  .  EndPosition: {
-.  .  .  .  Offset: 53
+.  .  .  .  Offset: 0
 .  .  .  .  Line: 4
 .  .  .  .  Col: 25
 .  .  .  }
@@ -102,12 +102,12 @@ Module {
 .  .  .  .  .  .  .  Roles: SimpleIdentifier,Expression
 .  .  .  .  .  .  .  TOKEN "Robot"
 .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  Offset: 44
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 16
 .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  EndPosition: {
-.  .  .  .  .  .  .  .  Offset: 48
+.  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  Line: 4
 .  .  .  .  .  .  .  .  Col: 20
 .  .  .  .  .  .  .  }
@@ -118,14 +118,14 @@ Module {
 .  .  .  .  .  .  .  .  0: PreviousNoops {
 .  .  .  .  .  .  .  .  .  Roles: Whitespace
 .  .  .  .  .  .  .  .  .  StartPosition: {
-.  .  .  .  .  .  .  .  .  .  Offset: 28
+.  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 3
 .  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  EndPosition: {
 .  .  .  .  .  .  .  .  .  .  Offset: 0
 .  .  .  .  .  .  .  .  .  .  Line: 3
-.  .  .  .  .  .  .  .  .  .  Col: 0
+.  .  .  .  .  .  .  .  .  .  Col: 1
 .  .  .  .  .  .  .  .  .  }
 .  .  .  .  .  .  .  .  .  Properties: {
 .  .  .  .  .  .  .  .  .  .  internalRole: noops_previous
@@ -195,7 +195,7 @@ Module {
 .  .  .  EndPosition: {
 .  .  .  .  Offset: 0
 .  .  .  .  Line: 6
-.  .  .  .  Col: 1
+.  .  .  .  Col: 2
 .  .  .  }
 .  .  .  Properties: {
 .  .  .  .  internalRole: noops_remainder

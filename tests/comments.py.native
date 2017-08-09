@@ -8,7 +8,7 @@
                 {
                     "ast_type": "Assign",
                     "col_offset": 1,
-                    "end_col_offset": 29,
+                    "end_col_offset": 30,
                     "end_lineno": 3,
                     "lineno": 3,
                     "targets": [
@@ -16,14 +16,14 @@
                             "ast_type": "Name",
                             "col_offset": 1,
                             "ctx": "Store",
-                            "end_col_offset": 29,
+                            "end_col_offset": 30,
                             "end_lineno": 3,
                             "id": "a",
                             "lineno": 3,
                             "noops_previous": {
                                 "ast_type": "PreviousNoops",
                                 "col_offset": 1,
-                                "end_col_offset": 22,
+                                "end_col_offset": 23,
                                 "end_lineno": 2,
                                 "lineno": 1,
                                 "lines": [
@@ -44,7 +44,7 @@
                             "noops_sameline": {
                                 "ast_type": "SameLineNoops",
                                 "col_offset": 6,
-                                "end_col_offset": 29,
+                                "end_col_offset": 30,
                                 "end_lineno": 3,
                                 "lineno": 3,
                                 "noop_line": "# line trailing comment"
@@ -63,13 +63,13 @@
                 }
             ],
             "col_offset": 1,
-            "end_col_offset": 1,
+            "end_col_offset": 2,
             "end_lineno": 5,
             "lineno": 1,
             "noops_remainder": {
                 "ast_type": "RemainderNoops",
                 "col_offset": 1,
-                "end_col_offset": 1,
+                "end_col_offset": 2,
                 "end_lineno": 5,
                 "lineno": 4,
                 "lines": [

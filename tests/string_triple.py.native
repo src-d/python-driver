@@ -7,7 +7,7 @@
             "body": [
                 {
                     "ast_type": "Expr",
-                    "col_offset": 1,
+                    "col_offset": 0,
                     "end_col_offset": 3,
                     "end_lineno": 4,
                     "lineno": 4,
@@ -22,7 +22,7 @@
                 },
                 {
                     "ast_type": "Expr",
-                    "col_offset": 1,
+                    "col_offset": 0,
                     "end_col_offset": 3,
                     "end_lineno": 8,
                     "lineno": 8,
