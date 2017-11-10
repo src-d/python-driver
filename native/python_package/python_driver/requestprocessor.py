@@ -56,7 +56,7 @@ class RequestProcessor(metaclass=abc.ABCMeta):
         specifics) supporting the write(type) and flush() methods.
         """
         self.outbuffer = outbuffer
-        self.errors: List[str] = []
+        self.errors = []
 
     @abc.abstractmethod
     def _tostr_request(self, request: RawRequest) -> Request:
