@@ -1,5 +1,7 @@
+name = "Python"
 language = "python"
 status = "beta"
+features = ["ast","uast","roles"]
 
 [runtime]
   os = "alpine"
