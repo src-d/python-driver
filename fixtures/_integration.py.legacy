@@ -2,7 +2,7 @@ Module {
 .  Roles: File,Module
 .  Children: {
 .  .  0: ClassDef {
-.  .  .  Roles: Declaration,Identifier,Statement,Type
+.  .  .  Roles: Type,Declaration,Identifier,Statement
 .  .  .  TOKEN "testcls1"
 .  .  .  StartPosition: {
 .  .  .  .  Offset: 6
@@ -19,19 +19,19 @@ Module {
 .  .  .  }
 .  .  .  Children: {
 .  .  .  .  0: ClassDef.bases {
-.  .  .  .  .  Roles: Base,Declaration,Type
+.  .  .  .  .  Roles: Type,Declaration,Base
 .  .  .  .  .  Properties: {
 .  .  .  .  .  .  internalRole: bases
 .  .  .  .  .  }
 .  .  .  .  }
 .  .  .  .  1: ClassDef.decorator_list {
-.  .  .  .  .  Roles: Call,Declaration,Incomplete,Type
+.  .  .  .  .  Roles: Type,Declaration,Call,Incomplete
 .  .  .  .  .  Properties: {
 .  .  .  .  .  .  internalRole: decorator_list
 .  .  .  .  .  }
 .  .  .  .  }
 .  .  .  .  2: ClassDef.body {
-.  .  .  .  .  Roles: Body,Declaration,Type
+.  .  .  .  .  Roles: Type,Declaration,Body
 .  .  .  .  .  Properties: {
 .  .  .  .  .  .  internalRole: body
 .  .  .  .  .  }
