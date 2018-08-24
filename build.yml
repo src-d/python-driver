@@ -6,7 +6,7 @@ native:
   deps:
     - 'apk add python2'
   static:
-    - path: 'sh/native.sh'
+    - path: 'native.sh'
       dest: 'native'
   build:
     image: 'python:3.6-alpine'
