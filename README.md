@@ -1,7 +1,5 @@
 # Python driver for [Babelfish](https://github.com/bblfsh/bblfshd) ![Driver Status](https://img.shields.io/badge/status-beta-dbd25c.svg) [![Build Status](https://travis-ci.org/bblfsh/python-driver.svg?branch=master)](https://travis-ci.org/bblfsh/python-driver) ![Native Version](https://img.shields.io/badge/python%20version-3.6.2-aa93ea.svg) ![Go Version](https://img.shields.io/badge/go%20version-1.9-63afbf.svg)
 
-
-
 Development Environment
 -----------------------
 
