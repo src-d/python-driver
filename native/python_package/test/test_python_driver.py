@@ -103,7 +103,7 @@ class Test10ProcessRequestFunc(TestPythonDriverBase):
         status = response.get('status')
 
         if has_errors:
-            assert status in ('ok', 'fatal')
+            assert status in ('error', 'fatal')
             errors = response.get('errors', list)
             self.assertIsInstance(errors, list)
             self.assertGreater(len(errors), 0)

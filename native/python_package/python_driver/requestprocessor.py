@@ -135,22 +135,26 @@ class RequestProcessor(metaclass=abc.ABCMeta):
                 codeinfo = resdict['<code_string>']
                 version  = codeinfo['version']
 
+                failed = False
+
                 if version in (3, 6) and codeinfo['py3ast']:
                     orig_ast = codeinfo['py3ast']["PY3AST"]
                 elif version in (1, 2) and codeinfo['py2ast']:
                     orig_ast = codeinfo['py2ast']["PY2AST"]
                 else:
-                    raise Exception(
+                    failed = True
+                    self.errors = [
                         'Errors produced trying to get an AST for both Python versions' +
                         '\n------ Python2 errors:\n%s' % codeinfo['py2_ast_errors'] +
                         '\n------ Python3 errors:\n%s' % codeinfo['py3_ast_errors']
-                    )
+                    ]
 
-                if not orig_ast:
-                    raise Exception('Empty AST generated from non empty code')
-                ast = AstImprover(code, orig_ast).parse()
-                if not ast:
-                    raise Exception('Empty AST generated from non empty code')
+                if not failed:
+                    if not orig_ast:
+                        raise Exception('Empty AST generated from non empty code')
+                    ast = AstImprover(code, orig_ast).parse()
+                    if not ast:
+                        raise Exception('Empty AST generated from non empty code')
             else:
                 # Module with empty code (like __init__.py) return a module-only AST
                 # since this would still have semantic meaning for Python
@@ -162,15 +166,20 @@ class RequestProcessor(metaclass=abc.ABCMeta):
                 version = 3
 
             response = Response({
-                'status'           : 'ok',
                 'errors'           : self.errors,
-                'ast'              : {"PY%dAST" % version: ast},
                 'metadata'         : {
                     'language'         : 'python',
                     'language_version' : version,
                     'driver'           : 'python23:%s' % __version__,
                 }
             })
+
+            if failed:
+                response['status'] = 'error'
+                response['ast'] = None
+            else:
+                response['status'] = 'ok'
+                response['ast'] = {"PY%dAST" % version: ast}
 
             if filepath:
                 response['filepath'] = filepath
