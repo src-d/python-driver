@@ -1,4 +1,4 @@
-{ '@type': "Module",
+{ '@type': "python:Module",
    '@role': [File, Module],
    '@pos': { '@type': "uast:Positions",
    },

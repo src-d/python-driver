@@ -1,4 +1,4 @@
-{ '@type': "Module",
+{ '@type': "python:Module",
    '@role': [File, Module],
    '@pos': { '@type': "uast:Positions",
    },
@@ -27,7 +27,7 @@
                Node: { '@type': "uast:Function",
                   Body: { '@type': "uast:Block",
                      Statements: [
-                        { '@type': "Expr",
+                        { '@type': "python:Expr",
                            '@role': [Expression],
                            '@pos': { '@type': "uast:Positions",
                               start: { '@type': "uast:Position",
@@ -53,7 +53,7 @@
                               Value: "\n    Docstring\n    ",
                            },
                         },
-                        { '@type': "Pass",
+                        { '@type': "python:Pass",
                            '@token': "pass",
                            '@role': [Noop, Statement],
                            '@pos': { '@type': "uast:Positions",

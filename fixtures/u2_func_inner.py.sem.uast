@@ -1,4 +1,4 @@
-{ '@type': "Module",
+{ '@type': "python:Module",
    '@role': [File, Module],
    '@pos': { '@type': "uast:Positions",
    },
@@ -51,7 +51,7 @@
                                  Node: { '@type': "uast:Function",
                                     Body: { '@type': "uast:Block",
                                        Statements: [
-                                          { '@type': "Pass",
+                                          { '@type': "python:Pass",
                                              '@token': "pass",
                                              '@role': [Noop, Statement],
                                              '@pos': { '@type': "uast:Positions",
@@ -159,7 +159,7 @@
                                                    Node: { '@type': "uast:Function",
                                                       Body: { '@type': "uast:Block",
                                                          Statements: [
-                                                            { '@type': "Pass",
+                                                            { '@type': "python:Pass",
                                                                '@token': "pass",
                                                                '@role': [Noop, Statement],
                                                                '@pos': { '@type': "uast:Positions",
@@ -174,7 +174,7 @@
                                                                      col: 17,
                                                                   },
                                                                },
-                                                               'noops_previous': { '@type': "PreviousNoops",
+                                                               'noops_previous': { '@type': "python:PreviousNoops",
                                                                   '@role': [Noop],
                                                                   '@pos': { '@type': "uast:Positions",
                                                                      start: { '@type': "uast:Position",

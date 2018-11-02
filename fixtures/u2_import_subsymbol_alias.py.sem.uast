@@ -1,9 +1,9 @@
-{ '@type': "Module",
+{ '@type': "python:Module",
    '@role': [File, Module],
    '@pos': { '@type': "uast:Positions",
    },
    body: [
-      { '@type': "Import",
+      { '@type': "python:Import",
          '@token': "import",
          '@role': [Declaration, Import, Statement],
          '@pos': { '@type': "uast:Positions",
@@ -13,7 +13,7 @@
                col: 1,
             },
          },
-         names: { '@type': "ImportFrom.names",
+         names: { '@type': "python:ImportFrom.names",
             '@role': [Identifier, Import, Incomplete, Pathname],
             'name_list': [
                { '@type': "uast:RuntimeImport",

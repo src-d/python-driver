@@ -1,9 +1,9 @@
-{ '@type': "Module",
+{ '@type': "python:Module",
    '@role': [File, Module],
    '@pos': { '@type': "uast:Positions",
    },
    body: [
-      { '@type': "Print",
+      { '@type': "python:Print",
          '@token': "print",
          '@role': [Call, Callee, Expression, Function, Identifier],
          '@pos': { '@type': "uast:Positions",
@@ -21,7 +21,7 @@
          dest: ~,
          nl: true,
          values: [
-            { '@type': "Num",
+            { '@type': "python:Num",
                '@token': 1,
                '@role': [Argument, Call, Expression, Literal, Number, Positional, Primitive],
                '@pos': { '@type': "uast:Positions",
@@ -39,7 +39,7 @@
             },
          ],
       },
-      { '@type': "Print",
+      { '@type': "python:Print",
          '@token': "print",
          '@role': [Call, Callee, Expression, Function, Identifier],
          '@pos': { '@type': "uast:Positions",
@@ -57,7 +57,7 @@
          dest: ~,
          nl: true,
          values: [
-            { '@type': "Num",
+            { '@type': "python:Num",
                '@token': 2,
                '@role': [Argument, Call, Expression, Literal, Number, Positional, Primitive],
                '@pos': { '@type': "uast:Positions",

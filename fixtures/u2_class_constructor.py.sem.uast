@@ -1,4 +1,4 @@
-{ '@type': "Module",
+{ '@type': "python:Module",
    '@role': [File, Module],
    '@pos': { '@type': "uast:Positions",
    },
@@ -51,7 +51,7 @@
                                  Node: { '@type': "uast:Function",
                                     Body: { '@type': "uast:Block",
                                        Statements: [
-                                          { '@type': "Pass",
+                                          { '@type': "python:Pass",
                                              '@token': "pass",
                                              '@role': [Noop, Statement],
                                              '@pos': { '@type': "uast:Positions",
@@ -136,7 +136,7 @@
                                  Node: { '@type': "uast:Function",
                                     Body: { '@type': "uast:Block",
                                        Statements: [
-                                          { '@type': "Pass",
+                                          { '@type': "python:Pass",
                                              '@token': "pass",
                                              '@role': [Noop, Statement],
                                              '@pos': { '@type': "uast:Positions",

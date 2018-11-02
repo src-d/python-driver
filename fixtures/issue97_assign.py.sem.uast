@@ -1,9 +1,9 @@
-{ '@type': "Module",
+{ '@type': "python:Module",
    '@role': [File, Module],
    '@pos': { '@type': "uast:Positions",
    },
    body: [
-      { '@type': "Assign",
+      { '@type': "python:Assign",
          '@role': [Assignment, Binary, Expression],
          '@pos': { '@type': "uast:Positions",
             start: { '@type': "uast:Position",
