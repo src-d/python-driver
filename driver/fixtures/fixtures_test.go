@@ -21,9 +21,6 @@ var Suite = &fixtures.Suite{
 	},
 	Transforms: normalizer.Transforms,
 	BenchName:  "issue_server101",
-	Docker: fixtures.DockerConfig{
-		Image: "python:3",
-	},
 	Semantic: fixtures.SemanticConfig{
 		BlacklistTypes: []string{
 			"AsyncFunctionDef",
