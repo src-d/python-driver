@@ -1,0 +1,29 @@
+{
+   'PY3AST': {
+      'ast_type': "Module",
+      body: [
+         {
+            'ast_type': "Assign",
+            'col_offset': 1,
+            lineno: 1,
+            targets: [
+               {
+                  'ast_type': "Name",
+                  'col_offset': 1,
+                  ctx: "Store",
+                  'end_col_offset': 9,
+                  'end_lineno': 1,
+                  id: "_POS_INF",
+                  lineno: 1,
+               },
+            ],
+            value: {
+               'ast_type': "Num",
+               'col_offset': 12,
+               lineno: 1,
+               'n': "inf",
+            },
+         },
+      ],
+   },
+}

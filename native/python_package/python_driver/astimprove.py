@@ -4,6 +4,7 @@ from the import pydetector module.
 """
 
 import tokenize
+import math
 from codecs import encode
 from copy import deepcopy
 from io import BytesIO
@@ -125,6 +126,9 @@ class AstImprover():
         if isinstance(node["n"], complex):
             node.update({"n": {"real": node["n"].real,
                                "imag": node["n"].imag}})
+        # infinity and nan are not json-serializable
+        elif not math.isfinite(node["n"]):
+            node.update({"n": str(node["n"])})
         return node
 
     def visit_NoneType(self, node: Node) -> Node:
