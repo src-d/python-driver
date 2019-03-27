@@ -249,7 +249,9 @@
                      ],
                      Returns: [
                         { '@type': "uast:Argument",
-                           Init: ~,
+                           Init: { '@type': "uast:Identifier",
+                              Name: "None",
+                           },
                            MapVariadic: false,
                            Name: ~,
                            Receiver: false,

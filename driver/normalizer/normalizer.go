@@ -42,15 +42,25 @@ func funcDefMap(typ string, async bool) Mapping {
 			// just that there is no annotation (but the function could still return some
 			// other type!).
 			{Name: "returns", Optional: "ret_opt", Op: Cases("ret_case",
+				// case 1: no type annotations for the return
 				Is(nil),
-				Obj{
-					uast.KeyType:  String("BoxedName"),
-					"boxed_value": Var("ret_type"),
+				// case 2: boxed identifier
+				Fields{
+					{Name: uast.KeyType, Op: String("BoxedName")},
+					{Name: "boxed_value", Op: Var("ret_type")},
 					// No problem dropping this one, it's used by an internal interpreter optimization/cache
 					// without semantic meaning
-					"ctx": Any(),
-				}),
-			},
+					{Name: "ctx", Op: Any()},
+					// FIXME: change this once we've a way to store other nodes on semantic objects
+					// See: https://github.com/bblfsh/sdk/issues/361
+					// See: https://github.com/bblfsh/python-driver/issues/178
+					{Name: "noops_previous", Drop: true, Op: Any()},
+					{Name: "noops_sameline", Drop: true, Op: Any()},
+				},
+				// case 3: everything else
+				// TODO: not reversible
+				Var("ret_type"),
+			)},
 			{Name: "decorator_list", Op: Var("func_decorators")},
 			{Name: "noops_previous", Optional: "np_opt", Op: Var("noops_previous")},
 			{Name: "noops_sameline", Optional: "ns_opt", Op: Var("noops_sameline")},
@@ -68,7 +78,7 @@ func funcDefMap(typ string, async bool) Mapping {
 				},
 				UASTType(uast.Alias{}, Obj{
 					// FIXME: can't call identifierWithPos because it would take the position of the
-					// function node that is not exactly the same as the position of the function name
+					//        function node that is not exactly the same as the position of the function name
 					"Name": UASTType(uast.Identifier{}, Obj{
 						"Name": Var("name"),
 					}),
@@ -76,14 +86,36 @@ func funcDefMap(typ string, async bool) Mapping {
 						"Type": UASTType(uast.FunctionType{}, Fields{
 							{Name: "Arguments", Op: Var("arguments")},
 							{Name: "Returns", Optional: "ret_opt", Op: Cases("ret_case",
-								// Dont add None here as default, read the comment on the upper
-								// side of the annotation
-								Is(nil),
+								// Python always adds an implicit return of None if function
+								// returns nothing, so we will set Init on our returns to None.
+
+								// case 1: no type annotations for the return
+								Arr(UASTType(uast.Argument{},
+									Obj{
+										"Init": UASTType(uast.Identifier{},
+											Obj{"Name": String("None")},
+										),
+									},
+								)),
+								// case 2: boxed identifier
 								Arr(UASTType(uast.Argument{},
 									Obj{
 										"Type": Var("ret_type"),
+										"Init": UASTType(uast.Identifier{},
+											Obj{"Name": String("None")},
+										),
 									},
-								)))},
+								)),
+								// case 3: everything else
+								Arr(UASTType(uast.Argument{},
+									Obj{
+										"Type": Var("ret_type"),
+										"Init": UASTType(uast.Identifier{},
+											Obj{"Name": String("None")},
+										),
+									},
+								)),
+							)},
 						}),
 						"Body": UASTType(uast.Block{}, Obj{
 							"Statements": Var("body"),
@@ -220,8 +252,8 @@ var Normalizers = []Mapping{
 			// FIXME: change this once we've a way to store other nodes on semantic objects
 			// See: https://github.com/bblfsh/sdk/issues/361
 			// See: https://github.com/bblfsh/python-driver/issues/178
-			{Name: "noops_previous", Optional: "np_opt", Op: Any()},
-			{Name: "noops_sameline", Optional: "ns_opt", Op: Any()},
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
 		},
 		Fields{
 			{Name: "arg",
@@ -241,8 +273,8 @@ var Normalizers = []Mapping{
 			// FIXME: change this once we've a way to store other nodes on semantic objects
 			// See: https://github.com/bblfsh/sdk/issues/361
 			// See: https://github.com/bblfsh/python-driver/issues/178
-			{Name: "noops_previous", Optional: "np_opt", Op: Any()},
-			{Name: "noops_sameline", Optional: "ns_opt", Op: Any()},
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
 			// This one is pesky - they're ignored by the runtime, could have typing from
 			// mypy, or could have anything else, so we can assign to the semantic type
 			{Name: "annotation", Optional: "ann_opt", Op: Any()},
@@ -260,8 +292,8 @@ var Normalizers = []Mapping{
 			// FIXME: change this once we've a way to store other nodes on semantic objects
 			// See: https://github.com/bblfsh/sdk/issues/361
 			// See: https://github.com/bblfsh/python-driver/issues/178
-			{Name: "noops_previous", Optional: "np_opt", Op: Any()},
-			{Name: "noops_sameline", Optional: "ns_opt", Op: Any()},
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
 			// This one is pesky - they're ignored by the runtime, could have typing from
 			// mypy, or could have anything else, so we can assign to the semantic type
 			{Name: "annotation", Op: Any()},
@@ -278,8 +310,8 @@ var Normalizers = []Mapping{
 			// FIXME: change this once we've a way to store other nodes on semantic objects
 			// See: https://github.com/bblfsh/sdk/issues/361
 			// See: https://github.com/bblfsh/python-driver/issues/178
-			{Name: "noops_previous", Optional: "np_opt", Op: Any()},
-			{Name: "noops_sameline", Optional: "ns_opt", Op: Any()},
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
 			// This one is pesky - they're ignored by the runtime, could have typing from
 			// mypy, or could have anything else, so we can assign to the semantic type
 			{Name: "annotation", Op: Any()},
@@ -296,8 +328,8 @@ var Normalizers = []Mapping{
 			// FIXME: change this once we've a way to store other nodes on semantic objects
 			// See: https://github.com/bblfsh/sdk/issues/361
 			// See: https://github.com/bblfsh/python-driver/issues/178
-			{Name: "noops_previous", Optional: "np_opt", Op: Any()},
-			{Name: "noops_sameline", Optional: "ns_opt", Op: Any()},
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
 			// This one is pesky - they're ignored by the runtime, could have typing from
 			// mypy, or could have anything else, so we can assign to the semantic type
 			{Name: "annotation", Op: Any()},
@@ -368,8 +400,8 @@ var Normalizers = []Mapping{
 			// FIXME: change this once we've a way to store other nodes on semantic objects
 			// See: https://github.com/bblfsh/sdk/issues/361
 			// See: https://github.com/bblfsh/python-driver/issues/178
-			{Name: "noops_previous", Optional: "np_opt", Op: Any()},
-			{Name: "noops_sameline", Optional: "ns_opt", Op: Any()},
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
 		},
 		Obj{
 			"All": Bool(true),
@@ -393,8 +425,8 @@ var Normalizers = []Mapping{
 			// FIXME: change this once we've a way to store other nodes on semantic objects
 			// See: https://github.com/bblfsh/sdk/issues/361
 			// See: https://github.com/bblfsh/python-driver/issues/178
-			{Name: "noops_previous", Optional: "np_opt", Op: Any()},
-			{Name: "noops_sameline", Optional: "ns_opt", Op: Any()},
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
 		},
 		Obj{
 			"Names": Var("names"),
