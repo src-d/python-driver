@@ -18,7 +18,7 @@ var Native = Transformers([][]Transformer{
 }...)
 
 var Code = []CodeTransformer{
-	positioner.NewFillOffsetFromLineCol(),
+	positioner.FromLineCol(),
 }
 
 func annotateTypeToken(typ, token string, roles ...role.Role) Mapping {
