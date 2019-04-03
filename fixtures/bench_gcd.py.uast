@@ -673,7 +673,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, Then, While],
+                     '@role': [Body, While],
                      'body_stmts': [
                         { '@type': "AugAssign",
                            '@role': [Assignment, Binary, Expression, Operator],
@@ -1223,7 +1223,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, Then, While],
+                     '@role': [Body, While],
                      'body_stmts': [
                         { '@type': "While",
                            '@token': "while",
@@ -1241,7 +1241,7 @@
                               },
                            },
                            body: { '@type': "For.body",
-                              '@role': [Body, Then, While],
+                              '@role': [Body, While],
                               'body_stmts': [
                                  { '@type': "AugAssign",
                                     '@role': [Assignment, Binary, Expression, Operator],

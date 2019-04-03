@@ -19,7 +19,7 @@
             },
          },
          body: { '@type': "For.body",
-            '@role': [Body, For, Then],
+            '@role': [Body, For],
             'body_stmts': [
                { '@type': "AugAssign",
                   '@role': [Assignment, Binary, Expression, Operator],

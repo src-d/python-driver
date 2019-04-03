@@ -110,7 +110,7 @@
             },
          },
          body: { '@type': "For.body",
-            '@role': [Body, For, Then],
+            '@role': [Body, For],
             'body_stmts': [
                { '@type': "For",
                   '@token': "for",
@@ -128,7 +128,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "Assign",
                            '@role': [Assignment, Binary, Expression],

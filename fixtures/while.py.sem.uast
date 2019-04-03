@@ -19,7 +19,7 @@
             },
          },
          body: { '@type': "python:For.body",
-            '@role': [Body, Then, While],
+            '@role': [Body, While],
             'body_stmts': [
                { '@type': "python:Expr",
                   '@role': [Expression],

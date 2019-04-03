@@ -11601,7 +11601,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "python:If",
                                     '@token': "if",
@@ -16543,7 +16543,7 @@
                                                 },
                                              },
                                              body: { '@type': "python:For.body",
-                                                '@role': [Body, For, Then],
+                                                '@role': [Body, For],
                                                 'body_stmts': [
                                                    { '@type': "python:Assign",
                                                       '@role': [Assignment, Binary, Expression],
@@ -17005,7 +17005,7 @@
                                                 },
                                              },
                                              body: { '@type': "python:For.body",
-                                                '@role': [Body, For, Then],
+                                                '@role': [Body, For],
                                                 'body_stmts': [
                                                    { '@type': "python:If",
                                                       '@token': "if",
@@ -18153,7 +18153,7 @@
                                        },
                                     },
                                     body: { '@type': "python:For.body",
-                                       '@role': [Body, For, Then],
+                                       '@role': [Body, For],
                                        'body_stmts': [
                                           { '@type': "python:If",
                                              '@token': "if",
@@ -21679,7 +21679,7 @@
                                                 },
                                              },
                                              body: { '@type': "python:For.body",
-                                                '@role': [Body, For, Then],
+                                                '@role': [Body, For],
                                                 'body_stmts': [
                                                    { '@type': "python:Assign",
                                                       '@role': [Assignment, Binary, Expression],
@@ -34845,7 +34845,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "python:TryExcept",
                                     '@role': [Catch, Statement, Try],
@@ -37908,7 +37908,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "python:If",
                                     '@token': "if",
@@ -39100,7 +39100,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "python:If",
                                     '@token': "if",
@@ -42587,7 +42587,7 @@
                                        },
                                     },
                                     body: { '@type': "python:For.body",
-                                       '@role': [Body, Then, While],
+                                       '@role': [Body, While],
                                        'body_stmts': [
                                           { '@type': "python:Assign",
                                              '@role': [Assignment, Binary, Expression],
@@ -43297,7 +43297,7 @@
                                        },
                                     },
                                     body: { '@type': "python:For.body",
-                                       '@role': [Body, Then, While],
+                                       '@role': [Body, While],
                                        'body_stmts': [
                                           { '@type': "python:Assign",
                                              '@role': [Assignment, Binary, Expression],
@@ -46266,7 +46266,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "python:TryExcept",
                                     '@role': [Catch, Statement, Try],
@@ -47261,7 +47261,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "python:TryExcept",
                                     '@role': [Catch, Statement, Try],
@@ -51643,7 +51643,7 @@
                                              },
                                           },
                                           body: { '@type': "python:For.body",
-                                             '@role': [Body, For, Then],
+                                             '@role': [Body, For],
                                              'body_stmts': [
                                                 { '@type': "python:If",
                                                    '@token': "if",

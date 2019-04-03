@@ -19,7 +19,7 @@
             },
          },
          body: { '@type': "For.body",
-            '@role': [Body, For, Then],
+            '@role': [Body, For],
             'body_stmts': [
                { '@type': "If",
                   '@token': "if",

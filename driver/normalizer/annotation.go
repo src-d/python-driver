@@ -76,7 +76,7 @@ func loopAnnotate(typ string, mainRole role.Role, roles ...role.Role) Mapping {
 	}, Obj{
 		"body": Obj{
 			uast.KeyType:  String("For.body"),
-			uast.KeyRoles: Roles(mainRole, role.Body, role.Then),
+			uast.KeyRoles: Roles(mainRole, role.Body),
 			"body_stmts":  Var("body_stmts"),
 		},
 		"orelse": Obj{
@@ -423,7 +423,7 @@ var Annotations = []Mapping{
 		"decorator_list": Var("decors"),
 		"body":           Var("body_stmts"),
 		"bases":          Var("bases"),
-		"name": Var("name"),
+		"name":           Var("name"),
 	}, Obj{
 		uast.KeyToken: Var("name"),
 		"decorator_list": Obj{

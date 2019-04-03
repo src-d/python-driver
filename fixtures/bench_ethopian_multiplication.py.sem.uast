@@ -132,7 +132,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, Then, While],
+                              '@role': [Body, While],
                               'body_stmts': [
                                  { '@type': "python:Expr",
                                     '@role': [Expression],
@@ -1187,7 +1187,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "python:Print",
                                     '@token': "print",

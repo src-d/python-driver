@@ -355,7 +355,7 @@
                                        },
                                     },
                                     body: { '@type': "python:For.body",
-                                       '@role': [Body, For, Then],
+                                       '@role': [Body, For],
                                        'body_stmts': [
                                           { '@type': "python:If",
                                              '@token': "if",
@@ -951,7 +951,7 @@
                                        },
                                     },
                                     body: { '@type': "python:For.body",
-                                       '@role': [Body, For, Then],
+                                       '@role': [Body, For],
                                        'body_stmts': [
                                           { '@type': "python:Expr",
                                              '@role': [Expression],

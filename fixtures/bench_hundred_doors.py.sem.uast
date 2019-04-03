@@ -114,7 +114,7 @@
             },
          },
          body: { '@type': "python:For.body",
-            '@role': [Body, For, Then],
+            '@role': [Body, For],
             'body_stmts': [
                { '@type': "python:For",
                   '@token': "for",
@@ -132,7 +132,7 @@
                      },
                   },
                   body: { '@type': "python:For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "python:Assign",
                            '@role': [Assignment, Binary, Expression],

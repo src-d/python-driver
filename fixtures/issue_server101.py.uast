@@ -11027,7 +11027,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "If",
                            '@token': "if",
@@ -15463,7 +15463,7 @@
                                        },
                                     },
                                     body: { '@type': "For.body",
-                                       '@role': [Body, For, Then],
+                                       '@role': [Body, For],
                                        'body_stmts': [
                                           { '@type': "Assign",
                                              '@role': [Assignment, Binary, Expression],
@@ -15900,7 +15900,7 @@
                                        },
                                     },
                                     body: { '@type': "For.body",
-                                       '@role': [Body, For, Then],
+                                       '@role': [Body, For],
                                        'body_stmts': [
                                           { '@type': "If",
                                              '@token': "if",
@@ -16965,7 +16965,7 @@
                               },
                            },
                            body: { '@type': "For.body",
-                              '@role': [Body, For, Then],
+                              '@role': [Body, For],
                               'body_stmts': [
                                  { '@type': "If",
                                     '@token': "if",
@@ -20258,7 +20258,7 @@
                                        },
                                     },
                                     body: { '@type': "For.body",
-                                       '@role': [Body, For, Then],
+                                       '@role': [Body, For],
                                        'body_stmts': [
                                           { '@type': "Assign",
                                              '@role': [Assignment, Binary, Expression],
@@ -32335,7 +32335,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "TryExcept",
                            '@role': [Catch, Statement, Try],
@@ -35213,7 +35213,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "If",
                            '@token': "if",
@@ -36273,7 +36273,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "If",
                            '@token': "if",
@@ -39553,7 +39553,7 @@
                               },
                            },
                            body: { '@type': "For.body",
-                              '@role': [Body, Then, While],
+                              '@role': [Body, While],
                               'body_stmts': [
                                  { '@type': "Assign",
                                     '@role': [Assignment, Binary, Expression],
@@ -40200,7 +40200,7 @@
                               },
                            },
                            body: { '@type': "For.body",
-                              '@role': [Body, Then, While],
+                              '@role': [Body, While],
                               'body_stmts': [
                                  { '@type': "Assign",
                                     '@role': [Assignment, Binary, Expression],
@@ -42911,7 +42911,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "TryExcept",
                            '@role': [Catch, Statement, Try],
@@ -43801,7 +43801,7 @@
                      },
                   },
                   body: { '@type': "For.body",
-                     '@role': [Body, For, Then],
+                     '@role': [Body, For],
                      'body_stmts': [
                         { '@type': "TryExcept",
                            '@role': [Catch, Statement, Try],
@@ -47847,7 +47847,7 @@
                                     },
                                  },
                                  body: { '@type': "For.body",
-                                    '@role': [Body, For, Then],
+                                    '@role': [Body, For],
                                     'body_stmts': [
                                        { '@type': "If",
                                           '@token': "if",

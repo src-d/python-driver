@@ -680,7 +680,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, Then, While],
+                              '@role': [Body, While],
                               'body_stmts': [
                                  { '@type': "python:AugAssign",
                                     '@role': [Assignment, Binary, Expression, Operator],
@@ -1251,7 +1251,7 @@
                               },
                            },
                            body: { '@type': "python:For.body",
-                              '@role': [Body, Then, While],
+                              '@role': [Body, While],
                               'body_stmts': [
                                  { '@type': "python:While",
                                     '@token': "while",
@@ -1269,7 +1269,7 @@
                                        },
                                     },
                                     body: { '@type': "python:For.body",
-                                       '@role': [Body, Then, While],
+                                       '@role': [Body, While],
                                        'body_stmts': [
                                           { '@type': "python:AugAssign",
                                              '@role': [Assignment, Binary, Expression, Operator],
