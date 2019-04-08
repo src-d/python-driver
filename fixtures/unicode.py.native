@@ -12,6 +12,19 @@
                'end_col_offset': 4,
                'end_lineno': 1,
                lineno: 1,
+               'noops_sameline': {
+                  'ast_type': "SameLineNoops",
+                  'col_offset': 3,
+                  'end_col_offset': 4,
+                  'end_lineno': 1,
+                  lineno: 1,
+                  'noop_lines': [
+                     {
+                        'ast_type': "NoopSameLine",
+                        s: "",
+                     },
+                  ],
+               },
                s: "𝓏",
             },
          },

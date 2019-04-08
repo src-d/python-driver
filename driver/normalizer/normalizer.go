@@ -245,6 +245,18 @@ var Normalizers = []Mapping{
 		CommentNode(false, "comm", nil),
 	)),
 
+	// remove empty noops
+	Map(Obj{
+		uast.KeyType: String("NoopSameLine"),
+		uast.KeyPos:  Any(),
+		"s":          String(""),
+	}, Is(nil)),
+	Map(Obj{
+		uast.KeyType: String("SameLineNoops"),
+		uast.KeyPos:  Any(),
+		"noop_lines": Check(All(Is(nil)), Any()),
+	}, Is(nil)),
+
 	// FIXME: no positions for keywords in the native AST
 	AnnotateType("keyword", MapObj(
 		Fields{

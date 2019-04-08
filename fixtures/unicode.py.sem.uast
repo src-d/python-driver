@@ -30,6 +30,7 @@
                Format: "",
                Value: "𝓏",
             },
+            'noops_sameline': ~,
          },
       },
    ],
