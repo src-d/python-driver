@@ -3,8 +3,8 @@ package normalizer
 import (
 	"strings"
 
-	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
-	. "gopkg.in/bblfsh/sdk.v2/uast/transformer"
+	"github.com/bblfsh/sdk/v3/uast/nodes"
+	. "github.com/bblfsh/sdk/v3/uast/transformer"
 )
 
 func num2dots(n nodes.Value, prefix string) nodes.Value {
@@ -17,10 +17,10 @@ func num2dots(n nodes.Value, prefix string) nodes.Value {
 
 // FIXME: not reversible
 type OpPrependPath struct {
-	numLevel  Op
-	path Op
-	joined Op
-	prefix string
+	numLevel Op
+	path     Op
+	joined   Op
+	prefix   string
 }
 
 func (op OpPrependPath) Kinds() nodes.Kind {

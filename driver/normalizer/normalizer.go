@@ -1,16 +1,19 @@
 package normalizer
 
 import (
-	"gopkg.in/bblfsh/sdk.v2/uast"
-	"gopkg.in/bblfsh/sdk.v2/uast/role"
-	. "gopkg.in/bblfsh/sdk.v2/uast/transformer"
+	"github.com/bblfsh/sdk/v3/uast"
+	"github.com/bblfsh/sdk/v3/uast/role"
+	. "github.com/bblfsh/sdk/v3/uast/transformer"
+	"github.com/bblfsh/sdk/v3/uast/transformer/positioner"
 )
 
 var Preprocess = Transformers([][]Transformer{
 	{Mappings(Preprocessors...)},
 }...)
 
-var PreprocessCode = []CodeTransformer{}
+var PreprocessCode = []CodeTransformer{
+	positioner.FromLineCol(),
+}
 
 var Preprocessors = []Mapping{
 	ObjectToNode{
