@@ -2,6 +2,7 @@ package normalizer
 
 import (
 	"github.com/bblfsh/sdk/v3/uast"
+	"github.com/bblfsh/sdk/v3/uast/nodes"
 	"github.com/bblfsh/sdk/v3/uast/role"
 	. "github.com/bblfsh/sdk/v3/uast/transformer"
 	"github.com/bblfsh/sdk/v3/uast/transformer/positioner"
@@ -364,50 +365,47 @@ var Normalizers = []Mapping{
 		},
 		Obj{
 			"names": Each("vals", UASTType(uast.RuntimeImport{},
-				Obj{
-					"Path": Var("name"),
-				})),
+				Obj{"Path": Var("name")},
+			)),
 		},
 	), role.Import, role.Declaration, role.Statement),
 
+	// pre-process aliases: remove ones with no alias (useless)
+	Map(Obj{
+		uast.KeyType: String("alias"),
+		uast.KeyPos:  Any(),
+		"name":       Check(OfKind(nodes.KindString), Var("name")),
+		"asname":     Is(nil),
+	}, UASTType(uast.Identifier{}, Obj{
+		uast.KeyPos: UASTType(uast.Positions{}, nil),
+		"Name":      Var("name"),
+	})),
+
 	// FIXME: aliases doesn't have a position (can't be currently fixed by the tokenizer
-	// because they don't even have a line in the native AST)
+	//        because they don't even have a line in the native AST)
 	MapSemantic("alias", uast.Alias{}, MapObj(
 		Obj{
-			"name": Var("name"),
-			"asname": Cases("case_alias",
-				Check(Is(nil), Var("nilalias")),
-				Check(Not(Is(nil)), Var("alias")),
+			"name":   Var("name"),
+			"asname": Var("alias"),
+		},
+		Obj{
+			"Name": UASTType(uast.Identifier{}, Obj{
+				"Name": Var("name"),
+			}),
+			"Node": UASTType(uast.Identifier{},
+				Obj{"Name": Var("alias")},
 			),
 		},
-		CasesObj("case_alias",
-			Obj{
-				"Name": UASTType(uast.Identifier{}, Obj{
-					"Name": Var("name"),
-				}),
-			},
-			Objs{
-				{"Node": Obj{}},
-				{
-					"Node": UASTType(uast.Identifier{},
-						Obj{
-							"Name": Var("alias"),
-						}),
-				}},
-		))),
+	)),
 
 	// Star imports
 	MapSemantic("ImportFrom", uast.RuntimeImport{}, MapObj(
 		Fields{
 			{Name: "names", Op: Arr(
 				Obj{
-					uast.KeyType: String("uast:Alias"),
-					uast.KeyPos:  Var("pos"),
-					"Name": Obj{
-						uast.KeyType: String("uast:Identifier"),
-						"Name":       String("*"),
-					},
-					"Node": Obj{},
+					uast.KeyType: String("uast:Identifier"),
+					uast.KeyPos:  Any(),
+					"Name":       String("*"),
 				},
 			)},
 			{Name: "level", Op: Var("level")},
