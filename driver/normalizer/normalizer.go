@@ -411,10 +411,10 @@ var Normalizers = []Mapping{
 		},
 		Obj{
 			"Name": UASTType(uast.Identifier{}, Obj{
-				"Name": Var("name"),
+				"Name": Var("alias"),
 			}),
 			"Node": UASTType(uast.Identifier{},
-				Obj{"Name": Var("alias")},
+				Obj{"Name": Var("name")},
 			),
 		},
 	)),
