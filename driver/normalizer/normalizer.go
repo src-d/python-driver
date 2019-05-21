@@ -359,16 +359,37 @@ var Normalizers = []Mapping{
 	funcDefMap("FunctionDef", false),
 	funcDefMap("AsyncFunctionDef", true),
 
-	AnnotateType("Import", MapObj(
-		Obj{
-			"names": Each("vals", Var("name")),
+	// import statements may have multiple paths
+	// if there is only one path, we emit RuntimeImport directly
+	MapSemantic("Import", uast.RuntimeImport{}, MapObj(
+		Fields{
+			// FIXME: change this once we've a way to store other nodes on semantic objects
+			// See: https://github.com/bblfsh/sdk/issues/361
+			// See: https://github.com/bblfsh/python-driver/issues/178
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
+			{Name: "names", Op: One(Var("name"))},
 		},
 		Obj{
-			"names": Each("vals", UASTType(uast.RuntimeImport{},
+			"Path": Var("name"),
+		},
+	)),
+	// for grouped statement, we emit a Group with multiple RuntimeImports
+	MapSemantic("Import", uast.Group{}, MapObj(
+		Fields{
+			// FIXME: change this once we've a way to store other nodes on semantic objects
+			// See: https://github.com/bblfsh/sdk/issues/361
+			// See: https://github.com/bblfsh/python-driver/issues/178
+			{Name: "noops_previous", Drop: true, Op: Any()},
+			{Name: "noops_sameline", Drop: true, Op: Any()},
+			{Name: "names", Op: Each("vals", Var("name"))},
+		},
+		Obj{
+			"Nodes": Each("vals", UASTType(uast.RuntimeImport{},
 				Obj{"Path": Var("name")},
 			)),
 		},
-	), role.Import, role.Declaration, role.Statement),
+	)),
 
 	// pre-process aliases: remove ones with no alias (useless)
 	Map(Obj{

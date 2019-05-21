@@ -28,6 +28,7 @@ var Suite = &fixtures.Suite{
 			"BoolLiteral",
 			"Bytes",
 			"FunctionDef",
+			"Import",
 			"ImportFrom",
 			"Name",
 			"NoopLine",
