@@ -21,11 +21,9 @@
          {
             'ast_type': "ImportFrom",
             'col_offset': 1,
-            'end_col_offset': 9,
-            'end_lineno': 2,
             level: 2,
             lineno: 2,
-            module: "c",
+            module: "c.d",
             names: [
                {
                   asname: ~,

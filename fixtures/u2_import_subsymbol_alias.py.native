@@ -17,16 +17,14 @@
          {
             'ast_type': "ImportFrom",
             'col_offset': 1,
-            'end_col_offset': 7,
-            'end_lineno': 2,
             level: 0,
             lineno: 2,
-            module: "a",
+            module: "a.b",
             names: [
                {
-                  asname: "c",
+                  asname: "d",
                   'ast_type': "alias",
-                  name: "b",
+                  name: "c",
                },
             ],
          },

@@ -1,3 +1,3 @@
 from .a import b
-from ..c import e
+from ..c.d import e
 from ... import f

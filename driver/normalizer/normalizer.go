@@ -444,7 +444,6 @@ var Normalizers = []Mapping{
 					// FIXME: no position for the module (path) in the native AST, only when the import starts
 					numLevel: Var("level"),
 					path:     Var("module"),
-					joined:   Var("joined"),
 					prefix:   "../",
 				},
 			}),
@@ -468,7 +467,6 @@ var Normalizers = []Mapping{
 				"Name": OpPrependPath{
 					numLevel: Var("level"),
 					path:     Var("module"),
-					joined:   Var("joined"),
 					prefix:   "../",
 				},
 			}),

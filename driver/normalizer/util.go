@@ -19,7 +19,6 @@ func num2dots(n nodes.Value, prefix string) nodes.Value {
 type OpPrependPath struct {
 	numLevel Op
 	path     Op
-	joined   Op
 	prefix   string
 }
 
@@ -58,16 +57,7 @@ func (op OpPrependPath) Construct(st *State, n nodes.Node) (nodes.Node, error) {
 	if err != nil || path == nil {
 		return n, err
 	}
-
-	joined := string(prependVal.(nodes.String)) + string(path.(nodes.String))
-	op.joined = String(joined)
-
-	v, err := op.joined.Construct(st, n)
-	if err != nil {
-		return nil, err
-	}
-
-	return v, nil
+	return prependVal.(nodes.String) + path.(nodes.String), nil
 }
 
 type OpLevelDotsNumConv struct {
