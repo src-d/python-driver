@@ -397,10 +397,9 @@ var Normalizers = []Mapping{
 		uast.KeyPos:  Any(),
 		"name":       Check(OfKind(nodes.KindString), Var("name")),
 		"asname":     Is(nil),
-	}, UASTType(uast.Identifier{}, Obj{
-		uast.KeyPos: UASTType(uast.Positions{}, nil),
-		"Name":      Var("name"),
-	})),
+	}, OpSplitPath{
+		path: Var("name"),
+	}),
 
 	// FIXME: aliases doesn't have a position (can't be currently fixed by the tokenizer
 	//        because they don't even have a line in the native AST)
@@ -411,11 +410,12 @@ var Normalizers = []Mapping{
 		},
 		Obj{
 			"Name": UASTType(uast.Identifier{}, Obj{
-				"Name": Var("alias"),
+				uast.KeyPos: UASTType(uast.Positions{}, nil),
+				"Name":      Var("alias"),
 			}),
-			"Node": UASTType(uast.Identifier{},
-				Obj{"Name": Var("name")},
-			),
+			"Node": OpSplitPath{
+				path: Var("name"),
+			},
 		},
 	)),
 
@@ -439,14 +439,11 @@ var Normalizers = []Mapping{
 		},
 		Obj{
 			"All": Bool(true),
-			"Path": UASTType(uast.Identifier{}, Obj{
-				"Name": OpPrependPath{
-					// FIXME: no position for the module (path) in the native AST, only when the import starts
-					numLevel: Var("level"),
-					path:     Var("module"),
-					prefix:   "../",
-				},
-			}),
+			"Path": OpSplitPath{
+				// FIXME: no position for the module (path) in the native AST, only when the import starts
+				numLevel: Var("level"),
+				path:     Var("module"),
+			},
 		},
 	)),
 
@@ -463,13 +460,10 @@ var Normalizers = []Mapping{
 		},
 		Obj{
 			"Names": Var("names"),
-			"Path": UASTType(uast.Identifier{}, Obj{
-				"Name": OpPrependPath{
-					numLevel: Var("level"),
-					path:     Var("module"),
-					prefix:   "../",
-				},
-			}),
+			"Path": OpSplitPath{
+				numLevel: Var("level"),
+				path:     Var("module"),
+			},
 		},
 	)),
 }

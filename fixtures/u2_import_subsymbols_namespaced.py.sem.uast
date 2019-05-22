@@ -19,6 +19,8 @@
          All: true,
          Names: ~,
          Path: { '@type': "uast:Identifier",
+            '@pos': { '@type': "uast:Positions",
+            },
             Name: "a",
          },
          Target: ~,

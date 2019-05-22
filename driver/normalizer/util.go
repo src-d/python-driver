@@ -1,6 +1,7 @@
 package normalizer
 
 import (
+	"github.com/bblfsh/sdk/v3/uast"
 	"strings"
 
 	"github.com/bblfsh/sdk/v3/uast/nodes"
@@ -15,49 +16,57 @@ func num2dots(n nodes.Value, prefix string) nodes.Value {
 	return n
 }
 
-// FIXME: not reversible
-type OpPrependPath struct {
+type OpSplitPath struct {
 	numLevel Op
 	path     Op
-	prefix   string
 }
 
-func (op OpPrependPath) Kinds() nodes.Kind {
-	return nodes.KindString
+func (op OpSplitPath) Kinds() nodes.Kind {
+	return nodes.KindObject
 }
 
-func (op OpPrependPath) Check(st *State, n nodes.Node) (bool, error) {
-	v, ok := n.(nodes.Value)
-	if !ok {
-		return false, nil
-	}
-
-	res1, err := op.numLevel.Check(st, n)
-	if err != nil || !res1 {
-		return false, err
-	}
-
-	res2, err := op.path.Check(st, v)
-	if err != nil || !res2 {
-		return false, err
-	}
-
-	return res1 && res2, nil
+func (op OpSplitPath) Check(st *State, n nodes.Node) (bool, error) {
+	panic("TODO") // TODO: not reversible
+	return true, nil
 }
 
-func (op OpPrependPath) Construct(st *State, n nodes.Node) (nodes.Node, error) {
-	first, err := op.numLevel.Construct(st, n)
-	if err != nil || first == nil {
-		return n, err
+func (op OpSplitPath) Construct(st *State, n nodes.Node) (nodes.Node, error) {
+	var idents []uast.Identifier
+	if op.numLevel != nil {
+		nd, err := op.numLevel.Construct(st, nil)
+		if err != nil {
+			return nil, err
+		}
+		levels, ok := nd.(nodes.Int)
+		if !ok {
+			return nil, ErrUnexpectedType.New(nodes.Int(0), nd)
+		}
+		for i := 0; i < int(levels); i++ {
+			idents = append(idents, uast.Identifier{Name: ".."})
+		}
 	}
-	firstVal := first.(nodes.Value)
-	prependVal := num2dots(firstVal, op.prefix)
 
-	path, err := op.path.Construct(st, n)
-	if err != nil || path == nil {
-		return n, err
+	nd, err := op.path.Construct(st, n)
+	if err != nil {
+		return nil, err
 	}
-	return prependVal.(nodes.String) + path.(nodes.String), nil
+	if nd == nil {
+		if len(idents) == 0 {
+			idents = append(idents, uast.Identifier{Name: "."})
+		}
+	} else {
+		path, ok := nd.(nodes.String)
+		if !ok {
+			return nil, ErrUnexpectedType.New(nodes.String(""), nd)
+		}
+		for _, name := range strings.Split(string(path), ".") {
+			idents = append(idents, uast.Identifier{Name: name})
+		}
+	}
+	if len(idents) == 1 {
+		return uast.ToNode(idents[0])
+	}
+	return uast.ToNode(uast.QualifiedIdentifier{Names: idents})
 }
 
 type OpLevelDotsNumConv struct {
