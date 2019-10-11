@@ -190,6 +190,19 @@ class AstImprover():
 
             return args
 
+        def _str2node(s: str) -> dict:
+            # some nodes in Python2 AST are strings instead of objects
+            # convert to same format
+            return {
+                "arg": s,
+                "annotation": None,
+                # the tokenizer will fix the positions later
+                "lineno": 1,
+                "end_lineno": 1,
+                "col_offset": 0,
+                "end_col_offset": 0
+                }
+
         def name2arg(node: Node):
             # Normalize Python2 and 3 argument types
             if node["ast_type"] == "Name":
@@ -225,20 +238,16 @@ class AstImprover():
             if isinstance(kwarg, str):
                 # Python2 kwargs are just strings; convert to same format
                 # as Python3
-                kwarg = {
-                    "arg": kwarg,
-                    "annotation": None,
-                    # the tokenizer will fix the positions later
-                    "lineno": 1,
-                    "end_lineno": 1,
-                    "col_offset": 0,
-                    "end_col_offset": 0
-                    }
+                kwarg = _str2node(kwarg)
             kwarg["ast_type"] = "kwarg"
             norm_args.append(self.visit(kwarg))
 
         vararg = deepcopy(node.get("vararg"))
         if vararg:
+            if isinstance(vararg, str):
+                # Python2 varargs are just strings; convert to same format
+                # as Python3
+                vararg = _str2node(vararg)
             vararg["ast_type"] = "vararg"
             norm_args.append(self.visit(vararg))
 

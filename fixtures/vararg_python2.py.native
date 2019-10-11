@@ -1,0 +1,143 @@
+{
+   'PY2AST': {
+      'ast_type': "Module",
+      body: [
+         {
+            args: {
+               args: [
+                  {
+                     '@token': "a",
+                     'ast_type': "arg",
+                     'col_offset': 15,
+                     ctx: "Param",
+                     'end_col_offset': 16,
+                     'end_lineno': 1,
+                     lineno: 1,
+                  },
+                  {
+                     '@token': "param",
+                     annotation: ~,
+                     'ast_type': "vararg",
+                     'col_offset': 19,
+                     'end_col_offset': 24,
+                     'end_lineno': 1,
+                     lineno: 1,
+                  },
+               ],
+               'ast_type': "arguments",
+            },
+            'ast_type': "FunctionDef",
+            body: [
+               {
+                  'ast_type': "Print",
+                  'col_offset': 5,
+                  dest: ~,
+                  'end_col_offset': 10,
+                  'end_lineno': 2,
+                  lineno: 2,
+                  nl: true,
+                  values: [
+                     {
+                        'ast_type': "Str",
+                        'col_offset': 11,
+                        'end_col_offset': 25,
+                        'end_lineno': 2,
+                        lineno: 2,
+                        s: "variadicArgs",
+                     },
+                  ],
+               },
+            ],
+            'col_offset': 5,
+            'decorator_list': [],
+            'end_col_offset': 14,
+            'end_lineno': 1,
+            lineno: 1,
+            name: "function6",
+         },
+         {
+            args: {
+               args: [
+                  {
+                     '@token': "a",
+                     'ast_type': "arg",
+                     'col_offset': 15,
+                     ctx: "Param",
+                     'end_col_offset': 16,
+                     'end_lineno': 4,
+                     lineno: 4,
+                     'noops_previous': {
+                        'ast_type': "PreviousNoops",
+                        'col_offset': 1,
+                        'end_col_offset': 1,
+                        'end_lineno': 3,
+                        lineno: 3,
+                        lines: [],
+                     },
+                  },
+                  {
+                     '@token': "kwargs",
+                     annotation: ~,
+                     'ast_type': "kwarg",
+                     'col_offset': 1,
+                     'end_col_offset': 1,
+                     'end_lineno': 1,
+                     lineno: 1,
+                  },
+                  {
+                     '@token': "args",
+                     annotation: ~,
+                     'ast_type': "vararg",
+                     'col_offset': 1,
+                     'end_col_offset': 1,
+                     'end_lineno': 1,
+                     lineno: 1,
+                  },
+               ],
+               'ast_type': "arguments",
+            },
+            'ast_type': "FunctionDef",
+            body: [
+               {
+                  'ast_type': "Print",
+                  'col_offset': 5,
+                  dest: ~,
+                  'end_col_offset': 10,
+                  'end_lineno': 5,
+                  lineno: 5,
+                  nl: true,
+                  values: [
+                     {
+                        'ast_type': "Str",
+                        'col_offset': 11,
+                        'end_col_offset': 35,
+                        'end_lineno': 5,
+                        lineno: 5,
+                        'noops_sameline': {
+                           'ast_type': "SameLineNoops",
+                           'col_offset': 34,
+                           'end_col_offset': 35,
+                           'end_lineno': 5,
+                           lineno: 5,
+                           'noop_lines': [
+                              {
+                                 'ast_type': "NoopSameLine",
+                                 s: "",
+                              },
+                           ],
+                        },
+                        s: "variadicAndKeywordArgs",
+                     },
+                  ],
+               },
+            ],
+            'col_offset': 5,
+            'decorator_list': [],
+            'end_col_offset': 14,
+            'end_lineno': 4,
+            lineno: 4,
+            name: "function7",
+         },
+      ],
+   },
+}
