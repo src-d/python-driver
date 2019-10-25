@@ -1,6 +1,6 @@
 sdk: '2'
 go-runtime:
-  version: '1.12-alpine'
+  version: '1.13-alpine'
 native:
   image: 'python:3.6-alpine'
   deps:
